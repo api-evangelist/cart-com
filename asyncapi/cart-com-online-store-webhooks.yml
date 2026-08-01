@@ -1,0 +1,137 @@
+generated: '2026-07-31'
+method: searched
+source: https://developers.cart.com/docs/rest-api/ZG9jOjM1MDU4Nw-webhooks
+spec_type: Webhooks
+asyncapi_published: false
+asyncapi_note: 'Cart.com publishes no AsyncAPI document for this event surface. Probes
+  of /asyncapi.yaml, /asyncapi.json and the GitHub org (AmeriCommerce/rest-api) on
+  2026-07-31 returned nothing. The catalog below is captured verbatim from the provider''s
+  Webhooks guide — it is a faithful transcription of a documented event surface, not
+  a generated specification.'
+api: openapi/cart-com-online-store-openapi-original.yml
+
+delivery:
+  style: http-callback
+  direction: outbound
+  description: 'When the conditions for an event are met, the Online Store makes an
+    HTTP request out to the subscriber URL. A subset of events are synchronous — the
+    store waits for a response and uses it to change store behaviour (pricing, tax,
+    discount, validation, payment authorization/capture).'
+  response_timeout_seconds: 3
+  response_timeout_note: Applies to events that expect a reply; the short timeout is
+    deliberate because delays are user-visible in the storefront.
+  response_caching:
+    field: cache_length
+    options:
+    - {value: Short, meaning: 5 minutes}
+    - {value: Long, meaning: 30 minutes}
+    - {value: NoCache, meaning: do not cache the response}
+  failure_handling:
+    field: failure_type
+    options:
+    - {value: Ignore, meaning: 'disregard the failure and continue as normal (default)'}
+    - {value: Error, meaning: display an error message to the user}
+    - {value: Fallback, meaning: 'call the alternate URL in fallback_url'}
+  signature_verification: none_documented
+  retry_policy: none_documented
+
+subscription:
+  managed_by: API
+  resource: /api/v1/webhooks
+  scopes_required: [orders, system]
+  admin_ui: /store/admin/settings/addons/webhooksubscriptionslist.aspx (version 2020.3+)
+  fields:
+  - {name: event_type, description: 'The webhook type, from the catalog below.'}
+  - {name: url, description: The URL that receives the request when the event fires.}
+  - {name: failure_type, description: 'Ignore | Error | Fallback.'}
+  - {name: store_id, description: 'The store this subscription applies to; only events
+      on this store trigger it.'}
+  - {name: cache_length, description: 'Short | Long | NoCache.'}
+  - {name: fallback_url, description: 'Called when failure_type is Fallback.'}
+
+events:
+- {name: AuthorizingPayment, description: Called to authorize a payment., synchronous: true,
+  since: null, domain: payments}
+- {name: CapturingPayment, description: Called to capture a payment., synchronous: true,
+  since: null, domain: payments}
+- {name: CustomerCreated, description: Called when a customer is created., synchronous: false,
+  since: '2020.3', domain: customers}
+- {name: CustomerEmailUpdated, description: Called when a customer's email address
+    changes., synchronous: false, since: '2020.3', domain: customers}
+- {name: CustomerUpdated, description: Called when a customer's data changes., synchronous: false,
+  since: '2020.3', domain: customers}
+- {name: CustomerRegistered, description: Called when a customer registers an account
+    for the store., synchronous: false, since: null, domain: customers}
+- {name: GetDiscount, description: Called when calculating discounts for a cart., synchronous: true,
+  since: null, domain: pricing}
+- {name: GetPrice, description: Called when calculating price for one or more products.,
+  synchronous: true, since: null, domain: pricing}
+- {name: GetProductStatus, description: Called when checking the status of a product
+    for display., synchronous: true, since: null, domain: catalog}
+- {name: GetTax, description: Called when calculating tax for a cart., synchronous: true,
+  since: null, domain: pricing}
+- {name: NewOrder, description: Called when a new order of any status is created.,
+  synchronous: false, since: '2020.3', domain: orders}
+- {name: NewQuote, description: Called when a new quote of any status is created.,
+  synchronous: false, since: '2020.3', domain: orders}
+- {name: NewValidOrder, description: Called when a new order is created with a status
+    that is not cancelled or declined., synchronous: false, since: '2020.3', domain: orders}
+- {name: OrderApproved, description: Called after an order payment has been approved.,
+  synchronous: false, since: null, domain: orders}
+- {name: OrderCanceled, description: Called after an order has been marked with a Canceled
+    order status., synchronous: false, since: null, domain: orders}
+- {name: OrderDeclined, description: Called after an order has been marked with a Declined
+    order status., synchronous: false, since: null, domain: orders}
+- {name: OrderPlaced, description: Called after a new order has been placed., synchronous: false,
+  since: null, domain: orders}
+- {name: OrderShipped, description: Called after an order has been marked with a Shipped
+    order status., synchronous: false, since: null, domain: orders}
+- {name: OrderStatusChanged, description: Called when an order's status changes., synchronous: false,
+  since: '2020.3', domain: orders}
+- {name: OrderUpdated, description: Called when an order's data changes., synchronous: false,
+  since: '2020.3', domain: orders}
+- {name: PaymentProcessed, description: Called after a payment has finished processing.,
+  synchronous: false, since: null, domain: payments}
+- {name: ProductCreated, description: Called when a new product is created., synchronous: false,
+  since: '2020.3', domain: catalog}
+- {name: ProductStatusChanged, description: Called when a product's status has been
+    changed., synchronous: false, since: null, domain: catalog}
+- {name: ProductUpdated, description: Called when a product's data changes., synchronous: false,
+  since: '2020.3', domain: catalog}
+- {name: QuoteStatusChanged, description: Called when a quote's status changes., synchronous: false,
+  since: '2020.3', domain: orders}
+- {name: QuoteUpdated, description: Called when a quote's data changes., synchronous: false,
+  since: '2020.3', domain: orders}
+- {name: ValidateCart, description: Called when the current cart is being checked for
+    errors., synchronous: true, since: null, domain: validation}
+- {name: ValidateCheckout, description: Called when the checkout page is being checked
+    for errors., synchronous: true, since: null, domain: validation}
+- {name: ValidateCustomer, description: Called when changing customer data to check
+    for any errors., synchronous: true, since: null, domain: validation}
+- {name: ValidateProduct, description: Called when changing product data to check for
+    any errors., synchronous: true, since: null, domain: validation}
+
+payload_notes:
+- AuthorizingPayment / CapturingPayment send an `order_payment` object and expect approved,
+  declined, authorization_code, transaction_id, avs_code, reject_reason, notes and
+  outstanding_balance in the reply.
+- CustomerCreated / CustomerUpdated / CustomerRegistered send a `customer` object;
+  CustomerEmailUpdated adds old_email and new_email.
+- GetDiscount sends the full cart context (ad_code, campaign_code, cart_id, customer_type,
+  addresses, items with variants and custom fields, shipping method, totals) and expects
+  cart_items[].discount_amount, add_items[], description[], discount and shipping_discount.
+- GetPrice sends items[] (item_number, quantity, variant_ids, variant_inventory_id)
+  plus customer_type_id and expects prices[] with price, cost, retail, pre_sale_cost
+  and pre_sale_price.
+- GetProductStatus sends items[] with product, variant_inventory and product_status
+  models.
+
+counts:
+  events_total: 30
+  synchronous_events: 10
+  asynchronous_events: 20
+
+x-evidence:
+  fetched: '2026-07-31'
+  url: https://developers.cart.com/docs/rest-api/ZG9jOjM1MDU4Nw-webhooks
+  http_status: 200

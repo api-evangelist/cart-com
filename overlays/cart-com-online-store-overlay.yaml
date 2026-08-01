@@ -1,0 +1,53 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Cart.com Online Store API
+  version: 1.0.0
+extends: openapi/cart-com-online-store-openapi-original.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: cart-com
+    x-apievangelist-generated: '2026-07-31'
+    x-apievangelist-source: https://github.com/AmeriCommerce/rest-api/blob/master/acapi.yaml
+    x-apievangelist-note: Harvested verbatim from the provider repository; this overlay carries API Evangelist
+      enrichment only and never mutates the original document.
+    contact:
+      name: Cart.com Support
+      url: https://cart.com/contact/support
+    termsOfService: https://cart.com/terms
+- target: $.servers
+  update:
+  - url: https://{storeDomain}/api/v1
+    description: The Online Store API is served from each merchant's own storefront domain.
+    variables:
+      storeDomain:
+        default: www.americommerce.com
+        description: Your Cart.com Online Store SSL domain.
+  x-note: The published spec declares the placeholder https://www.yoursite.com/api/v1. This action replaces
+    it with a templated server whose default is a verified live host.
+- target: $.components.securitySchemes.X-AC-Auth-Token
+  update:
+    description: Access token issued either from the admin console (non-expiring) or via the OAuth 2 authorization-code
+      flow at /api/oauth. See scopes/cart-com-scopes.yml for the scope vocabulary.
+- target: $.info
+  update:
+    x-rate-limit:
+      header: X-AC-Call-Limit
+      window: 10 seconds
+      exceeded_status: 429
+      retry_header: Retry-After
+      artifact: rate-limits/cart-com-rate-limits.yml
+    x-idempotency:
+      supported: false
+      artifact: conventions/cart-com-conventions.yml
+    x-error-envelope:
+      format: custom
+      fields:
+      - status_code
+      - message
+      - details
+      rfc9457: false
+      artifact: errors/cart-com-problem-types.yml
+    x-webhooks:
+      events: 30
+      artifact: asyncapi/cart-com-online-store-webhooks.yml

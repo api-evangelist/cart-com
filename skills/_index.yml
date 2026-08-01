@@ -1,0 +1,32 @@
+generated: '2026-07-31'
+method: generated
+source: openapi/cart-com-online-store-openapi-original.yml
+note: 'Generated from the provider''s published OpenAPI plus its Common Usage, Query
+  Syntax, Scopes, Authentication and Webhooks guides. Cart.com publishes no AGENTS.md
+  or skill files of its own — a search of developers.cart.com and the AmeriCommerce
+  GitHub organization on 2026-07-31 found none. Every operationId referenced below was
+  verified verbatim against the spec; the one exception is the /api/v1/webhooks resource,
+  which the provider documents but did not include in the OpenAPI, and which is flagged
+  as such inside the skill.'
+skills:
+- file: cart-com-create-and-fulfill-order.md
+  name: Create and fulfill an order on a Cart.com Online Store
+  api: openapi/cart-com-online-store-openapi-original.yml
+  operations: [get-customers, post-orders, post-order_items, post-order_addresses,
+    post-order_payments, get-order_statuses, post-order_shipments, get-orders]
+- file: cart-com-sync-catalog.md
+  name: Sync a product catalog into a Cart.com Online Store
+  api: openapi/cart-com-online-store-openapi-original.yml
+  operations: [get-categories, post-categories, get-manufacturers, get-product_statuses,
+    get-products, post-products, put-products-id, post-product_variants, post-product_pricing,
+    post-product_pictures, get-variant_inventory, put-variant_inventory-id, get-inventory]
+- file: cart-com-manage-customers.md
+  name: Manage customers and B2B profiles on a Cart.com Online Store
+  api: openapi/cart-com-online-store-openapi-original.yml
+  operations: [get-customers, post-customers, put-customers-id, get-addresses, post-addresses,
+    get-customer_types, get-profiles, post-customer_association, get-custom_fields,
+    post-custom_field_values]
+- file: cart-com-subscribe-to-webhooks.md
+  name: Subscribe to Cart.com Online Store webhooks
+  api: openapi/cart-com-online-store-openapi-original.yml
+  operations: [get-stores, get-order_statuses, get-orders]

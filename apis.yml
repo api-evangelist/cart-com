@@ -1,23 +1,149 @@
 aid: cart-com
 name: Cart.com
-description: 'Cart.com is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Cart.com is a unified commerce and logistics provider for B2C and B2B
+  brands, combining an ecommerce storefront platform (the former AmeriCommerce Online
+  Store), marketplace and channel management, order management, warehouse management,
+  and a nationwide fulfillment network into a single operating system for commerce.
+  Its developer surface is the Online Store API — a JSON REST API published as OpenAPI
+  3.1 covering catalog, orders, carts, customers, content, marketing, shipping and
+  store settings — plus a webhook subscription system with thirty event types, an OAuth
+  2 authorization flow with coarse read/write scopes, and a client-side JavaScript
+  Client API for storefront themes.'
+image: https://cart.com/hubfs/6316383d5bc18bb4fa6ae7a9_favicon-32x32.png
 url: https://raw.githubusercontent.com/api-evangelist/cart-com/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
+x-tier: profiled
 x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-07-31'
 modified: '2026-07-31'
 tags:
 - Company
-apis: []
+- E-Commerce
+- Retail
+- Order Management
+- Fulfillment
+- Logistics
+- Marketplaces
+- Storefront
+- Catalog
+- Shipping
+apis:
+- aid: cart-com:online-store-api
+  name: Cart.com Online Store API
+  description: 'The Cart.com Online Store API (formerly the AmeriCommerce REST API)
+    is a JSON REST API scoped to a single merchant storefront domain. It exposes 136
+    paths and 262 operations across catalog (products, variants, categories, attributes,
+    inventory, pricing), orders (carts, cart items, orders, order items, payments,
+    shipments, quotes, subscriptions), people (customers, addresses, profiles, users),
+    content (blogs, pages, links), marketing (adcodes, coupons, discounts, gift certificates,
+    mailing lists), settings (payment methods, shipping providers, tax rates, warehouses,
+    store locations) and system resources. It is HTTPS-only, uses snake_case JSON,
+    ISO 8601 datetimes, and a shared query syntax for filtering, paging, sorting, field
+    selection and nested-resource expansion.'
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  x-baseurl-note: 'The Online Store API is served from each merchant''s own storefront
+    domain as https://[mystorename.com]/api/v1/. The host recorded here is Cart.com''s
+    own AmeriCommerce storefront, verified live on 2026-07-31 (GET /api/v1/products
+    returns 401 {"status_code":401,"message":"Unauthorized"}). The published OpenAPI
+    servers[] entry is the placeholder https://www.yoursite.com/api/v1.'
+  tags:
+  - E-Commerce
+  - Catalog
+  - Orders
+  - Customers
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-online-store-openapi-original.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/cart-com-agentic-access.yml
+- type: DomainSecurity
+  url: security/cart-com-domain-security.yml
+- type: Authentication
+  url: authentication/cart-com-authentication.yml
 - type: Website
-  url: https://forgeglobal.com/cart-com_stock/
+  url: https://cart.com/
+- type: DeveloperPortal
+  url: https://developers.cart.com/
+- type: Documentation
+  url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+- type: APIReference
+  url: https://developers.cart.com/docs/rest-api
+- type: GettingStarted
+  url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+- type: Support
+  url: https://cart.com/contact/support
+- type: HelpCenter
+  url: https://cart.com/knowledge
+- type: Blog
+  url: https://cart.com/blog
+- type: GitHubOrganization
+  url: https://github.com/AmeriCommerce
+- type: SignUp
+  url: https://console.cart.com/login
+- type: TermsOfService
+  url: https://cart.com/terms
+- type: PrivacyPolicy
+  url: https://cart.com/privacy
+- type: ChangeLog
+  url: https://cart.canny.io/changelog
+- type: StatusPage
+  url: https://status.cart.com/
+- type: Integrations
+  url: https://cart.com/our-integrations
+- type: OAuthScopes
+  url: scopes/cart-com-scopes.yml
+- type: Conventions
+  url: conventions/cart-com-conventions.yml
+- type: ErrorCatalog
+  url: errors/cart-com-problem-types.yml
+- type: RateLimits
+  url: rate-limits/cart-com-rate-limits.yml
+- type: Lifecycle
+  url: lifecycle/cart-com-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/cart-com-lifecycle.yml
+- type: Conformance
+  url: conformance/cart-com-conformance.yml
+- type: DataModel
+  url: data-model/cart-com-data-model.yml
+- type: Packages
+  url: packages/cart-com-packages.yml
+- type: Examples
+  url: examples/cart-com-code-samples.yml
+- type: Components
+  url: components/cart-com-components.yml
+- type: Sandbox
+  url: sandbox/cart-com-sandbox.yml
+- type: WellKnown
+  url: well-known/cart-com-well-known.yml
+- type: LLMsTxt
+  url: llms/cart-com-llms.txt
+- type: Overlay
+  url: overlays/cart-com-online-store-overlay.yaml
+- type: MCPServer
+  url: mcp/cart-com-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Webhooks
+  url: asyncapi/cart-com-online-store-webhooks.yml
+x-enrichment:
+  date: '2026-07-31'
+  status: enriched
+  artifacts_added: 31
+  pass: local-v1

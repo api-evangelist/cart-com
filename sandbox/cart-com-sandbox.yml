@@ -1,0 +1,47 @@
+generated: '2026-07-31'
+method: probed
+source: https://developers.cart.com/docs/rest-api
+summary: 'Cart.com publishes no test mode, no sandbox tenant, no test key prefix and
+  no magic test values for the Online Store API. There is no test-vs-live key separation:
+  a token minted in the admin console works against the merchant''s production store.
+  What IS callable without a merchant account is the Prism mock that backs the Stoplight
+  developer portal — it serves the spec''s own example payloads for every operation
+  and accepts any value on the auth header.'
+test_mode:
+  published: false
+  key_prefixes: []
+  test_data: []
+  test_clock: false
+  fixtures: false
+  note: 'The only isolation mechanism the platform offers is a separate store/microstore;
+    nothing in the documentation describes a test-mode credential.'
+mock_server:
+  available: true
+  provider: Stoplight Prism (portal-hosted, not operated by Cart.com)
+  url: https://stoplight.io/mocks/americommerce/rest-api/23317700
+  auth: 'Requires the X-AC-Auth-Token header to be present; any value satisfies it.
+    Requests without the header return 401 from Prism, not from Cart.com.'
+  verified: '2026-07-31'
+  example_request: 'curl -H "Accept: application/json" -H "X-AC-Auth-Token: test" https://stoplight.io/mocks/americommerce/rest-api/23317700/products'
+  example_response_status: 200
+  example_response_body_excerpt: '{"total_count":0,"products":[{"id":0,"item_number":"string",...}]}'
+  coverage: All 136 paths / 262 operations in the published OpenAPI; responses are
+    the spec''s static examples, not dynamic data.
+  caveats:
+  - Static example payloads only — no state, no create/read-back round trip.
+  - Hosted by Stoplight on the provider's public project; Cart.com makes no availability
+    commitment for it.
+browser_session_fallback:
+  described: true
+  description: 'While signed in to the admin console, any documented GET request can
+    be issued straight from the browser without a token, because the session is already
+    authenticated. This is the provider''s documented way to explore responses before
+    writing code.'
+  source: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+x-evidence:
+  fetched: '2026-07-31'
+  probes:
+  - {url: 'https://stoplight.io/mocks/americommerce/rest-api/23317700/products', http_status: 401,
+    note: without auth header}
+  - {url: 'https://stoplight.io/mocks/americommerce/rest-api/23317700/products', http_status: 200,
+    note: 'with X-AC-Auth-Token: test'}

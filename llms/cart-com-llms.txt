@@ -1,0 +1,58 @@
+# Cart.com
+
+> Cart.com is a unified commerce and logistics provider for B2C and B2B brands, combining an ecommerce storefront platform (the former AmeriCommerce Online Store), marketplace and channel management, order management, warehouse management, and a nationwide fulfillment network. Its public developer surface is the Online Store API — a JSON REST API published as OpenAPI 3.1 with 136 paths and 262 operations — plus a webhook system with 30 event types and a client-side JavaScript Client API for storefront themes.
+
+Generated: 2026-07-31. Method: generated from apis.yml and the artifacts in this repository — Cart.com publishes no llms.txt of its own (probed /llms.txt on cart.com, www.cart.com and developers.cart.com on 2026-07-31; all 404).
+
+## APIs
+
+- [Cart.com Online Store API](https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api): REST/JSON API scoped to a single merchant storefront domain. Base URL `https://{storeDomain}/api/v1`. Covers catalog, orders, carts, customers, content, marketing, shipping and store settings.
+
+## Specs
+
+- [OpenAPI 3.1 (verbatim)](openapi/cart-com-online-store-openapi-original.yml): harvested from https://github.com/AmeriCommerce/rest-api/blob/master/acapi.yaml — 136 paths, 262 operations, 73 schemas, 71 tags.
+- [API Evangelist overlay](overlays/cart-com-online-store-overlay.yaml): OpenAPI Overlay 1.0.0 replacing the placeholder `servers[]` entry with a templated live host and adding rate-limit, error-envelope and webhook extensions.
+
+## Docs
+
+- [Developer portal](https://developers.cart.com/): Stoplight-hosted reference for the Online Store API.
+- [Overview / getting started](https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api): setup, request format, caching, rate limits, support.
+- [Authentication](https://developers.cart.com/docs/rest-api/ZG9jOjU4NjM4-cart-com-online-store-api-authentication): admin-console tokens and the OAuth 2 flow.
+- [Scopes](https://developers.cart.com/docs/rest-api/3e66e3e0c67ec-scopes): the scope vocabulary and the admin permissions each one requires.
+- [Common usage](https://developers.cart.com/docs/rest-api/ZG9jOjM1MDU4MA-common-usage): list envelope, paging, expand, fields, sort.
+- [Query syntax](https://developers.cart.com/docs/rest-api/73c31bf98999d-query-syntax): filtering operators and conjunctions.
+- [Resource list](https://developers.cart.com/docs/rest-api/d6d68790cda18-resource-list): every root resource and its nested collections.
+- [Webhooks](https://developers.cart.com/docs/rest-api/ZG9jOjM1MDU4Nw-webhooks): the 30 event types and their payloads.
+- [Datetime format](https://developers.cart.com/docs/rest-api/ZG9jOjM1MDU4MQ-datetime-format), [Uploading files](https://developers.cart.com/docs/rest-api/ZG9jOjM1MDU4Ng-uploading-files), [Client API samples](https://developers.cart.com/docs/rest-api/ZG9jOjc0MjI5Nzk-ameri-commerce-client-api-samples).
+
+## How to call it
+
+- **Auth**: `X-AC-Auth-Token: <token>` on every request. Tokens come from the admin console (non-expiring) or the OAuth 2 authorization-code flow at `/api/oauth` and `/api/oauth/access_token`, where the token exchange is signed with `SHA256(secret + code + client_id + scope + redirect_uri)` rather than a client secret. See [authentication](authentication/cart-com-authentication.yml) and [scopes](scopes/cart-com-scopes.yml).
+- **Conventions**: JSON, `snake_case`, ISO 8601 datetimes, HTTPS only. List responses wrap the array in a resource-named key alongside `total_count`, `next_page` and `previous_page`. Paging with `page`+`count`, plus `expand`, `fields` and `sort`. See [conventions](conventions/cart-com-conventions.yml).
+- **Filtering**: every field is a query parameter with an optional operator — `?price=gt:5.00`, `?item_name=like:widget`, `?item_name=like:doge+OR+like:wow`. Operators: `eq` (default), `not`, `like`, `startwith`, `gt`, `gte`, `lt`, `lte`.
+- **Rate limits**: per-store, 10-second rolling window, signalled on `X-AC-Call-Limit`; `429` + `Retry-After` on exceed. Installed apps share 50 calls / 10s; custom apps get 5/10/20/50 by plan tier. See [rate limits](rate-limits/cart-com-rate-limits.yml).
+- **Errors**: `{"status_code": n, "message": "...", "details": "..."}` — not RFC 9457. Only `200` and `404` are declared in the contract; `401`, `429` and `500` are real but undeclared. See [error catalog](errors/cart-com-problem-types.yml).
+- **Idempotency**: not supported. There is no idempotency key and writes are not retry-safe — re-read before retrying any POST.
+- **No `GET /{resource}/{id}`** exists in the published spec; read a single record by filtering the collection (`GET /products?id=1`).
+
+## Artifacts in this repository
+
+- [Authentication profile](authentication/cart-com-authentication.yml) · [OAuth scopes](scopes/cart-com-scopes.yml) · [Conventions](conventions/cart-com-conventions.yml)
+- [Error catalog](errors/cart-com-problem-types.yml) · [Rate limits](rate-limits/cart-com-rate-limits.yml) · [Lifecycle](lifecycle/cart-com-lifecycle.yml) · [Changelog](changelog/cart-com-changelog.yml)
+- [Webhook event catalog](asyncapi/cart-com-online-store-webhooks.yml) — 30 events, 10 of them synchronous
+- [Data model](data-model/cart-com-data-model.yml) — 73 entities, 112 derived relationships
+- [Agent skills](skills/_index.yml) — create-and-fulfill-order, sync-catalog, manage-customers, subscribe-to-webhooks
+- [MCP tool candidates](mcp/cart-com-mcp.yml) — derived, not operated by Cart.com
+- [Packages](packages/cart-com-packages.yml) · [Code samples](examples/cart-com-code-samples.yml) · [Client-side components](components/cart-com-components.yml) · [Sandbox](sandbox/cart-com-sandbox.yml)
+- [Conformance](conformance/cart-com-conformance.yml) · [Domain security](security/cart-com-domain-security.yml) · [Well-known probe](well-known/cart-com-well-known.yml) · [Agentic access](agentic-access/cart-com-agentic-access.yml)
+
+## Company
+
+- [Cart.com](https://cart.com/) · [Blog](https://cart.com/blog) · [Knowledge center](https://cart.com/knowledge) · [Support](https://cart.com/contact/support)
+- [Status](https://status.cart.com/) · [Release notes](https://cart.canny.io/changelog) · [Integrations](https://cart.com/our-integrations)
+- [GitHub (AmeriCommerce)](https://github.com/AmeriCommerce) · [Console login](https://console.cart.com/login)
+- [Terms](https://cart.com/terms) · [Privacy](https://cart.com/privacy)
+
+## Not published
+
+Cart.com serves no `/.well-known/` documents (no security.txt, no OpenID/OAuth discovery, no api-catalog), no A2A agent card, no MCP server, no AsyncAPI document, no first-party SDK in any package registry, no CLI, no trust center or named compliance certifications, no public Postman workspace, and no test/sandbox credentials.

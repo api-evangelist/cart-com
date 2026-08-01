@@ -1,0 +1,57 @@
+generated: '2026-07-31'
+method: searched
+source: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+docs: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+api: openapi/cart-com-online-store-openapi-original.yml
+summary: 'Cart.com enforces a per-store call limit on the Online Store API, measured
+  in a rolling 10-second window. Two application classes are limited separately: installed
+  apps (available from the Apps & Addons section or a third-party integration) share
+  one store-wide ceiling, while custom apps created for a specific store get their
+  own allowance that scales with the merchant''s plan level.'
+signalling:
+  header: X-AC-Call-Limit
+  header_description: Returned on all API responses; carries the number of calls made
+    against that store and the total number allowed.
+  reset_window: 10 seconds
+  exceeded_status: 429
+  exceeded_message: Too Many Requests
+  retry_header: Retry-After
+  retry_header_description: Indicates the time at which the counter resets and requests
+    can resume.
+rate_limits:
+- name: Installed apps
+  applies_to: Apps installed from the Online Store Apps & Addons section or a third-party
+    integration app
+  limit_count: 50
+  interval: 10 seconds
+  scope: 'All installed apps for a particular store combine toward this single overall
+    limit, regardless of plan level.'
+- name: Custom apps — Steel plan
+  applies_to: Custom apps created manually for a specific store
+  plan: Steel
+  limit_count: 5
+  interval: 10 seconds
+- name: Custom apps — Bronze plan
+  applies_to: Custom apps created manually for a specific store
+  plan: Bronze
+  limit_count: 10
+  interval: 10 seconds
+- name: Custom apps — Silver plan
+  applies_to: Custom apps created manually for a specific store
+  plan: Silver
+  limit_count: 20
+  interval: 10 seconds
+- name: Custom apps — Gold and above
+  applies_to: Custom apps created manually for a specific store
+  plan: Gold+
+  limit_count: 50
+  interval: 10 seconds
+notes:
+- The maximum rate limit for custom apps is also 50 calls per 10-second window; the
+  allowance scales up as the plan level increases.
+- Most GET responses are server-cached and carry Last-Modified / Expires / Cache-Control;
+  obeying those headers is the documented way to stay under the limit.
+x-evidence:
+  fetched: '2026-07-31'
+  url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  http_status: 200

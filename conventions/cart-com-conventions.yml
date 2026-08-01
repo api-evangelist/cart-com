@@ -1,0 +1,164 @@
+generated: '2026-07-31'
+method: searched
+source: https://developers.cart.com/docs/rest-api/ZG9jOjM1MDU4MA-common-usage
+docs:
+- https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+- https://developers.cart.com/docs/rest-api/ZG9jOjM1MDU4MA-common-usage
+- https://developers.cart.com/docs/rest-api/73c31bf98999d-query-syntax
+- https://developers.cart.com/docs/rest-api/ZG9jOjM1MDU4MQ-datetime-format
+api: openapi/cart-com-online-store-openapi-original.yml
+
+transport:
+  https_only: true
+  media_type: application/json
+  case_convention: snake_case
+  datetime_format: ISO 8601
+  datetime_examples:
+  - '2014-05-12T00:00:00.0Z'
+  - '2014-05-13T06:00:00.000-06:00'
+  base_url_pattern: https://[mystorename.com]/api/v1/
+  note: The API is served from each merchant's own storefront domain; there is no single
+    shared API host.
+
+authentication:
+  style: api-key-header
+  header: X-AC-Auth-Token
+  alternatives:
+  - Non-expiring token generated in the admin console (Tools > Apps & Addons > API
+    Apps & Integrations)
+  - OAuth 2 authorization-code flow with a SHA256 signature in place of a client secret
+  session_fallback: While signed in to the admin console, GET requests can be issued
+    from the browser without a token.
+  artifact: authentication/cart-com-authentication.yml
+  scopes_artifact: scopes/cart-com-scopes.yml
+
+idempotency:
+  supported: false
+  header: null
+  evidence: 'No Idempotency-Key header or equivalent appears in the OpenAPI parameters,
+    and neither the Common Usage nor the Online Store API guide documents a retry-safe
+    write contract. Writes are plain POST/PUT/DELETE. Agents must implement their own
+    de-duplication (for example, matching on item_number or an external order reference)
+    before retrying a write.'
+  checked:
+  - openapi/cart-com-online-store-openapi-original.yml
+  - https://developers.cart.com/docs/rest-api/ZG9jOjM1MDU4MA-common-usage
+
+pagination:
+  style: page-number
+  parameters:
+  - name: page
+    default: 1
+    description: The page of results to return. An out-of-bounds page returns 404 Not
+      Found.
+  - name: count
+    default: 100
+    description: Number of results per page.
+  response_envelope:
+    shape: 'List responses wrap the array in an object keyed by the resource name,
+      preceded by list metadata.'
+    fields:
+    - total_count — total number of matching items
+    - next_page — absolute URI of the next page, when one exists
+    - previous_page — absolute URI of the previous page, when one exists
+  example: |
+    {
+      "total_count": 1234,
+      "next_page": "https://[mystorename.com]/api/v1/products?page=2",
+      "products": [ { "id": 1, "item_name": "Item 1" } ]
+    }
+
+sorting:
+  parameter: sort
+  syntax: Comma-separated field list; a leading minus sorts that field descending.
+  example: GET /api/v1/products?sort=-price,item_name
+
+sparse_fieldsets:
+  parameter: fields
+  syntax: Comma-separated field list. Naming a nested resource in `fields` implicitly
+    expands it.
+  example: GET /api/v1/products/1?fields=id,item_name,item_number,price,categories
+
+expansion:
+  parameter: expand
+  syntax: Comma-separated list of nested collections to populate before the response
+    is returned.
+  example: GET /api/v1/products?expand=categories,variants
+  alternatives:
+  - 'GET /api/v1/{resource}/{id}/filled — returns the resource with every nested collection
+    populated'
+  - 'GET /api/v1/{resource}/{id}/{nested} — returns only the nested collection as a
+    list result'
+
+filtering:
+  style: query-syntax
+  docs: https://developers.cart.com/docs/rest-api/73c31bf98999d-query-syntax
+  form: /api/v1/{resource}?{field_name}={op}:{value}
+  default_operator: eq
+  operators: [eq, not, like, startwith, gt, gte, lt, lte]
+  conjunctions:
+    default: AND
+    supported: [AND, OR]
+    limitations: Parenthesised/complex boolean grouping is not supported; conjunctions
+      evaluate in standard order of operations.
+  examples:
+  - /api/v1/products?item_name=like:test
+  - /api/v1/orders?ordered_at=gt:2012-12-08T06:00:00.0Z&fields=id,customer_id,grand_total
+  - /api/v1/products?price=gt:5.00+AND+lte:25.00
+
+metadata:
+  mechanism: custom_fields
+  description: Arbitrary merchant-defined metadata is modelled as first-class custom_fields
+    / custom_field_values resources rather than a free-form metadata map, and is exposed
+    on customers, orders, products, categories and quotes as a `custom_fields` collection.
+  scope_required: custom_fields
+
+caching:
+  server_cached: true
+  response_headers: [Last-Modified, Expires, Cache-Control]
+  revalidation: 'Send `Cache-Control: no-cache` on the request to bypass the server
+    cache.'
+  applies_to: Mostly GET requests.
+
+rate_limiting:
+  signalled: true
+  response_header: X-AC-Call-Limit
+  header_semantics: Number of calls made against the store and the total number allowed.
+  window: 10 seconds
+  exceeded_status: 429
+  retry_header: Retry-After
+  artifact: rate-limits/cart-com-rate-limits.yml
+
+request_tracing:
+  request_id_header: null
+  evidence: No request-id/correlation header is documented, and none was observed on
+    live probes of https://www.americommerce.com/api/v1/ on 2026-07-31.
+
+versioning:
+  scheme: uri-path
+  current: v1
+  release_train: 'Calendar-versioned platform releases (for example 2020.3, 2025.3,
+    2026.1, 2026.2) gate feature availability; several webhook event types are documented
+    as 2020.3+.'
+  artifact: lifecycle/cart-com-lifecycle.yml
+
+errors:
+  envelope: custom
+  format: 'JSON object: {"status_code": <int>, "message": "<short code>", "details":
+    "<human readable>"}'
+  rfc9457: false
+  observed:
+  - '{"status_code":401,"message":"Unauthorized","details":"Invalid or missing access
+    token."}'
+  - '{"status_code":404,"message":"NotFound","details":"No resource matches the URL
+    specified."}'
+  artifact: errors/cart-com-problem-types.yml
+
+file_upload:
+  endpoint: POST /api/v1/upload
+  scope: system
+  docs: https://developers.cart.com/docs/rest-api/ZG9jOjM1MDU4Ng-uploading-files
+
+events:
+  webhooks: true
+  artifact: asyncapi/cart-com-online-store-webhooks.yml

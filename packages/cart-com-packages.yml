@@ -1,0 +1,63 @@
+generated: '2026-07-31'
+method: searched
+source: npm, PyPI, RubyGems, Packagist, NuGet, pkg.go.dev registry searches plus the
+  AmeriCommerce GitHub organization
+summary: 'Cart.com publishes no first-party client library for the Online Store API
+  in any public package registry. What it ships instead is a set of first-party, copy-and-paste
+  code samples in nine languages inside the AmeriCommerce/rest-api repository — see
+  examples/cart-com-code-samples.yml. Registry searches on 2026-07-31 across npm, PyPI,
+  RubyGems, Packagist and NuGet returned no official SDK; the only installable clients
+  are community-maintained.'
+official_sdk_count: 0
+packages: []
+community_packages:
+- language: ruby
+  registry: rubygems
+  name: americommerce-api
+  url: https://rubygems.org/gems/americommerce-api
+  source: https://github.com/YotpoLtd/americommerce-api
+  install: gem install americommerce-api
+  official: false
+  maintainer: Yotpo
+  note: Third-party Ruby client for the AmeriCommerce REST API. Not maintained by Cart.com.
+- language: javascript
+  registry: npm
+  name: '@pipedream/americommerce'
+  url: https://www.npmjs.com/package/@pipedream/americommerce
+  install: npm install @pipedream/americommerce
+  official: false
+  maintainer: Pipedream
+  note: Pipedream integration components, not a general-purpose SDK.
+first_party_repositories:
+- name: AmeriCommerce/rest-api
+  url: https://github.com/AmeriCommerce/rest-api
+  description: OpenAPI source (acapi.yaml), documentation and examples for the Online
+    Store API.
+  language: JavaScript
+  stars: 45
+- name: AmeriCommerce/js-api-samples
+  url: https://github.com/AmeriCommerce/js-api-samples
+  description: Samples and documentation for the client-side AmeriCommerce JavaScript
+    Client API.
+  language: JavaScript
+- name: AmeriCommerce/OrderApiDemo
+  url: https://github.com/AmeriCommerce/OrderApiDemo
+  description: Order management example using the REST API, in C#/ASP.NET MVC.
+- name: AmeriCommerce/api-install-php
+  url: https://github.com/AmeriCommerce/api-install-php
+  description: Sample application using the app publishing and installation features
+    of the REST API.
+- name: AmeriCommerce/soap-api-other-langs
+  url: https://github.com/AmeriCommerce/soap-api-other-langs
+  description: Examples for the legacy SOAP Web Service API from non-.NET languages.
+registries_checked:
+- {registry: npm, query: americommerce, official_hits: 0}
+- {registry: npm, query: cart.com, official_hits: 0, note: '@cart.com/commonlib exists
+    but is a Cypress test-helper proof of concept, not an API client.'}
+- {registry: pypi, queries: [americommerce, cart-com, cartcom], official_hits: 0}
+- {registry: rubygems, queries: [americommerce, cart_com], official_hits: 0}
+- {registry: packagist, query: americommerce/rest-api, official_hits: 0}
+- {registry: nuget, query: americommerce, official_hits: 0}
+x-evidence:
+  fetched: '2026-07-31'
+  github_org: https://github.com/AmeriCommerce

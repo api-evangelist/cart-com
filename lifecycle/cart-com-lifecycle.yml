@@ -1,0 +1,56 @@
+generated: '2026-07-31'
+method: searched
+source: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+api: openapi/cart-com-online-store-openapi-original.yml
+versioning:
+  scheme: uri-path
+  current: v1
+  base: https://[mystorename.com]/api/v1/
+  docs: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  platform_release_train: 'Calendar-versioned storefront/platform releases gate feature
+    availability independently of the API version. Observed releases: 2012.6, 2020.3,
+    2025.3, 2026.1, 2026.2. Several webhook event types are annotated 2020.3+.'
+deprecation:
+  policy_url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  sunset_header: false
+  deprecation_header: false
+  statement: 'The Online Store API is documented as the replacement for the legacy
+    SOAP API: "While there are no current plans to discontinue the SOAP API, it is
+    recommended that all integrations be converted to use the new API." That is the
+    only deprecation posture Cart.com publishes for this surface — there is no dated
+    sunset schedule, no RFC 8594 Sunset/Deprecation header support, and no formal breaking-change
+    policy.'
+  superseded_surface:
+    name: AmeriCommerce SOAP Web Service API
+    status: legacy, still supported
+    migration_target: Online Store API v1
+    samples: https://github.com/AmeriCommerce/soap-api-other-langs
+  grade: informal
+deprecated_operations: []
+deprecated_operations_note: 'No operation in the published OpenAPI carries `deprecated:
+  true`.'
+status_page:
+  url: https://status.cart.com/
+  platform: Freshstatus
+  http_status: 200
+  probed: '2026-07-31'
+  feed: null
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA or uptime commitment was found for the Online Store API.
+changelog:
+  url: https://cart.canny.io/changelog
+  artifact: changelog/cart-com-changelog.yml
+support:
+  url: https://cart.com/contact/support
+  legacy_portal: https://support.americommerce.com/hc/en-us
+  note: 'The API guide directs all Online Store API support through the AmeriCommerce
+    knowledge-base portal; that host returned 403 to an anonymous probe on 2026-07-31.
+    The current Cart.com support entry point is https://cart.com/contact/support.'
+x-evidence:
+  fetched: '2026-07-31'
+  probes:
+  - {url: 'https://status.cart.com/', http_status: 200}
+  - {url: 'https://cart.canny.io/changelog', http_status: 200}
+  - {url: 'https://support.americommerce.com/hc/en-us', http_status: 403}

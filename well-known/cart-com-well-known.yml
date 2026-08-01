@@ -1,0 +1,57 @@
+generated: '2026-07-31'
+method: probed
+source: live GET probes of the /.well-known/ surface on every apis.yml and OpenAPI
+  servers[] host
+result: none
+summary: 'Cart.com publishes no /.well-known/ discovery surface. Every RFC 8615 path
+  probed on 2026-07-31 returned 404 (or, on api.cart.com, a Cloudflare 525 origin-TLS
+  failure). No security.txt, no OpenID/OAuth discovery document, no api-catalog, no
+  ai-plugin.json, and no A2A agent card on either the canonical or legacy path. Absence
+  is recorded data, not a gap in the probe.'
+hosts:
+- host: https://cart.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /llms.txt, status: 404}
+- host: https://www.cart.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /llms.txt, status: 404}
+- host: https://developers.cart.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /llms.txt, status: 404}
+- host: https://api.cart.com
+  note: Host resolves behind Cloudflare but the origin TLS handshake fails; every path
+    returns HTTP 525.
+  documents:
+  - {path: /.well-known/security.txt, status: 525}
+  - {path: /.well-known/openid-configuration, status: 525}
+  - {path: /.well-known/oauth-authorization-server, status: 525}
+  - {path: /.well-known/api-catalog, status: 525}
+  - {path: /.well-known/ai-plugin.json, status: 525}
+  - {path: /.well-known/agent-card.json, status: 525}
+  - {path: /.well-known/agent.json, status: 525}
+  - {path: /llms.txt, status: 525}
+security_txt: null
+x-evidence:
+  fetched: '2026-07-31'
+  method: HTTP GET with redirects followed

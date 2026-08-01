@@ -1,0 +1,145 @@
+generated: '2026-07-31'
+method: searched
+source: https://developers.cart.com/docs/rest-api/3e66e3e0c67ec-scopes
+docs: https://developers.cart.com/docs/rest-api/3e66e3e0c67ec-scopes
+note: 'The published OpenAPI declares only the apiKey scheme X-AC-Auth-Token and carries
+  no oauth2 securityScheme, so no scopes are derivable from the spec. The scope model
+  below is captured verbatim from the provider''s Scopes and Authentication guides.
+  Scopes are coarse-grained and paired read/write: naming a write scope supersedes
+  its read sibling. An access token can only use the scopes requested when it was created
+  — changing scope requires a new token. The authorizing admin-console user must also
+  hold the matching role-based permission.'
+schemes:
+- name: OAuth2
+  type: oauth2
+  source: https://developers.cart.com/docs/rest-api/ZG9jOjU4NjM4-cart-com-online-store-api-authentication
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://[mystorename.com]/api/oauth
+    tokenUrl: https://[mystorename.com]/api/oauth/access_token
+    refreshUrl: https://[mystorename.com]/api/oauth/refresh_token
+    note: 'Non-standard OAuth 2 variant — the token exchange is authenticated with
+      a SHA256 signature over secret + code + client_id + scope + redirect_uri rather
+      than a client_secret POST parameter. Tokens are returned as access_token + refresh_token
+      and presented on the API as the X-AC-Auth-Token header, not as a Bearer token.'
+scopes:
+- scope: read_people
+  description: View customer, user, or profile data.
+  group: People
+  access: read
+  admin_permissions: [Customers, CustomerTypes, UserAccounts, StoreSettings]
+  applies_to: [addresses, customers, customer_association, customer_types, customer_payment_methods,
+    profiles, users]
+- scope: people
+  description: View and change customer, user, or profile data; supersedes read_people
+    if specified together.
+  group: People
+  access: write
+  admin_permissions: [Customers, CustomerTypes, UserAccounts, StoreSettings]
+  applies_to: [addresses, customers, customer_association, customer_types, customer_payment_methods,
+    profiles, users]
+- scope: read_orders
+  description: View order data.
+  group: Orders
+  access: read
+  admin_permissions: [Orders, OrderStatuses]
+  applies_to: [carts, cart_items, credit_cards, orders, order_addresses, order_items,
+    order_payments, order_shipments, order_statuses, quotes, subscriptions]
+- scope: orders
+  description: View and change order data; supersedes read_orders if specified together.
+  group: Orders
+  access: write
+  admin_permissions: [Orders, OrderStatuses]
+  applies_to: [carts, cart_items, credit_cards, orders, order_addresses, order_items,
+    order_payments, order_shipments, order_statuses, quotes, subscriptions]
+- scope: read_catalog
+  description: View catalog data.
+  group: Catalog
+  access: read
+  admin_permissions: [Products, ProductStatuses, VariationGroups, ProductAttributes,
+    Categories, Manufacturers]
+  applies_to: [attributes, attribute_groups, categories, manufacturers, products, product_inactive_in_store,
+    product_lists, product_pictures, product_statuses, product_variants, shipping_rate_adjustments,
+    variant_groups, variant_inventory]
+- scope: catalog
+  description: View and change catalog data; supersedes read_catalog if specified together.
+  group: Catalog
+  access: write
+  admin_permissions: [Products, ProductStatuses, VariationGroups, ProductAttributes,
+    Categories, Manufacturers]
+  applies_to: [attributes, attribute_groups, categories, manufacturers, products, product_inactive_in_store,
+    product_lists, product_pictures, product_statuses, product_variants, shipping_rate_adjustments,
+    variant_groups, variant_inventory]
+- scope: read_content
+  description: View blog, page, and other content-related data.
+  group: Content
+  access: read
+  admin_permissions: [Blogs, BlogCategories, BlogPosts, ContentManagement, UrlRedirecting]
+  applies_to: [blogs, blog_categories, blog_posts, links, pages]
+- scope: content
+  description: View and change blog, page, and other content-related data; supersedes
+    read_content if specified together.
+  group: Content
+  access: write
+  admin_permissions: [Blogs, BlogCategories, BlogPosts, ContentManagement, UrlRedirecting]
+  applies_to: [blogs, blog_categories, blog_posts, links, pages]
+- scope: read_marketing
+  description: View adcode, discount, and other marketing-related data.
+  group: Marketing
+  access: read
+  admin_permissions: [AdCodes, EmailEditor, MailingList, DiscountMethods, GiftCertificates]
+  applies_to: [adcodes, coupon_codes, discount_actions, discount_methods, discount_rules,
+    drips, email_templates, gift_certificates, gift_certificate_transactions, mailing_lists]
+- scope: marketing
+  description: View and change adcode, discount, and other marketing-related data;
+    supersedes read_marketing if specified together.
+  group: Marketing
+  access: write
+  admin_permissions: [AdCodes, EmailEditor, MailingList, DiscountMethods, GiftCertificates]
+  applies_to: [adcodes, coupon_codes, discount_actions, discount_methods, discount_rules,
+    drips, email_templates, gift_certificates, gift_certificate_transactions, mailing_lists]
+- scope: email
+  description: Send email templates.
+  group: Specialized
+  admin_permissions: [EmailEditor]
+  applies_to: ['POST /api/v1/email_templates/{id}/send']
+- scope: custom_fields
+  description: Read and write custom field definitions and values.
+  group: Specialized
+  admin_permissions: [CustomFields]
+  applies_to: [custom_fields, custom_field_values]
+- scope: import
+  description: Use the data import resource.
+  group: Specialized
+  admin_permissions: [DataImport]
+  applies_to: [import]
+- scope: settings
+  description: Read and write store settings — shipping, warehouses, tax, regions,
+    payment gateways, redirects.
+  group: Specialized
+  admin_permissions: [Shipping, Warehouses, TaxRates, GlobalRegions, PaymentGateways,
+    UrlRedirecting]
+  applies_to: [blacklisted_ips, custom_shipping_methods, external_image_whitelist,
+    payment_methods, regions, shipping_providers, shipping_provider_services, store_locations,
+    tax_rates, url_redirects, warehouses]
+- scope: system
+  description: Perform system tasks — stores, microstores, sessions, file upload. Also
+    required to manage webhook subscriptions.
+  group: Specialized
+  admin_permissions: [FileBrowser, Sessions, StoreSettings]
+  applies_to: [microstores, stores, sessions, 'POST /api/v1/upload']
+- scope: decrypt
+  description: Allows sensitive information to be decrypted. The authorizing user must
+    have access to view this information. Tokens with this scope must be regenerated
+    every 90 days if combined with no_expiry.
+  group: Sensitive
+  applies_to: ['GET /api/v1/credit_cards/{id}/decrypted', 'GET /api/v1/order_payments/{id}/decrypted']
+- scope: no_expiry
+  description: Token does not expire and does not require a refresh_token.
+  group: Sensitive
+x-evidence:
+  fetched: '2026-07-31'
+  urls:
+  - https://developers.cart.com/docs/rest-api/3e66e3e0c67ec-scopes
+  - https://developers.cart.com/docs/rest-api/ZG9jOjU4NjM4-cart-com-online-store-api-authentication
+  http_status: 200

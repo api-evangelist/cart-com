@@ -1,0 +1,1345 @@
+generated: '2026-07-31'
+method: derived
+status: candidate
+source: openapi/cart-com-online-store-openapi-original.yml
+summary: Cart.com publishes no hosted or remote MCP server. Searches of the docs, the AmeriCommerce GitHub
+  organization, npm and the public MCP registries on 2026-07-31 found none, mcp.cart.com does not resolve,
+  and /mcp returns 404 on both cart.com and developers.cart.com. The tool list below is a CANDIDATE derived
+  one-to-one from the published OpenAPI operations — it describes what an MCP server over this API would
+  expose, not something Cart.com operates.
+search:
+  checked:
+  - https://developers.cart.com/
+  - https://github.com/AmeriCommerce
+  - npm registry
+  - web search
+  probes:
+  - url: https://mcp.cart.com/
+    result: DNS/connection failure (000)
+  - url: https://cart.com/mcp
+    http_status: 404
+  - url: https://developers.cart.com/mcp
+    http_status: 404
+  result: none
+server:
+  name: cart-com-online-store
+  transport: http
+  url: null
+  auth:
+    style: api-key-header
+    header: X-AC-Auth-Token
+    note: A server would need per-merchant storefront host plus token; the API base is https://[mystorename.com]/api/v1/.
+counts:
+  tools: 262
+  source_operations: 262
+tools:
+- name: get_adcodes
+  description: Get All Adcodes
+  method: GET
+  path: /adcodes
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-adcodes
+- name: post_adcodes
+  description: Create an Adcode
+  method: POST
+  path: /adcodes
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-adcodes
+- name: delete_adcodes_id
+  description: Delete an Adcode
+  method: DELETE
+  path: /adcodes/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-adcodes-id
+- name: put_adcodes_adcode_id
+  description: Update an Adcode
+  method: PUT
+  path: /adcodes/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-adcodes-adcode_id
+- name: get_addresses
+  description: Get Addresses
+  method: GET
+  path: /addresses
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-addresses
+- name: post_addresses
+  description: Create an Address
+  method: POST
+  path: /addresses
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-addresses
+- name: put_addresses_id
+  description: Update an Address
+  method: PUT
+  path: /addresses/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-addresses-id
+- name: delete_addresses_id
+  description: Delete an Address
+  method: DELETE
+  path: /addresses/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-addresses-id
+- name: get_attribute_groups
+  description: Get Attribute Groups
+  method: GET
+  path: /attribute_groups
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-attribute_groups
+- name: post_attribute_groups
+  description: Create an Attribute Group
+  method: POST
+  path: /attribute_groups
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-attribute_groups
+- name: put_attribute_groups_id
+  description: Update an Attribute Group
+  method: PUT
+  path: /attribute_groups/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-attribute_groups-id
+- name: delete_attribute_groups_id
+  description: Delete an Attribute Group
+  method: DELETE
+  path: /attribute_groups/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-attribute_groups-id
+- name: get_attributes
+  description: Get Attributes
+  method: GET
+  path: /attributes
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-attributes
+- name: post_attributes
+  description: Create an Attribute
+  method: POST
+  path: /attributes
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-attributes
+- name: put_attributes_id
+  description: Update an Attribute
+  method: PUT
+  path: /attributes/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-attributes-id
+- name: delete_attributes_id
+  description: Delete an Attribute
+  method: DELETE
+  path: /attributes/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-attributes-id
+- name: get_blacklisted_ips
+  description: Get IP Blacklist
+  method: GET
+  path: /blacklisted_ips
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-blacklisted_ips
+- name: post_blacklisted_ips
+  description: Create an IP Blacklist Item
+  method: POST
+  path: /blacklisted_ips
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-blacklisted_ips
+- name: put_blacklisted_ips_id
+  description: Update an IP Blacklist Item
+  method: PUT
+  path: /blacklisted_ips/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-blacklisted_ips-id
+- name: delete_blacklisted_ips_id
+  description: Delete an IP Blacklist Item
+  method: DELETE
+  path: /blacklisted_ips/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-blacklisted_ips-id
+- name: get_blog_categories
+  description: Get Blog Categories
+  method: GET
+  path: /blog_categories
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-blog_categories
+- name: post_blog_categories
+  description: Create a Blog Category
+  method: POST
+  path: /blog_categories
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-blog_categories
+- name: put_blog_categories_id
+  description: Update a Blog Category
+  method: PUT
+  path: /blog_categories/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-blog_categories-id
+- name: delete_blog_categories_id
+  description: Delete a Blog Category
+  method: DELETE
+  path: /blog_categories/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-blog_categories-id
+- name: get_blogs
+  description: Get Blogs
+  method: GET
+  path: /blogs
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-blogs
+- name: post_blogs
+  description: Create a Blog
+  method: POST
+  path: /blogs
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-blogs
+- name: put_blogs_id
+  description: Update a Blog
+  method: PUT
+  path: /blogs/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-blogs-id
+- name: delete_blogs_id
+  description: Delete a Blog
+  method: DELETE
+  path: /blogs/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-blogs-id
+- name: get_blog_posts
+  description: Get Blog Posts
+  method: GET
+  path: /blog_posts
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-blog_posts
+- name: post_blog_posts
+  description: Create a Blog Post
+  method: POST
+  path: /blog_posts
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-blog_posts
+- name: put_blog_post_id
+  description: Update a Blog Post
+  method: PUT
+  path: /blog_posts/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-blog_post-id
+- name: delete_blog_post_id
+  description: Delete a Blog Post
+  method: DELETE
+  path: /blog_posts/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-blog_post-id
+- name: get_cart_items
+  description: Get Cart Items
+  method: GET
+  path: /cart_items
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-cart_items
+- name: post_cart_items
+  description: Create a Cart Item
+  method: POST
+  path: /cart_items
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-cart_items
+- name: put_cart_items_id
+  description: Update a Cart Item
+  method: PUT
+  path: /cart_items/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-cart_items-id
+- name: delete_cart_items_id
+  description: Delete a Cart Item
+  method: DELETE
+  path: /cart_items/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-cart_items-id
+- name: get_carts
+  description: Get Carts
+  method: GET
+  path: /carts
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-carts
+- name: get_categories
+  description: Get Categories
+  method: GET
+  path: /categories
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-categories
+- name: post_categories
+  description: Create a Category
+  method: POST
+  path: /categories
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-categories
+- name: put_categories_id
+  description: Update a Category
+  method: PUT
+  path: /categories/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-categories-id
+- name: delete_categories_id
+  description: Delete a Category
+  method: DELETE
+  path: /categories/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-categories-id
+- name: get_coupon_codes
+  description: Get Coupon Codes
+  method: GET
+  path: /coupon_codes
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-coupon_codes
+- name: post_coupon_codes
+  description: Create a Coupon Code
+  method: POST
+  path: /coupon_codes
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-coupon_codes
+- name: put_coupon_codes_id
+  description: Update a Coupon Code
+  method: PUT
+  path: /coupon_codes/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-coupon_codes-id
+- name: delete_coupon_codes_id
+  description: Delete a Coupon Code
+  method: DELETE
+  path: /coupon_codes/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-coupon_codes-id
+- name: get_credit_cards
+  description: Credit Cards
+  method: GET
+  path: /credit_cards
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-credit_cards
+- name: post_credit_cards
+  description: Add a Credit Cart
+  method: POST
+  path: /credit_cards
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-credit_cards
+- name: put_credit_cards_id
+  description: Update a Credit Card
+  method: PUT
+  path: /credit_cards/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-credit_cards-id
+- name: delete_credit_cards_id
+  description: Delete a Credit Card
+  method: DELETE
+  path: /credit_cards/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-credit_cards-id
+- name: get_custom_field_values
+  description: Get Custom Field Values
+  method: GET
+  path: /custom_field_values
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-custom_field_values
+- name: post_custom_field_values
+  description: Create a Custom Field Value
+  method: POST
+  path: /custom_field_values
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-custom_field_values
+- name: put_custom_field_value_id
+  description: Update a Custom Field Value
+  method: PUT
+  path: /custom_field_values/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-custom_field_value-id
+- name: delete_custom_field_value_id
+  description: Delete a Custom Field Value
+  method: DELETE
+  path: /custom_field_values/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-custom_field_value-id
+- name: get_custom_fields
+  description: Get Custom Fields
+  method: GET
+  path: /custom_fields
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-custom_fields
+- name: post_custom_fields
+  description: Create a Custom Field
+  method: POST
+  path: /custom_fields
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-custom_fields
+- name: put_custom_fields_id
+  description: Update a Custom Field
+  method: PUT
+  path: /custom_fields/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-custom_fields-id
+- name: delete_custom_fields_id
+  description: Delete a Custom Field
+  method: DELETE
+  path: /custom_fields/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-custom_fields-id
+- name: get_custom_shipping_methods
+  description: Get Custom Shipping Methods
+  method: GET
+  path: /custom_shipping_methods
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-custom_shipping_methods
+- name: post_custom_shipping_methods
+  description: Create a Custom Shipping Method
+  method: POST
+  path: /custom_shipping_methods
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-custom_shipping_methods
+- name: put_custom_shipping_methods_id
+  description: Update a Custom Shipping Method
+  method: PUT
+  path: /custom_shipping_methods/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-custom_shipping_methods-id
+- name: delete_custom_shipping_methods_id
+  description: Delete a Custom Shipping Method
+  method: DELETE
+  path: /custom_shipping_methods/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-custom_shipping_methods-id
+- name: get_customer_association
+  description: Get Customer Associations
+  method: GET
+  path: /customer_association
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-customer_association
+- name: post_customer_association
+  description: Create a Customer Association
+  method: POST
+  path: /customer_association
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-customer_association
+- name: put_customer_association_id
+  description: Update a Customer Association
+  method: PUT
+  path: /customer_association/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-customer_association-id
+- name: delete_customer_association_id
+  description: Delete a Customer Association
+  method: DELETE
+  path: /customer_association/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-customer_association-id
+- name: get_customer_payment_methods
+  description: Customer Payment Methods
+  method: GET
+  path: /customer_payment_methods
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-customer_payment_methods
+- name: post_customer_payment_methods
+  description: Create a Customer Payment Method
+  method: POST
+  path: /customer_payment_methods
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-customer_payment_methods
+- name: put_customer_payment_methods_id
+  description: Update a Customer Payment Method
+  method: PUT
+  path: /customer_payment_methods/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-customer_payment_methods-id
+- name: delete_customer_payment_methods_id
+  description: Delete a Customer Payment Method
+  method: DELETE
+  path: /customer_payment_methods/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-customer_payment_methods-id
+- name: get_customer_types
+  description: Get Customer Types
+  method: GET
+  path: /customer_types
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-customer_types
+- name: post_customer_types
+  description: Create a Customer Type
+  method: POST
+  path: /customer_types
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-customer_types
+- name: put_customer_types_id
+  description: Update a Customer Type
+  method: PUT
+  path: /customer_types/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-customer_types-id
+- name: delete_customer_types_id
+  description: Delete a Customer Type
+  method: DELETE
+  path: /customer_types/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-customer_types-id
+- name: get_customers
+  description: Get Customers
+  method: GET
+  path: /customers
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-customers
+- name: post_customers
+  description: Create a Customer
+  method: POST
+  path: /customers
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-customers
+- name: put_customers_id
+  description: Update a Customer
+  method: PUT
+  path: /customers/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-customers-id
+- name: delete_customers_id
+  description: Delete a Customer
+  method: DELETE
+  path: /customers/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-customers-id
+- name: get_discount_actions
+  description: Discount Actions
+  method: GET
+  path: /discount_actions
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-discount_actions
+- name: post_discount_actions
+  description: Create a Discount Actions
+  method: POST
+  path: /discount_actions
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-discount_actions
+- name: put_discount_actions_id
+  description: Update a Discount Action
+  method: PUT
+  path: /discount_actions/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-discount_actions-id
+- name: delete_discount_actions_id
+  description: Delete a Discount Action
+  method: DELETE
+  path: /discount_actions/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-discount_actions-id
+- name: get_discount_methods
+  description: Discount Methods
+  method: GET
+  path: /discount_methods
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-discount_methods
+- name: post_discount_methods
+  description: Create a Discount Method
+  method: POST
+  path: /discount_methods
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-discount_methods
+- name: put_discount_methods_id
+  description: Update a Discount Method
+  method: PUT
+  path: /discount_methods/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-discount_methods-id
+- name: delete_discount_methods_id
+  description: Delete a Discount Method
+  method: DELETE
+  path: /discount_methods/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-discount_methods-id
+- name: get_discount_rules
+  description: Get Discount Rules
+  method: GET
+  path: /discount_rules
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-discount_rules
+- name: post_discount_rules
+  description: Create a Discount Rule
+  method: POST
+  path: /discount_rules
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-discount_rules
+- name: delete_discount_rules_id
+  description: Deletes a Discount Rule
+  method: DELETE
+  path: /discount_rules/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-discount_rules-id
+- name: put_discount_rules_id
+  description: Update a Discount Rule
+  method: PUT
+  path: /discount_rules/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-discount_rules-id
+- name: get_drips
+  description: Get Drips
+  method: GET
+  path: /drips
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-drips
+- name: post_drips
+  description: Creates a Drip
+  method: POST
+  path: /drips
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-drips
+- name: put_drips_id
+  description: Update a Drip
+  method: PUT
+  path: /drips/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-drips-id
+- name: delete_drips_id
+  description: Delete a Drip
+  method: DELETE
+  path: /drips/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-drips-id
+- name: get_email_templates
+  description: Get Email Templates
+  method: GET
+  path: /email_templates
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-email_templates
+- name: post_email_templates
+  description: Create an Email Template
+  method: POST
+  path: /email_templates
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-email_templates
+- name: put_email_templates_id
+  description: Update an Email Template
+  method: PUT
+  path: /email_templates/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-email_templates-id
+- name: delete_email_templates_id
+  description: Delete an Email Template
+  method: DELETE
+  path: /email_templates/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-email_templates-id
+- name: get_external_image_whitelist
+  description: Get External Image Whitelist
+  method: GET
+  path: /external_image_whitelist
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-external_image_whitelist
+- name: post_external_image_whitelist
+  description: Create an External Image Whitelist Item
+  method: POST
+  path: /external_image_whitelist
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-external_image_whitelist
+- name: put_external_image_whitelist_id
+  description: Update an External Image Whitelist Item
+  method: PUT
+  path: /external_image_whitelist/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-external_image_whitelist-id
+- name: delete_external_image_whitelist_id
+  description: Delete an External Image Whitelist Item
+  method: DELETE
+  path: /external_image_whitelist/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-external_image_whitelist-id
+- name: get_gift_certificate_transactions
+  description: Get Gift Certificate Transactions
+  method: GET
+  path: /gift_certificate_transactions
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-gift_certificate_transactions
+- name: post_gift_certificate_transactions
+  description: Create a Gift Certificate Transaction
+  method: POST
+  path: /gift_certificate_transactions
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-gift_certificate_transactions
+- name: put_gift_certificate_transactions_id
+  description: Update a Gift Certificate Transaction
+  method: PUT
+  path: /gift_certificate_transactions/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-gift_certificate_transactions-id
+- name: delete_gift_certificate_transactions_id
+  description: Delete a Gift Certificate Transaction
+  method: DELETE
+  path: /gift_certificate_transactions/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-gift_certificate_transactions-id
+- name: get_gift_certificates
+  description: Get Gift Certificates
+  method: GET
+  path: /gift_certificates
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-gift_certificates
+- name: post_gift_certificates
+  description: Creates a Gift Certificate
+  method: POST
+  path: /gift_certificates
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-gift_certificates
+- name: put_gift_certificates_id
+  description: Update a Gift Certificate
+  method: PUT
+  path: /gift_certificates/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-gift_certificates-id
+- name: delete_gift_certificates_id
+  description: Deletes a Gift Certificate
+  method: DELETE
+  path: /gift_certificates/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-gift_certificates-id
+- name: get_inventory
+  description: Get Inventory
+  method: GET
+  path: /inventory
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-inventory
+- name: get_links
+  description: Get Links
+  method: GET
+  path: /links
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-links
+- name: post_links
+  description: Create a Link
+  method: POST
+  path: /links
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-links
+- name: put_links_id
+  description: Update a Link
+  method: PUT
+  path: /links/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-links-id
+- name: delete_links_id
+  description: Delete a Link
+  method: DELETE
+  path: /links/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-links-id
+- name: get_mailing_lists
+  description: Get Mailing Lists
+  method: GET
+  path: /mailing_lists
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-mailing_lists
+- name: post_mailing_lists
+  description: Create a Mailing List
+  method: POST
+  path: /mailing_lists
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-mailing_lists
+- name: put_maling_lists_id
+  description: Update a Mailing List
+  method: PUT
+  path: /mailing_lists/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-maling_lists-id
+- name: delete_maling_lists_id
+  description: Delete a Mailing List
+  method: DELETE
+  path: /mailing_lists/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-maling_lists-id
+- name: get_manufacturers
+  description: Get Manufacturers
+  method: GET
+  path: /manufacturers
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-manufacturers
+- name: post_manufacturers
+  description: Create a Manufacturer
+  method: POST
+  path: /manufacturers
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-manufacturers
+- name: put_manufacturers_id
+  description: Update a Manufacturer
+  method: PUT
+  path: /manufacturers/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-manufacturers-id
+- name: delete_manufacturers_id
+  description: Delete a Manufacturer
+  method: DELETE
+  path: /manufacturers/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-manufacturers-id
+- name: get_microstores
+  description: Get Microstores
+  method: GET
+  path: /microstores
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-microstores
+- name: post_microstores
+  description: Create a Microstore
+  method: POST
+  path: /microstores
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-microstores
+- name: put_microstores_id
+  description: Update a Microstore
+  method: PUT
+  path: /microstores/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-microstores-id
+- name: delete_microstores_id
+  description: Delete a Microstore
+  method: DELETE
+  path: /microstores/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-microstores-id
+- name: get_notifications
+  description: Get Notifications
+  method: GET
+  path: /notifications
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-notifications
+- name: post_notifications
+  description: Create a Notification
+  method: POST
+  path: /notifications
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-notifications
+- name: put_notifications_id
+  description: Update a Notification
+  method: PUT
+  path: /notifications/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-notifications-id
+- name: delete_notifications_id
+  description: Delete a Notification
+  method: DELETE
+  path: /notifications/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-notifications-id
+- name: get_order_addresses
+  description: Get Order Addresses
+  method: GET
+  path: /order_addresses
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-order_addresses
+- name: post_order_addresses
+  description: Create an Order Address
+  method: POST
+  path: /order_addresses
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-order_addresses
+- name: put_order_addresses_id
+  description: Update an Order Address
+  method: PUT
+  path: /order_addresses/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-order_addresses-id
+- name: delete_order_addresses_id
+  description: Delete an Order Address
+  method: DELETE
+  path: /order_addresses/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-order_addresses-id
+- name: get_order_items
+  description: Get Order Items
+  method: GET
+  path: /order_items
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-order_items
+- name: post_order_items
+  description: Create an Order Item
+  method: POST
+  path: /order_items
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-order_items
+- name: put_order_items_id
+  description: Updates an Order Item
+  method: PUT
+  path: /order_items/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-order_items-id
+- name: delete_order_items_id
+  description: Delete an Order Item
+  method: DELETE
+  path: /order_items/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-order_items-id
+- name: get_order_payments
+  description: Get Order Payments
+  method: GET
+  path: /order_payments
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-order_payments
+- name: post_order_payments
+  description: Create an Order Payment
+  method: POST
+  path: /order_payments
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-order_payments
+- name: put_order_payments_id
+  description: Update an Order Payment
+  method: PUT
+  path: /order_payments/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-order_payments-id
+- name: delete_order_payments_id
+  description: Delete an Order Payment
+  method: DELETE
+  path: /order_payments/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-order_payments-id
+- name: get_order_shipments
+  description: Get Order Shipments
+  method: GET
+  path: /order_shipments
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-order_shipments
+- name: post_order_shipments
+  description: Create an Order Shipment
+  method: POST
+  path: /order_shipments
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-order_shipments
+- name: put_order_shipments_id
+  description: Update an Order Shipment
+  method: PUT
+  path: /order_shipments/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-order_shipments-id
+- name: delete_order_shipments_id
+  description: Delete an Order Shipment
+  method: DELETE
+  path: /order_shipments/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-order_shipments-id
+- name: get_order_statuses
+  description: Get Order Statuses
+  method: GET
+  path: /order_statuses
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-order_statuses
+- name: post_order_statuses
+  description: Create an Order Status
+  method: POST
+  path: /order_statuses
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-order_statuses
+- name: put_order_statuses_id
+  description: Update an Order Status
+  method: PUT
+  path: /order_statuses/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-order_statuses-id
+- name: delete_order_statuses_id
+  description: Delete an Order Status
+  method: DELETE
+  path: /order_statuses/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-order_statuses-id
+- name: get_orders
+  description: Get Orders
+  method: GET
+  path: /orders
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-orders
+- name: post_orders
+  description: Create an Order
+  method: POST
+  path: /orders
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-orders
+- name: put_orders_id
+  description: Update an Order
+  method: PUT
+  path: /orders/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-orders-id
+- name: delete_orders_id
+  description: Delete an Order
+  method: DELETE
+  path: /orders/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-orders-id
+- name: get_pages
+  description: Get Pages
+  method: GET
+  path: /pages
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-pages
+- name: post_pages
+  description: Create a Page
+  method: POST
+  path: /pages
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-pages
+- name: put_pages_id
+  description: Update a Page
+  method: PUT
+  path: /pages/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-pages-id
+- name: delete_pages_id
+  description: Delete a Page
+  method: DELETE
+  path: /pages/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-pages-id
+- name: get_payment_methods
+  description: Get Payment Methods
+  method: GET
+  path: /payment_methods
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-payment_methods
+- name: post_payment_methods
+  description: Create a Payment Method
+  method: POST
+  path: /payment_methods
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-payment_methods
+- name: put_payment_methods_id
+  description: Update a Payment Method
+  method: PUT
+  path: /payment_methods/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-payment_methods-id
+- name: delete_payment_methods_id
+  description: Delete a Payment Method
+  method: DELETE
+  path: /payment_methods/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-payment_methods-id
+- name: get_price_calculator_rule_modifiers
+  description: Get Price Calculator Rule Modifiers
+  method: GET
+  path: /price_calculator_rule_modifiers
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-price_calculator_rule_modifiers
+- name: post_price_calculator_rule_modifiers
+  description: Create a Price Calculator Rule Modifier
+  method: POST
+  path: /price_calculator_rule_modifiers
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-price_calculator_rule_modifiers
+- name: put_price_calculator_rule_modifier_id
+  description: Update a Price Calculator Rule Modifier
+  method: PUT
+  path: /price_calculator_rule_modifiers/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-price_calculator_rule_modifier-id
+- name: delete_price_calculator_rule_modifier_id
+  description: Delete a Price Calculator Rule Modifier
+  method: DELETE
+  path: /price_calculator_rule_modifiers/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-price_calculator_rule_modifier-id
+- name: get_price_calculators
+  description: Get Price Calculators
+  method: GET
+  path: /price_calculators
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-price_calculators
+- name: post_price_calculators
+  description: Create a Price Calculator
+  method: POST
+  path: /price_calculators
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-price_calculators
+- name: put_price_calculators_id
+  description: Update a Price Calculator
+  method: PUT
+  path: /price_calculators/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-price_calculators-id
+- name: delete_price_calculators_id
+  description: Delete a Price Calculator
+  method: DELETE
+  path: /price_calculators/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-price_calculators-id
+- name: get_product_inactive_in_store
+  description: Get Products Inactive in Store
+  method: GET
+  path: /product_inactive_in_store
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-product_inactive_in_store
+- name: post_product_inactive_in_store
+  description: Create a Product Inactive in Store
+  method: POST
+  path: /product_inactive_in_store
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-product_inactive_in_store
+- name: put_product_inactive_in_store_id
+  description: Update a Product Inactive in Store
+  method: PUT
+  path: /product_inactive_in_store/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-product_inactive_in_store-id
+- name: delete_product_inactive_in_store_id
+  description: Delete a Product Inactive in Store
+  method: DELETE
+  path: /product_inactive_in_store/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-product_inactive_in_store-id
+- name: get_product_lists
+  description: Get Product Lists
+  method: GET
+  path: /product_lists
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-product_lists
+- name: post_product_lists
+  description: Create a Product List
+  method: POST
+  path: /product_lists
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-product_lists
+- name: put_product_lists_id
+  description: Update a Product List
+  method: PUT
+  path: /product_lists/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-product_lists-id
+- name: delete_product_lists_id
+  description: Delete a Product List
+  method: DELETE
+  path: /product_lists/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-product_lists-id
+- name: get_price_calculator_rules
+  description: Get Price Calculator Rules
+  method: GET
+  path: /price_calculator_rules
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-price_calculator_rules
+- name: post_price_calculator_rules
+  description: Create a Price Calculator Rule
+  method: POST
+  path: /price_calculator_rules
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-price_calculator_rules
+- name: put_price_calculator_rules_id
+  description: Update a Price Calculator Rule
+  method: PUT
+  path: /price_calculator_rules/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-price_calculator_rules-id
+- name: delete_price_calculator_rules_id
+  description: Delete a Price Calculator Rule
+  method: DELETE
+  path: /price_calculator_rules/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-price_calculator_rules-id
+- name: get_product_pictures
+  description: Get Product Pictures
+  method: GET
+  path: /product_pictures
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-product_pictures
+- name: post_product_pictures
+  description: Add a Product Picture
+  method: POST
+  path: /product_pictures
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-product_pictures
+- name: put_product_pictures_id
+  description: Update a Product Picture
+  method: PUT
+  path: /product_pictures/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-product_pictures-id
+- name: delete_product_pictures_id
+  description: Delete a Product Picture
+  method: DELETE
+  path: /product_pictures/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-product_pictures-id
+- name: get_product_pricing
+  description: Get Product Pricing
+  method: GET
+  path: /product_pricing
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-product_pricing
+- name: post_product_pricing
+  description: Add Product Pricing
+  method: POST
+  path: /product_pricing
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-product_pricing
+- name: put_product_pricing_id
+  description: Update a Product Price
+  method: PUT
+  path: /product_pricing/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-product_pricing-id
+- name: delete_product_pricing_id
+  description: Delete a Product Price
+  method: DELETE
+  path: /product_pricing/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-product_pricing-id
+- name: get_product_reviews
+  description: Get Product Reviews
+  method: GET
+  path: /product_reviews
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-product_reviews
+- name: post_product_reviews
+  description: Create a Product Review
+  method: POST
+  path: /product_reviews
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-product_reviews
+- name: put_product_reviews_id
+  description: Update a Product Review
+  method: PUT
+  path: /product_reviews/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-product_reviews-id
+- name: delete_product_reviews_id
+  description: Delete a Product Review
+  method: DELETE
+  path: /product_reviews/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-product_reviews-id
+- name: get_product_statuses
+  description: Product Statuses
+  method: GET
+  path: /product_statuses
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-product_statuses
+- name: post_product_statuses
+  description: Create a Product Status
+  method: POST
+  path: /product_statuses
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-product_statuses
+- name: put_product_statuses_id
+  description: Update a Product Status
+  method: PUT
+  path: /product_statuses/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-product_statuses-id
+- name: delete_product_statuses_id
+  description: Delete a Product Status
+  method: DELETE
+  path: /product_statuses/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-product_statuses-id
+- name: get_product_variants
+  description: Get Product Variants
+  method: GET
+  path: /product_variants
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-product_variants
+- name: post_product_variants
+  description: Create a Product Variant
+  method: POST
+  path: /product_variants
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-product_variants
+- name: put_product_variants_id
+  description: Update a Product Variant
+  method: PUT
+  path: /product_variants/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-product_variants-id
+- name: delete_product_variants_id
+  description: Delete a Product Variant
+  method: DELETE
+  path: /product_variants/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-product_variants-id
+- name: get_products
+  description: Get Products
+  method: GET
+  path: /products
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-products
+- name: post_products
+  description: Create a Product
+  method: POST
+  path: /products
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-products
+- name: put_products_id
+  description: Update a Product
+  method: PUT
+  path: /products/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-products-id
+- name: delete_products_id
+  description: Delete a Product
+  method: DELETE
+  path: /products/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-products-id
+- name: get_profiles
+  description: Get Profiles
+  method: GET
+  path: /profiles
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-profiles
+- name: post_profiles
+  description: Create a Profile
+  method: POST
+  path: /profiles
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-profiles
+- name: put_profiles_id
+  description: Update a Profile
+  method: PUT
+  path: /profiles/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-profiles-id
+- name: delete_profiles_id
+  description: Delete a Profile
+  method: DELETE
+  path: /profiles/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-profiles-id
+- name: get_quotes
+  description: Get Quotes
+  method: GET
+  path: /quotes
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-quotes
+- name: post_quotes
+  description: Create a Quote
+  method: POST
+  path: /quotes
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-quotes
+- name: put_quotes_id
+  description: Update a Quote
+  method: PUT
+  path: /quotes/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-quotes-id
+- name: delete_quotes_id
+  description: Delete a Quote
+  method: DELETE
+  path: /quotes/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-quotes-id
+- name: get_regions
+  description: Get Regions
+  method: GET
+  path: /regions
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-regions
+- name: post_regions
+  description: Create a Region
+  method: POST
+  path: /regions
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-regions
+- name: put_regions_id
+  description: Update a Region
+  method: PUT
+  path: /regions/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-regions-id
+- name: delete_regions_id
+  description: Delete a Region
+  method: DELETE
+  path: /regions/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-regions-id
+- name: get_sessions
+  description: Get Sessions
+  method: GET
+  path: /sessions
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-sessions
+- name: get_shipping_providers
+  description: Get Shipping Providers
+  method: GET
+  path: /shipping_providers
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-shipping_providers
+- name: put_shipping_providers_id
+  description: Update a Shipping Provider
+  method: PUT
+  path: /shipping_providers/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-shipping_providers-id
+- name: get_shipping_provider_services
+  description: Get Shipping Provider Services
+  method: GET
+  path: /shipping_provider_services
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-shipping_provider_services
+- name: put_shipping_provider_services_id
+  description: Update a Shipping Provider Service
+  method: PUT
+  path: /shipping_provider_services/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-shipping_provider_services-id
+- name: get_shipping_rate_adjustments
+  description: Get Shipping Rate Adjustments
+  method: GET
+  path: /shipping_rate_adjustments
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-shipping_rate_adjustments
+- name: post_shipping_rate_adjustments
+  description: Create a Shipping Rate Adjustment
+  method: POST
+  path: /shipping_rate_adjustments
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-shipping_rate_adjustments
+- name: put_shipping_rate_adjustments_id
+  description: Update a Shipping Rate Adjustment
+  method: PUT
+  path: /shipping_rate_adjustments/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-shipping_rate_adjustments-id
+- name: delete_shipping_rate_adjustments_id
+  description: Delete a Shipping Rate Adjustment
+  method: DELETE
+  path: /shipping_rate_adjustments/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-shipping_rate_adjustments-id
+- name: get_store_locations
+  description: Get Store Locations
+  method: GET
+  path: /store_locations
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-store_locations
+- name: post_store_locations
+  description: Create a Store Location
+  method: POST
+  path: /store_locations
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-store_locations
+- name: put_store_locations_id
+  description: Update a Store Location
+  method: PUT
+  path: /store_locations/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-store_locations-id
+- name: delete_store_locations_id
+  description: Delete a Store Location
+  method: DELETE
+  path: /store_locations/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-store_locations-id
+- name: get_stores
+  description: Stores
+  method: GET
+  path: /stores
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-stores
+- name: get_subscriptions
+  description: Get Subscriptions
+  method: GET
+  path: /subscriptions
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-subscriptions
+- name: post_subscriptions
+  description: Create a Subscription
+  method: POST
+  path: /subscriptions
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-subscriptions
+- name: put_subscriptions_id
+  description: Update a Subscription
+  method: PUT
+  path: /subscriptions/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-subscriptions-id
+- name: delete_subscriptions_id
+  description: Delete a Subscription
+  method: DELETE
+  path: /subscriptions/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-subscriptions-id
+- name: get_tax_rates
+  description: Tax Rates
+  method: GET
+  path: /tax_rates
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-tax_rates
+- name: post_tax_rates
+  description: Create a Tax Rate
+  method: POST
+  path: /tax_rates
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-tax_rates
+- name: put_tax_rates_id
+  description: Update a Tax Rate
+  method: PUT
+  path: /tax_rates/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-tax_rates-id
+- name: delete_tax_rates_id
+  description: Delete a Tax Rate
+  method: DELETE
+  path: /tax_rates/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-tax_rates-id
+- name: post_themes_import
+  description: Import Theme
+  method: POST
+  path: /themes/import
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-themes-import
+- name: get_url_redirects
+  description: Get URL Redirects
+  method: GET
+  path: /url_redirects
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-url_redirects
+- name: post_url_redirects
+  description: Create a URL Redirect
+  method: POST
+  path: /url_redirects
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-url_redirects
+- name: put_url_redirects_id
+  description: Update a URL Redirect
+  method: PUT
+  path: /url_redirects/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-url_redirects-id
+- name: delete_url_redirects_id
+  description: Delete a URL Redirect
+  method: DELETE
+  path: /url_redirects/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-url_redirects-id
+- name: get_users
+  description: Get Users
+  method: GET
+  path: /users
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-users
+- name: get_variant_groups
+  description: Get Variant Groups
+  method: GET
+  path: /variant_groups
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-variant_groups
+- name: post_variant_groups
+  description: Create a Variant Group
+  method: POST
+  path: /variant_groups
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-variant_groups
+- name: put_variant_groups_id
+  description: Update a Variant Group
+  method: PUT
+  path: /variant_groups/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-variant_groups-id
+- name: delete_variant_groups_id
+  description: Delete a Variant Group
+  method: DELETE
+  path: /variant_groups/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-variant_groups-id
+- name: get_variant_inventory
+  description: Get Variant Inventory
+  method: GET
+  path: /variant_inventory
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-variant_inventory
+- name: post_variant_inventory
+  description: Create a Variant Inventory Item
+  method: POST
+  path: /variant_inventory
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-variant_inventory
+- name: put_variant_inventory_id
+  description: Update Variant Inventory
+  method: PUT
+  path: /variant_inventory/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-variant_inventory-id
+- name: delete_variant_inventory_id
+  description: Delete Variant Inventory
+  method: DELETE
+  path: /variant_inventory/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-variant_inventory-id
+- name: get_wishlists
+  description: Get Wishlists
+  method: GET
+  path: /wishlists
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-wishlists
+- name: post_wishlists
+  description: Create a Wishlist
+  method: POST
+  path: /wishlists
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-wishlists
+- name: put_wishlists_id
+  description: Update a Wishlist
+  method: PUT
+  path: /wishlists/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-wishlists-id
+- name: delete_wishlists_id
+  description: Delete a Wishlist
+  method: DELETE
+  path: /wishlists/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-wishlists-id
+- name: get_warehouses
+  description: Get Warehouses
+  method: GET
+  path: /warehouses
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#get-warehouses
+- name: post_warehouses
+  description: Create a Warehouse
+  method: POST
+  path: /warehouses
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#post-warehouses
+- name: put_warehouses_id
+  description: Update a Warehouse
+  method: PUT
+  path: /warehouses/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#put-warehouses-id
+- name: delete_warehouses_id
+  description: Delete a Warehouse
+  method: DELETE
+  path: /warehouses/{id}
+  source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-warehouses-id

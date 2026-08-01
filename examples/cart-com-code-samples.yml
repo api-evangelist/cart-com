@@ -1,0 +1,58 @@
+generated: '2026-07-31'
+method: searched
+source: https://github.com/AmeriCommerce/rest-api/tree/master/examples
+summary: 'Cart.com ships no client SDK, but it does publish first-party, runnable code
+  samples for the Online Store API in nine languages inside the same repository that
+  holds the OpenAPI. Each language has a single-token variant (admin-console token
+  on the X-AC-Auth-Token header) and, for five of them, a full OAuth 2 web-flow variant
+  including the SHA256 signature step. Five representative samples are saved verbatim
+  in this directory; the rest are indexed below.'
+saved:
+- file: cart-com-python-get_customer.py
+  language: python
+  source: https://github.com/AmeriCommerce/rest-api/blob/master/examples/python/get_customer.py
+  description: Search for a customer by email and create one if none exists.
+  operations: [get-customers, post-customers]
+- file: cart-com-python-carting_api.py
+  language: python
+  source: https://github.com/AmeriCommerce/rest-api/blob/master/examples/python/carting_api.py
+  description: End-to-end carting flow — build a cart, calculate shipping, place an
+    order.
+- file: cart-com-python-create_shipment_for_order.py
+  language: python
+  source: https://github.com/AmeriCommerce/rest-api/blob/master/examples/python/create_shipment_for_order.py
+  description: Create an order shipment against an existing order.
+  operations: [get-orders, post-order_shipments]
+- file: cart-com-python-creating_product_groups.py
+  language: python
+  source: https://github.com/AmeriCommerce/rest-api/blob/master/examples/python/creating_product_groups.py
+  description: Create products with variant groups and variants.
+- file: cart-com-node-single_token.js
+  language: javascript
+  source: https://github.com/AmeriCommerce/rest-api/blob/master/examples/node/single_token/single_token.js
+  description: Minimal GET /api/v1/products call with a pre-generated admin-console
+    token.
+index:
+- {language: c, variants: [single_token], url: 'https://github.com/AmeriCommerce/rest-api/tree/master/examples/c'}
+- {language: csharp, variants: [SingleTokenExample, OAuthWebFlowExample], url: 'https://github.com/AmeriCommerce/rest-api/tree/master/examples/csharp'}
+- {language: golang, variants: [single_token], url: 'https://github.com/AmeriCommerce/rest-api/tree/master/examples/golang'}
+- {language: java, variants: [SingleTokenExample], url: 'https://github.com/AmeriCommerce/rest-api/tree/master/examples/java'}
+- {language: node, variants: [single_token, oauth_web_flow], url: 'https://github.com/AmeriCommerce/rest-api/tree/master/examples/node'}
+- {language: perl, variants: [single_token], url: 'https://github.com/AmeriCommerce/rest-api/tree/master/examples/perl'}
+- {language: php, variants: [single_token, oauth_web_flow], url: 'https://github.com/AmeriCommerce/rest-api/tree/master/examples/php'}
+- {language: python, variants: [single_token, oauth_web_flow, 'four task-level scripts'],
+  url: 'https://github.com/AmeriCommerce/rest-api/tree/master/examples/python'}
+- {language: ruby, variants: [single_token, oauth_web_flow], url: 'https://github.com/AmeriCommerce/rest-api/tree/master/examples/ruby'}
+in_spec_examples:
+  source: openapi/cart-com-online-store-openapi-original.yml
+  request_body_examples: 75
+  response_examples: 7
+  note: The published OpenAPI carries request-body examples on 75 operations and response
+    examples on 7, plus x-examples on the shared 404 and 500 responses.
+languages: 9
+credentials: All samples use the placeholders '<< YOUR STORE DOMAIN >>' and '<< YOUR
+  ACCESS TOKEN >>'; no live credentials are present.
+x-evidence:
+  fetched: '2026-07-31'
+  url: https://github.com/AmeriCommerce/rest-api/tree/master/examples
+  http_status: 200

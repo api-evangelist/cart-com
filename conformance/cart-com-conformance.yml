@@ -1,0 +1,100 @@
+generated: '2026-07-31'
+method: derived
+source: openapi/cart-com-online-store-openapi-original.yml
+docs_checked:
+- https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+- https://developers.cart.com/docs/rest-api/ZG9jOjU4NjM4-cart-com-online-store-api-authentication
+- https://developers.cart.com/docs/rest-api/ZG9jOjM1MDU4MA-common-usage
+summary: 'Derived from the published OpenAPI plus the provider''s own guides and live
+  probes. Cart.com publishes no compliance certifications, no trust center and no security.txt,
+  so no Compliance pointer is asserted for this provider.'
+standards:
+- id: openapi-3.1
+  conforms: true
+  evidence: 'openapi/cart-com-online-store-openapi-original.yml declares openapi: 3.1.0
+    with 136 paths and 262 operations.'
+- id: rest-json
+  conforms: true
+  evidence: All request and response bodies are application/json; resources are noun-pathed
+    under /api/v1/.
+- id: https-only
+  conforms: true
+  evidence: 'The Online Store API guide states the API is "HTTPS only"; TLS 1.3 observed
+    on www.americommerce.com, cart.com and developers.cart.com (see security/cart-com-domain-security.yml).'
+- id: iso8601-datetimes
+  conforms: true
+  evidence: The Datetime Format guide specifies ISO 8601 for both query syntax and
+    request bodies.
+- id: oauth2
+  conforms: partial
+  evidence: 'The Authentication guide documents an authorization-code style flow at
+    /api/oauth and /api/oauth/access_token with scopes, redirect_uri and refresh tokens,
+    but the token exchange is authenticated with a SHA256 signature over secret + code
+    + client_id + scope + redirect_uri rather than RFC 6749 client authentication,
+    and the issued token is presented on a proprietary X-AC-Auth-Token header rather
+    than as a Bearer credential. The published OpenAPI declares no oauth2 securityScheme
+    at all — only the apiKey scheme.'
+  deviations:
+  - non-standard signature-based token exchange in place of client_secret
+  - access token presented on X-AC-Auth-Token, not Authorization Bearer (RFC 6750)
+  - oauth2 flow absent from the machine-readable contract
+- id: oidc
+  conforms: false
+  evidence: No /.well-known/openid-configuration on any host (all 404 on 2026-07-31).
+- id: rfc8414-oauth-metadata
+  conforms: false
+  evidence: No /.well-known/oauth-authorization-server on any host (all 404 on 2026-07-31).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: 'Errors use a proprietary envelope {status_code, message, details} with
+    content-type application/json, not application/problem+json. Verified live on 2026-07-31
+    against https://www.americommerce.com/api/v1/.'
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on cart.com, www.cart.com and developers.cart.com.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset or Deprecation header support is documented and no operation
+    in the spec is marked deprecated.
+- id: rfc8615-well-known
+  conforms: false
+  evidence: No /.well-known/ documents are served on any Cart.com host.
+- id: idempotency-keys
+  conforms: false
+  evidence: No Idempotency-Key parameter in the spec and no retry-safety contract in
+    the docs.
+- id: pagination
+  conforms: true
+  evidence: 'Page/count parameters with total_count, next_page and previous_page list
+    metadata, documented in Common Usage and modelled in the spec.'
+- id: rate-limit-signalling
+  conforms: partial
+  evidence: 'A per-store call limit is signalled on the proprietary X-AC-Call-Limit
+    header with 429 + Retry-After on exceed; the IETF RateLimit-* header fields (draft-ietf-httpapi-ratelimit-headers)
+    are not used.'
+- id: http-caching
+  conforms: true
+  evidence: 'GET responses carry Last-Modified, Expires and Cache-Control; Cache-Control:
+    no-cache revalidates on demand.'
+- id: json-api
+  conforms: false
+  evidence: List responses use a resource-named array with sibling metadata, not the
+    JSON:API data/attributes envelope.
+- id: asyncapi
+  conforms: false
+  evidence: Thirty documented webhook event types but no AsyncAPI document published.
+- id: a2a-agent-card
+  conforms: false
+  evidence: /.well-known/agent-card.json and /.well-known/agent.json both 404 on every
+    host probed 2026-07-31.
+- id: mcp
+  conforms: false
+  evidence: No official hosted MCP server found; mcp.cart.com does not resolve and
+    /mcp returns 404 on cart.com and developers.cart.com.
+compliance_program:
+  published: false
+  certifications: []
+  evidence: 'No trust center (trust.cart.com does not resolve), no /compliance or /security
+    page (404), and no named certification published on cart.com. A Cart.com security-engineering
+    job posting references participation in PCI, SSAE16 and ISO programs, but a recruiting
+    page is not a published compliance attestation and is not recorded as one.'

@@ -1,0 +1,78 @@
+generated: '2026-07-31'
+method: derived
+source: openapi/cart-com-online-store-openapi-original.yml
+format: custom
+rfc9457: false
+envelope:
+  content_type: application/json
+  schema:
+    status_code: number
+    message: string
+    details: string
+  required:
+  - status_code
+  - message
+  - details
+  note: Cart.com does not use RFC 9457 problem details. Every error is a flat JSON object with a numeric
+    status_code, a short message token, and a human-readable details string. There is no machine-parseable
+    error code, no type URI, and no field-level validation structure — details is free text and on 5xx
+    frequently leaks internal class and SQL command names.
+problems:
+- status: 404
+  title: Resource Not Found
+  message: Not Found
+  details_example: No resource found
+  source: components.responses.404 in openapi/cart-com-online-store-openapi-original.yml
+  declared_on_operations: 64
+  remediation: Check the resource name and identifier. An out-of-bounds `page` value on a list endpoint
+    also returns 404.
+- status: 500
+  title: Internal Server Error
+  message: Internal Server Error
+  details_example: 'Regions Class - Base POST failed - CommandText: Regions_Update - Error writing to
+    the database - Status: Err - Record has been removed from the database'
+  source: components.responses.500 in openapi/cart-com-online-store-openapi-original.yml
+  declared_on_operations: 1
+  remediation: Usually a validation or referential-integrity failure on write surfaced as a 500 rather
+    than a 4xx. Inspect `details` for the failing column or command; retry is not safe because the API
+    has no idempotency contract.
+  note: The provider's own example payloads expose internal .NET class names, stored-procedure names and
+    table/column names in `details`.
+- status: 401
+  title: Unauthorized
+  message: Unauthorized
+  details_example: Invalid or missing access token.
+  source: probed live 2026-07-31 https://www.americommerce.com/api/v1/products
+  declared_on_operations: 0
+  remediation: Supply a valid token on the X-AC-Auth-Token header.
+  note: Not declared anywhere in the published OpenAPI — discovered by live probe. Every one of the 262
+    operations declares only a 200, and 64 also declare a 404.
+- status: 429
+  title: Too Many Requests
+  message: Too Many Requests
+  details_example: null
+  source: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  declared_on_operations: 0
+  remediation: Back off until the time given in the Retry-After header; read X-AC-Call-Limit to track
+    usage against the per-store 10-second window.
+  note: Documented in the API guide but absent from the spec.
+coverage:
+  operations_total: 262
+  operations_declaring_404: 64
+  operations_declaring_500: 1
+  operations_declaring_401: 0
+  operations_declaring_429: 0
+gaps:
+- No operation declares 401, 403 or 429 even though all three are reachable — an agent cannot learn the
+  auth or rate-limit failure modes from the contract.
+- No stable error code vocabulary; `message` is an HTTP reason phrase and `details` is unstructured prose.
+- No application/problem+json media type anywhere in the spec.
+x-evidence:
+  fetched: '2026-07-31'
+  live_probes:
+  - url: https://www.americommerce.com/api/v1/products
+    http_status: 401
+    body: '{"status_code":401,"message":"Unauthorized","details":"Invalid or missing access token."}'
+  - url: https://www.americommerce.com/api/v1/nonexistent_resource
+    http_status: 404
+    body: '{"status_code":404,"message":"NotFound","details":"No resource matches the URL specified."}'

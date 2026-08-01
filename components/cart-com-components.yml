@@ -1,0 +1,51 @@
+generated: '2026-07-31'
+method: searched
+source: https://developers.cart.com/docs/rest-api/ZG9jOjc0MjI5Nzk-ameri-commerce-client-api-samples
+summary: 'Alongside the server-side Online Store REST API, Cart.com ships a client-side
+  JavaScript Client API for storefront themes. It is not an SDK for the REST API —
+  it runs in the shopper''s browser inside the merchant''s own storefront, operates
+  on the live cart and session, and is documented through a first-party samples repository
+  rather than a reference site. Cart.com publishes no npm-installable element library
+  and no hosted embeddable checkout components.'
+families:
+- name: JavaScript Client API
+  kind: client-side-js
+  runtime: Runs inside the merchant's storefront theme; depends on jQuery in the published
+    samples.
+  docs: https://developers.cart.com/docs/rest-api/ZG9jOjc0MjI5Nzk-ameri-commerce-client-api-samples
+  repository: https://github.com/AmeriCommerce/js-api-samples
+  loader: 'No package on npm; the API is present in the storefront page context. Samples
+    are organised one per directory under src/.'
+  capabilities:
+  - name: Adding to cart
+    description: Add an item to the cart, display the updated cart item count, and
+      clear the cart.
+    sample: https://github.com/AmeriCommerce/js-api-samples/tree/master/src/adding_to_cart
+  - name: Updating the cart
+    description: Render a full cart display and wire events to update line quantities
+      and remove items.
+    sample: https://github.com/AmeriCommerce/js-api-samples/tree/master/src/updating
+  - name: Embed Tools
+    description: Snippets pulled from the 2012.6 Embed Tools feature for embedding
+      store content on external pages.
+    sample: https://github.com/AmeriCommerce/js-api-samples/tree/master/src/embed_tools
+  - name: Searching
+    description: Storefront product search from the client.
+    sample: https://github.com/AmeriCommerce/js-api-samples/tree/master/src/searching
+  response_shape:
+    note: 'Responses returned `response.cart` before platform version 2012.6 and `response.data`
+      from 2012.6 onward; the provider''s own samples use `var cart = response.cart
+      || response.data;` for compatibility across both.'
+  conventions:
+  - jQuery objects are prefixed with `$` by convention in the samples.
+not_published:
+- Hosted/prebuilt checkout or payment elements
+- Web components or a framework element library
+- An embedded dashboard or analytics component
+- Any npm-distributed UI package
+x-evidence:
+  fetched: '2026-07-31'
+  urls:
+  - https://developers.cart.com/docs/rest-api/ZG9jOjc0MjI5Nzk-ameri-commerce-client-api-samples
+  - https://github.com/AmeriCommerce/js-api-samples
+  http_status: 200

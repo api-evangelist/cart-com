@@ -1,0 +1,15 @@
+generated: '2026-07-31'
+method: derived
+source: openapi/cart-com-online-store-openapi-original.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: X-AC-Auth-Token
+  type: apiKey
+  in: header
+  parameter: X-AC-Auth-Token
+  sources:
+  - openapi/cart-com-online-store-openapi-original.yml

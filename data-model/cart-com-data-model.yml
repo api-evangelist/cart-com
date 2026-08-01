@@ -1,0 +1,725 @@
+generated: '2026-07-31'
+method: derived
+source: openapi/cart-com-online-store-openapi-original.yml
+docs: https://developers.cart.com/docs/rest-api/d6d68790cda18-resource-list
+summary: 'Entity-relationship graph derived from components.schemas in the published OpenAPI: every *_id
+  property that names another schema becomes a belongs_to edge, and every array/$ref property that names
+  another schema becomes a has_many/has_one edge. Identifiers are plain integers — Cart.com uses no prefixed
+  id scheme.'
+id_scheme:
+  style: integer
+  prefixed: false
+  note: All resources are keyed on an integer `id`; there are no typed/prefixed identifiers.
+domains:
+  People:
+  - addresses
+  - customers
+  - customer_association
+  - customer_types
+  - customer_payment_methods
+  - profiles
+  - users
+  Orders:
+  - carts
+  - cart_items
+  - credit_cards
+  - orders
+  - order_addresses
+  - order_items
+  - order_payments
+  - order_shipments
+  - order_statuses
+  - quotes
+  - subscriptions
+  - wishlists
+  Catalog:
+  - attributes
+  - attribute_groups
+  - categories
+  - inventory
+  - manufacturers
+  - notifications
+  - price_calculators
+  - price_calculator_rules
+  - price_calculator_rule_modifiers
+  - products
+  - product_inactive_in_store
+  - product_lists
+  - product_pictures
+  - product_pricing
+  - product_reviews
+  - product_statuses
+  - product_variants
+  - shipping_rate_adjustments
+  - variant_groups
+  - variant_inventory
+  Content:
+  - blogs
+  - blog_categories
+  - blog_posts
+  - links
+  - pages
+  Marketing:
+  - adcodes
+  - coupon_codes
+  - discount_actions
+  - discount_methods
+  - discount_rules
+  - drips
+  - email_templates
+  - gift_certificates
+  - gift_certificate_transactions
+  - mailing_lists
+  Tools:
+  - custom_fields
+  - custom_field_values
+  Settings:
+  - blacklisted_ips
+  - custom_shipping_methods
+  - external_image_whitelist
+  - payment_methods
+  - payment_method_fields
+  - regions
+  - shipping_providers
+  - shipping_provider_services
+  - store_locations
+  - tax_rates
+  - url_redirects
+  - warehouses
+  System:
+  - sessions
+  - stores
+  - microstores
+  - theme_import
+counts:
+  entities: 73
+  relationships: 112
+entities:
+- entity: links
+  fields: 21
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: stores
+    via: store_id
+  - type: belongs_to
+    target: pages
+    via: page_id
+  - type: belongs_to
+    target: categories
+    via: category_id
+  - type: belongs_to
+    target: products
+    via: product_id
+  - type: belongs_to
+    target: blogs
+    via: blog_id
+  - type: belongs_to
+    target: blog_categories
+    via: blog_category_id
+- entity: carts
+  fields: 32
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: customers
+    via: customer_id
+  - type: belongs_to
+    target: stores
+    via: store_id
+  - type: belongs_to
+    target: sessions
+    via: session_id
+  - type: belongs_to
+    target: customer_payment_methods
+    via: customer_payment_method_id
+  - type: belongs_to
+    target: payment_methods
+    via: payment_method_id
+- entity: notifications
+  fields: 7
+  primary_key: null
+  relationships:
+  - type: belongs_to
+    target: notifications
+    via: notification_id
+  - type: belongs_to
+    target: products
+    via: product_id
+  - type: belongs_to
+    target: customers
+    via: customer_id
+  - type: belongs_to
+    target: stores
+    via: store_id
+  - type: belongs_to
+    target: variant_inventory
+    via: variant_inventory_id
+- entity: orders
+  fields: 61
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: customers
+    via: customer_id
+  - type: belongs_to
+    target: customer_types
+    via: customer_type_id
+  - type: belongs_to
+    target: stores
+    via: store_id
+  - type: belongs_to
+    target: sessions
+    via: session_id
+  - type: belongs_to
+    target: adcodes
+    via: adcode_id
+- entity: order_payments
+  fields: 32
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: customers
+    via: customer_id
+  - type: belongs_to
+    target: orders
+    via: order_id
+  - type: belongs_to
+    target: customer_payment_methods
+    via: customer_payment_method_id
+  - type: belongs_to
+    target: payment_methods
+    via: payment_method_id
+  - type: belongs_to
+    target: gift_certificates
+    via: gift_certificate_id
+- entity: quotes
+  fields: 60
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: customers
+    via: customer_id
+  - type: belongs_to
+    target: customer_types
+    via: customer_type_id
+  - type: belongs_to
+    target: stores
+    via: store_id
+  - type: belongs_to
+    target: sessions
+    via: session_id
+  - type: belongs_to
+    target: adcodes
+    via: adcode_id
+- entity: wishlists
+  fields: 32
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: customers
+    via: customer_id
+  - type: belongs_to
+    target: stores
+    via: store_id
+  - type: belongs_to
+    target: sessions
+    via: session_id
+  - type: belongs_to
+    target: customer_payment_methods
+    via: customer_payment_method_id
+  - type: belongs_to
+    target: payment_methods
+    via: payment_method_id
+- entity: order_items
+  fields: 41
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: orders
+    via: order_id
+  - type: belongs_to
+    target: products
+    via: product_id
+  - type: belongs_to
+    target: variant_inventory
+    via: variant_inventory_id
+  - type: belongs_to
+    target: warehouses
+    via: warehouse_id
+- entity: products
+  fields: 144
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: manufacturers
+    via: manufacturer_id
+  - type: belongs_to
+    target: warehouses
+    via: warehouse_id
+  - type: belongs_to
+    target: profiles
+    via: profile_id
+  - type: has_many
+    target: product_nested_variant
+    via: variants
+- entity: product_pricing
+  fields: 16
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: products
+    via: product_id
+  - type: belongs_to
+    target: stores
+    via: store_id
+  - type: belongs_to
+    target: customer_types
+    via: customer_type_id
+  - type: belongs_to
+    target: variant_inventory
+    via: variant_inventory_id
+- entity: sessions
+  fields: 16
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: customers
+    via: customer_id
+  - type: belongs_to
+    target: users
+    via: user_id
+  - type: belongs_to
+    target: adcodes
+    via: adcode_id
+  - type: belongs_to
+    target: carts
+    via: cart_id
+- entity: cart_items
+  fields: 21
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: products
+    via: product_id
+  - type: belongs_to
+    target: warehouses
+    via: warehouse_id
+  - type: belongs_to
+    target: carts
+    via: cart_id
+- entity: customers
+  fields: 40
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: adcodes
+    via: adcode_id
+  - type: belongs_to
+    target: customer_types
+    via: customer_type_id
+  - type: belongs_to
+    target: stores
+    via: store_id
+- entity: customer_payment_methods
+  fields: 9
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: payment_methods
+    via: payment_method_id
+  - type: belongs_to
+    target: customers
+    via: customer_id
+  - type: belongs_to
+    target: addresses
+    via: address_id
+- entity: gift_certificate_transactions
+  fields: 10
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: gift_certificates
+    via: gift_certificate_id
+  - type: belongs_to
+    target: orders
+    via: order_id
+  - type: belongs_to
+    target: order_payments
+    via: order_payment_id
+- entity: gift_certificates
+  fields: 21
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: stores
+    via: store_id
+  - type: belongs_to
+    target: customers
+    via: customer_id
+  - type: belongs_to
+    target: order_items
+    via: order_item_id
+- entity: price_calculator_rules
+  fields: 9
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: price_calculators
+    via: price_calculator_id
+  - type: belongs_to
+    target: customer_types
+    via: customer_type_id
+  - type: belongs_to
+    target: stores
+    via: store_id
+- entity: product_reviews
+  fields: 21
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: products
+    via: product_id
+  - type: belongs_to
+    target: customers
+    via: customer_id
+  - type: belongs_to
+    target: profiles
+    via: profile_id
+- entity: blog_posts
+  fields: 24
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: blogs
+    via: blog_id
+  - type: belongs_to
+    target: stores
+    via: store_id
+- entity: discount_rules
+  fields: 15
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: discount_methods
+    via: discount_method_id
+  - type: belongs_to
+    target: discount_actions
+    via: discount_action_id
+- entity: inventory
+  fields: 6
+  primary_key: null
+  relationships:
+  - type: belongs_to
+    target: products
+    via: product_id
+  - type: belongs_to
+    target: variant_inventory
+    via: variant_inventory_id
+- entity: product_inactive_in_store
+  fields: 6
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: stores
+    via: store_id
+  - type: belongs_to
+    target: customer_types
+    via: customer_type_id
+- entity: product_nested_variant
+  fields: 18
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: products
+    via: product_id
+  - type: belongs_to
+    target: variant_groups
+    via: variant_group_id
+- entity: product_variants
+  fields: 18
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: products
+    via: product_id
+  - type: belongs_to
+    target: variant_groups
+    via: variant_group_id
+- entity: subscriptions
+  fields: 24
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: customers
+    via: customer_id
+  - type: belongs_to
+    target: customer_payment_methods
+    via: customer_payment_method_id
+- entity: tax_rates
+  fields: 9
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: regions
+    via: region_id
+  - type: belongs_to
+    target: stores
+    via: store_id
+- entity: addresses
+  fields: 20
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: customers
+    via: customer_id
+- entity: attributes
+  fields: 11
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: attribute_groups
+    via: attribute_group_id
+- entity: blogs
+  fields: 30
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: stores
+    via: store_id
+- entity: blog_categories
+  fields: 9
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: blogs
+    via: blog_id
+- entity: credit_cards
+  fields: 17
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: customers
+    via: customer_id
+- entity: customer_association
+  fields: 4
+  primary_key: null
+  relationships:
+  - type: belongs_to
+    target: customer_association
+    via: customer_association_id
+- entity: custom_field_values
+  fields: 6
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: custom_fields
+    via: custom_field_id
+- entity: discount_actions
+  fields: 10
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: discount_methods
+    via: discount_method_id
+- entity: mailing_lists
+  fields: 12
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: stores
+    via: store_id
+- entity: order_addresses
+  fields: 20
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: customers
+    via: customer_id
+- entity: order_shipments
+  fields: 22
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: orders
+    via: order_id
+- entity: order_statuses
+  fields: 14
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: email_templates
+    via: email_template_id
+- entity: pages
+  fields: 15
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: stores
+    via: store_id
+- entity: payment_methods
+  fields: 15
+  primary_key: id
+  relationships:
+  - type: has_one
+    target: payment_method_fields
+    via: fields
+- entity: price_calculator_rule_modifiers
+  fields: 12
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: price_calculator_rules
+    via: price_calculator_rule_id
+- entity: payment_method_fields
+  fields: 12
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: payment_methods
+    via: payment_method_id
+- entity: product_pictures
+  fields: 15
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: products
+    via: product_id
+- entity: shipping_provider_services
+  fields: 10
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: shipping_providers
+    via: shipping_provider_id
+- entity: shipping_rate_adjustments
+  fields: 11
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: products
+    via: product_id
+- entity: store_locations
+  fields: 15
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: stores
+    via: store_id
+- entity: stores
+  fields: 29
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: profiles
+    via: profile_id
+- entity: users
+  fields: 15
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: profiles
+    via: profile_id
+- entity: variant_inventory
+  fields: 22
+  primary_key: id
+  relationships:
+  - type: belongs_to
+    target: products
+    via: product_id
+- entity: adcodes
+  fields: 27
+  primary_key: id
+  relationships: []
+- entity: attribute_groups
+  fields: 9
+  primary_key: id
+  relationships: []
+- entity: blacklisted_ips
+  fields: 6
+  primary_key: id
+  relationships: []
+- entity: categories
+  fields: 25
+  primary_key: id
+  relationships: []
+- entity: coupon_codes
+  fields: 10
+  primary_key: id
+  relationships: []
+- entity: customer_types
+  fields: 6
+  primary_key: id
+  relationships: []
+- entity: custom_fields
+  fields: 22
+  primary_key: id
+  relationships: []
+- entity: custom_shipping_methods
+  fields: 12
+  primary_key: id
+  relationships: []
+- entity: discount_methods
+  fields: 17
+  primary_key: id
+  relationships: []
+- entity: drips
+  fields: 3
+  primary_key: id
+  relationships: []
+- entity: email_templates
+  fields: 14
+  primary_key: id
+  relationships: []
+- entity: external_image_whitelist
+  fields: 5
+  primary_key: null
+  relationships: []
+- entity: manufacturers
+  fields: 14
+  primary_key: id
+  relationships: []
+- entity: microstores
+  fields: 18
+  primary_key: id
+  relationships: []
+- entity: price_calculators
+  fields: 6
+  primary_key: id
+  relationships: []
+- entity: product_lists
+  fields: 2
+  primary_key: id
+  relationships: []
+- entity: product_statuses
+  fields: 9
+  primary_key: id
+  relationships: []
+- entity: profiles
+  fields: 11
+  primary_key: id
+  relationships: []
+- entity: regions
+  fields: 14
+  primary_key: id
+  relationships: []
+- entity: shipping_providers
+  fields: 10
+  primary_key: id
+  relationships: []
+- entity: theme_import
+  fields: 2
+  primary_key: null
+  relationships: []
+- entity: url_redirects
+  fields: 7
+  primary_key: id
+  relationships: []
+- entity: variant_groups
+  fields: 11
+  primary_key: id
+  relationships: []
+- entity: warehouses
+  fields: 13
+  primary_key: id
+  relationships: []
