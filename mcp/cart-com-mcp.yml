@@ -1343,3 +1343,9 @@ tools:
   method: DELETE
   path: /warehouses/{id}
   source_operation: openapi/cart-com-online-store-openapi-original.yml#delete-warehouses-id
+deployment:
+  mode: none
+  verified: derived
+  tools: 262
+  checked: '2026-08-12'
+  source: catalog MCP census
