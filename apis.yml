@@ -52,6 +52,12 @@ apis:
   tags:
   - E-Commerce
   - Catalog
+  - Order
+  - Customers
+  - Webhook
+  tags_raw:
+  - E-Commerce
+  - Catalog
   - Orders
   - Customers
   - Webhooks
