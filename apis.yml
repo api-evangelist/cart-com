@@ -30,40 +30,1145 @@ tags:
 - Catalog
 - Shipping
 apis:
-- aid: cart-com:online-store-api
-  name: Cart.com Online Store API
-  description: 'The Cart.com Online Store API (formerly the AmeriCommerce REST API)
-    is a JSON REST API scoped to a single merchant storefront domain. It exposes 136
-    paths and 262 operations across catalog (products, variants, categories, attributes,
-    inventory, pricing), orders (carts, cart items, orders, order items, payments,
-    shipments, quotes, subscriptions), people (customers, addresses, profiles, users),
-    content (blogs, pages, links), marketing (adcodes, coupons, discounts, gift certificates,
-    mailing lists), settings (payment methods, shipping providers, tax rates, warehouses,
-    store locations) and system resources. It is HTTPS-only, uses snake_case JSON,
-    ISO 8601 datetimes, and a shared query syntax for filtering, paging, sorting, field
-    selection and nested-resource expansion.'
+- aid: cart-com:cart-com-adcodes-api
+  name: Cart.com Adcodes API
+  description: The Adcodes API from Cart.com — 2 operation(s) for adcodes.
   humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
   baseURL: https://www.americommerce.com/api/v1
-  x-baseurl-note: 'The Online Store API is served from each merchant''s own storefront
-    domain as https://[mystorename.com]/api/v1/. The host recorded here is Cart.com''s
-    own AmeriCommerce storefront, verified live on 2026-07-31 (GET /api/v1/products
-    returns 401 {"status_code":401,"message":"Unauthorized"}). The published OpenAPI
-    servers[] entry is the placeholder https://www.yoursite.com/api/v1.'
   tags:
-  - E-Commerce
-  - Catalog
-  - Order
-  - Customers
-  - Webhook
-  tags_raw:
-  - E-Commerce
-  - Catalog
-  - Orders
-  - Customers
-  - Webhooks
+  - Adcodes
   properties:
   - type: OpenAPI
-    url: openapi/cart-com-online-store-openapi-original.yml
+    url: openapi/cart-com-adcodes-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-addresses-api
+  name: Cart.com Addresses API
+  description: The Addresses API from Cart.com — 2 operation(s) for addresses.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Addresses
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-addresses-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-attribute-groups-api
+  name: Cart.com Attribute Groups API
+  description: The Attribute Groups API from Cart.com — 2 operation(s) for attribute groups.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Attribute Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-attribute-groups-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-attributes-api
+  name: Cart.com Attributes API
+  description: The Attributes API from Cart.com — 2 operation(s) for attributes.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Attributes
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-attributes-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-blog-categories-api
+  name: Cart.com Blog Categories API
+  description: The Blog Categories API from Cart.com — 2 operation(s) for blog categories.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Blog Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-blog-categories-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-blog-posts-api
+  name: Cart.com Blog Posts API
+  description: The Blog Posts API from Cart.com — 2 operation(s) for blog posts.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Blog Posts
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-blog-posts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-blogs-api
+  name: Cart.com Blogs API
+  description: The Blogs API from Cart.com — 2 operation(s) for blogs.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Blogs
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-blogs-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-cart-items-api
+  name: Cart.com Cart Items API
+  description: The Cart Items API from Cart.com — 2 operation(s) for cart items.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Cart Items
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-cart-items-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-carts-api
+  name: Cart.com Carts API
+  description: The Carts API from Cart.com — 1 operation(s) for carts.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Carts
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-carts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-categories-api
+  name: Cart.com Categories API
+  description: The Categories API from Cart.com — 2 operation(s) for categories.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-categories-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-coupon-codes-api
+  name: Cart.com Coupon Codes API
+  description: The Coupon Codes API from Cart.com — 2 operation(s) for coupon codes.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Coupon Codes
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-coupon-codes-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-credit-cards-api
+  name: Cart.com Credit Cards API
+  description: The Credit Cards API from Cart.com — 2 operation(s) for credit cards.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Credit Cards
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-credit-cards-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-custom-field-values-api
+  name: Cart.com Custom Field Values API
+  description: The Custom Field Values API from Cart.com — 2 operation(s) for custom field values.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Custom Field Values
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-custom-field-values-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-custom-fields-api
+  name: Cart.com Custom Fields API
+  description: The Custom Fields API from Cart.com — 2 operation(s) for custom fields.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Custom Fields
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-custom-fields-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-custom-shipping-methods-api
+  name: Cart.com Custom Shipping Methods API
+  description: >-
+    The Custom Shipping Methods API from Cart.com — 2 operation(s) for custom shipping methods.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Custom Shipping Methods
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-custom-shipping-methods-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-customer-association-api
+  name: Cart.com Customer Association API
+  description: The Customer Association API from Cart.com — 2 operation(s) for customer association.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Customer Association
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-customer-association-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-customer-payment-methods-api
+  name: Cart.com Customer Payment Methods API
+  description: >-
+    The Customer Payment Methods API from Cart.com — 2 operation(s) for customer payment methods.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Customer Payment Methods
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-customer-payment-methods-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-customer-types-api
+  name: Cart.com Customer Types API
+  description: The Customer Types API from Cart.com — 2 operation(s) for customer types.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Customer Types
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-customer-types-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-customers-api
+  name: Cart.com Customers API
+  description: The Customers API from Cart.com — 2 operation(s) for customers.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-customers-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-discount-actions-api
+  name: Cart.com Discount Actions API
+  description: The Discount Actions API from Cart.com — 2 operation(s) for discount actions.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Discount Actions
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-discount-actions-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-discount-methods-api
+  name: Cart.com Discount Methods API
+  description: The Discount Methods API from Cart.com — 2 operation(s) for discount methods.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Discount Methods
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-discount-methods-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-discount-rules-api
+  name: Cart.com Discount Rules API
+  description: The Discount Rules API from Cart.com — 2 operation(s) for discount rules.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Discount Rules
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-discount-rules-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-drips-api
+  name: Cart.com Drips API
+  description: The Drips API from Cart.com — 2 operation(s) for drips.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Drips
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-drips-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-email-templates-api
+  name: Cart.com Email Templates API
+  description: The Email Templates API from Cart.com — 2 operation(s) for email templates.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Email Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-email-templates-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-external-image-whitelist-api
+  name: Cart.com External Image Whitelist API
+  description: >-
+    The External Image Whitelist API from Cart.com — 2 operation(s) for external image whitelist.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - External Image Whitelist
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-external-image-whitelist-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-gift-certificate-transactions-api
+  name: Cart.com Gift Certificate Transactions API
+  description: >-
+    The Gift Certificate Transactions API from Cart.com — 2 operation(s) for gift certificate transactions.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Gift Certificate Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-gift-certificate-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-gift-certificates-api
+  name: Cart.com Gift Certificates API
+  description: The Gift Certificates API from Cart.com — 2 operation(s) for gift certificates.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Gift Certificates
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-gift-certificates-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-ip-blacklist-api
+  name: Cart.com IP Blacklist API
+  description: The IP Blacklist API from Cart.com — 2 operation(s) for ip blacklist.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - IP Blacklist
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-ip-blacklist-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-links-api
+  name: Cart.com Links API
+  description: The Links API from Cart.com — 2 operation(s) for links.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Links
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-links-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-mailing-lists-api
+  name: Cart.com Mailing Lists API
+  description: The Mailing Lists API from Cart.com — 2 operation(s) for mailing lists.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Mailing Lists
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-mailing-lists-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-manufacturers-api
+  name: Cart.com Manufacturers API
+  description: The Manufacturers API from Cart.com — 2 operation(s) for manufacturers.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Manufacturers
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-manufacturers-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-marketing-api
+  name: Cart.com Marketing API
+  description: The Marketing API from Cart.com — 16 operation(s) for marketing.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Marketing
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-marketing-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-microstores-api
+  name: Cart.com Microstores API
+  description: The Microstores API from Cart.com — 2 operation(s) for microstores.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Microstores
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-microstores-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-notifications-api
+  name: Cart.com Notifications API
+  description: The Notifications API from Cart.com — 2 operation(s) for notifications.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-notifications-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-order-addresses-api
+  name: Cart.com Order Addresses API
+  description: The Order Addresses API from Cart.com — 2 operation(s) for order addresses.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Order Addresses
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-order-addresses-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-order-items-api
+  name: Cart.com Order Items API
+  description: The Order Items API from Cart.com — 2 operation(s) for order items.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Order Items
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-order-items-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-order-payments-api
+  name: Cart.com Order Payments API
+  description: The Order Payments API from Cart.com — 2 operation(s) for order payments.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Order Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-order-payments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-order-shipments-api
+  name: Cart.com Order Shipments API
+  description: The Order Shipments API from Cart.com — 2 operation(s) for order shipments.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Order Shipments
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-order-shipments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-order-statuses-api
+  name: Cart.com Order Statuses API
+  description: The Order Statuses API from Cart.com — 2 operation(s) for order statuses.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Order Statuses
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-order-statuses-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-orders-api
+  name: Cart.com Orders API
+  description: The Orders API from Cart.com — 2 operation(s) for orders.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-pages-api
+  name: Cart.com Pages API
+  description: The Pages API from Cart.com — 2 operation(s) for pages.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Pages
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-pages-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-payment-methods-api
+  name: Cart.com Payment Methods API
+  description: The Payment Methods API from Cart.com — 2 operation(s) for payment methods.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Payment Methods
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-payment-methods-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-price-calculator-rule-modifiers-api
+  name: Cart.com Price Calculator Rule Modifiers API
+  description: >-
+    The Price Calculator Rule Modifiers API from Cart.com — 2 operation(s) for price calculator rule modifiers.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Price Calculator Rule Modifiers
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-price-calculator-rule-modifiers-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-price-calculator-rules-api
+  name: Cart.com Price Calculator Rules API
+  description: >-
+    The Price Calculator Rules API from Cart.com — 2 operation(s) for price calculator rules.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Price Calculator Rules
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-price-calculator-rules-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-price-calculators-api
+  name: Cart.com Price Calculators API
+  description: The Price Calculators API from Cart.com — 2 operation(s) for price calculators.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Price Calculators
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-price-calculators-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-product-inactive-in-store-api
+  name: Cart.com Product Inactive In Store API
+  description: >-
+    The Product Inactive In Store API from Cart.com — 2 operation(s) for product inactive in store.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Product Inactive In Store
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-product-inactive-in-store-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-product-lists-api
+  name: Cart.com Product Lists API
+  description: The Product Lists API from Cart.com — 2 operation(s) for product lists.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Product Lists
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-product-lists-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-product-pictures-api
+  name: Cart.com Product Pictures API
+  description: The Product Pictures API from Cart.com — 2 operation(s) for product pictures.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Product Pictures
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-product-pictures-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-product-pricing-api
+  name: Cart.com Product Pricing API
+  description: The Product Pricing API from Cart.com — 2 operation(s) for product pricing.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Product Pricing
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-product-pricing-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-product-reviews-api
+  name: Cart.com Product Reviews API
+  description: The Product Reviews API from Cart.com — 2 operation(s) for product reviews.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Product Reviews
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-product-reviews-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-product-statuses-api
+  name: Cart.com Product Statuses API
+  description: The Product Statuses API from Cart.com — 2 operation(s) for product statuses.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Product Statuses
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-product-statuses-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-product-variants-api
+  name: Cart.com Product Variants API
+  description: The Product Variants API from Cart.com — 2 operation(s) for product variants.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Product Variants
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-product-variants-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-products-api
+  name: Cart.com Products API
+  description: The Products API from Cart.com — 3 operation(s) for products.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-products-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-profiles-api
+  name: Cart.com Profiles API
+  description: The Profiles API from Cart.com — 2 operation(s) for profiles.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-profiles-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-quotes-api
+  name: Cart.com Quotes API
+  description: The Quotes API from Cart.com — 2 operation(s) for quotes.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Quotes
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-quotes-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-regions-api
+  name: Cart.com Regions API
+  description: The Regions API from Cart.com — 2 operation(s) for regions.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Regions
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-regions-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-sessions-api
+  name: Cart.com Sessions API
+  description: The Sessions API from Cart.com — 1 operation(s) for sessions.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-shipping-provider-services-api
+  name: Cart.com Shipping Provider Services API
+  description: >-
+    The Shipping Provider Services API from Cart.com — 2 operation(s) for shipping provider services.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Shipping Provider Services
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-shipping-provider-services-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-shipping-providers-api
+  name: Cart.com Shipping Providers API
+  description: The Shipping Providers API from Cart.com — 2 operation(s) for shipping providers.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Shipping Providers
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-shipping-providers-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-shipping-rate-adjustments-api
+  name: Cart.com Shipping Rate Adjustments API
+  description: >-
+    The Shipping Rate Adjustments API from Cart.com — 2 operation(s) for shipping rate adjustments.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Shipping Rate Adjustments
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-shipping-rate-adjustments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-store-locations-api
+  name: Cart.com Store Locations API
+  description: The Store Locations API from Cart.com — 2 operation(s) for store locations.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Store Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-store-locations-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-stores-api
+  name: Cart.com Stores API
+  description: The Stores API from Cart.com — 1 operation(s) for stores.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Stores
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-stores-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-subscriptions-api
+  name: Cart.com Subscriptions API
+  description: The Subscriptions API from Cart.com — 2 operation(s) for subscriptions.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-tax-rates-api
+  name: Cart.com Tax Rates API
+  description: The Tax Rates API from Cart.com — 2 operation(s) for tax rates.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Tax Rates
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-tax-rates-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-theme-import-api
+  name: Cart.com Theme Import API
+  description: The Theme Import API from Cart.com — 1 operation(s) for theme import.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Theme Import
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-theme-import-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-url-redirects-api
+  name: Cart.com URL Redirects API
+  description: The URL Redirects API from Cart.com — 2 operation(s) for url redirects.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - URL Redirects
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-url-redirects-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-users-api
+  name: Cart.com Users API
+  description: The Users API from Cart.com — 1 operation(s) for users.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-users-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-variant-groups-api
+  name: Cart.com Variant Groups API
+  description: The Variant Groups API from Cart.com — 2 operation(s) for variant groups.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Variant Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-variant-groups-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-variant-inventory-api
+  name: Cart.com Variant Inventory API
+  description: The Variant Inventory API from Cart.com — 2 operation(s) for variant inventory.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Variant Inventory
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-variant-inventory-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-warehouses-api
+  name: Cart.com Warehouses API
+  description: The Warehouses API from Cart.com — 2 operation(s) for warehouses.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Warehouses
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-warehouses-api-openapi.yml
+  - type: Documentation
+    url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  - type: APIReference
+    url: https://developers.cart.com/docs/rest-api
+  - type: SourceCode
+    url: https://github.com/AmeriCommerce/rest-api
+- aid: cart-com:cart-com-wishlists-api
+  name: Cart.com Wishlists API
+  description: The Wishlists API from Cart.com — 2 operation(s) for wishlists.
+  humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
+  baseURL: https://www.americommerce.com/api/v1
+  tags:
+  - Wishlists
+  properties:
+  - type: OpenAPI
+    url: openapi/cart-com-wishlists-api-openapi.yml
   - type: Documentation
     url: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
   - type: APIReference
