@@ -9,6 +9,19 @@ description: 'Cart.com is a unified commerce and logistics provider for B2C and 
   store settings — plus a webhook subscription system with thirty event types, an OAuth
   2 authorization flow with coarse read/write scopes, and a client-side JavaScript
   Client API for storefront themes.'
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 image: https://cart.com/hubfs/6316383d5bc18bb4fa6ae7a9_favicon-32x32.png
 url: https://raw.githubusercontent.com/api-evangelist/cart-com/refs/heads/main/apis.yml
 x-type: company
