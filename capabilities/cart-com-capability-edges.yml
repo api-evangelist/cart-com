@@ -3,7 +3,7 @@ provider: Cart.com
 generated_by: planning/capability-mapping/scripts/classify_capabilities.py
 model: claude-opus-5
 frame:
-- Software & Technology
+- Transportation & Logistics
 min_confidence: 0.7
 capability_model:
   source: https://github.com/vincentmakes/turbo-ea-capabilities
@@ -11,122 +11,113 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 13
+edge_count: 12
 edges:
 - tag: Coupon Codes
   spec_file: cart-com-coupon-codes-api-openapi.yml
   capability_id: BC-440.30
   capability_id_l1: BC-440
   capability_name: Discount & Promotion Management
-  confidence: 0.88
-  evidence: POST /coupon_codes  Create a Coupon Code
-  reason: Creating and maintaining coupon codes for a storefront is straightforwardly promotional discounting,
-    matching Discount & Promotion Management.
+  confidence: 0.85
+  evidence: POST /coupon_codes  post-coupon_codes  Create a Coupon Code
+  reason: Coupon code lifecycle in an online store is promotional offer administration, squarely Discount
+    & Promotion Management.
 - tag: Customers
   spec_file: cart-com-customers-api-openapi.yml
   capability_id: BC-420.10
   capability_id_l1: BC-420
   capability_name: Customer Data Management
   confidence: 0.85
-  evidence: POST /customers  Create a Customer; PUT /customers/{id}  Update a Customer
-  reason: Full CRUD over the customer master record in the storefront platform is Customer Data Management.
-- tag: Product Variants
-  spec_file: cart-com-product-variants-api-openapi.yml
-  capability_id: BC-820.40
-  capability_id_l1: BC-820
-  capability_name: Product Configuration & Variant Management
-  confidence: 0.85
-  evidence: POST /product_variants  Create a Product Variant
-  reason: Creation and maintenance of product variants is squarely Product Configuration & Variant Management.
+  evidence: 'POST /customers  post-customers  Create a Customer; schemas: customers'
+  reason: CRUD over customer master records in the commerce platform — customer data management.
+- tag: Discount Rules
+  spec_file: cart-com-discount-rules-api-openapi.yml
+  capability_id: BC-440.30
+  capability_id_l1: BC-440
+  capability_name: Discount & Promotion Management
+  confidence: 0.82
+  evidence: POST /discount_rules  "Create a Discount Rule"
+  reason: Operations create, update and delete discount rules in an ecommerce storefront — definition
+    of discount policies and promotional offers, i.e. Discount & Promotion Management.
 - tag: Discount Actions
   spec_file: cart-com-discount-actions-api-openapi.yml
   capability_id: BC-440.30
   capability_id_l1: BC-440
   capability_name: Discount & Promotion Management
   confidence: 0.8
-  evidence: POST /discount_actions  "Create a Discount Actions"; schema discount_actions
-  reason: CRUD over discount action definitions in the storefront platform — configuration of how discounts/promotions
-    apply, matching Discount & Promotion Management.
+  evidence: POST /discount_actions  Create a Discount Actions
+  reason: Configuration of discount rule actions applied to orders — discount and promotion administration.
 - tag: Discount Methods
   spec_file: cart-com-discount-methods-api-openapi.yml
   capability_id: BC-440.30
   capability_id_l1: BC-440
   capability_name: Discount & Promotion Management
   confidence: 0.8
-  evidence: POST /discount_methods  "Create a Discount Method"
-  reason: Manages discount method definitions used by the store's promotion engine — discount policy configuration
-    rather than pricing lists.
-- tag: Discount Rules
-  spec_file: cart-com-discount-rules-api-openapi.yml
-  capability_id: BC-440.30
-  capability_id_l1: BC-440
-  capability_name: Discount & Promotion Management
-  confidence: 0.8
-  evidence: GET /discount_rules  "Get Discount Rules"; POST "Create a Discount Rule"
-  reason: Lifecycle of discount rules that govern promotional offers on the storefront — Discount & Promotion
-    Management.
-- tag: Blog Posts
-  spec_file: cart-com-blog-posts-api-openapi.yml
-  capability_id: BC-400.70
-  capability_id_l1: BC-400
-  capability_name: Content Marketing Management
-  confidence: 0.78
-  evidence: POST /blog_posts "Create a Blog Post"; PUT /blog_posts/{id} "Update a Blog Post"; schema "blog_posts"
-  reason: Authoring and publishing blog articles on the storefront is editorial content production and
-    distribution, i.e. content marketing.
+  evidence: POST /discount_methods  post-discount_methods  Create a Discount Method
+  reason: Definition of discount methods used in storefront pricing — discount and promotion management.
 - tag: Product Pricing
   spec_file: cart-com-product-pricing-api-openapi.yml
   capability_id: BC-440.20
   capability_id_l1: BC-440
   capability_name: Price List Management
   confidence: 0.75
-  evidence: PUT /product_pricing/{id}  Update a Product Price
-  reason: Maintaining prices attached to catalog products is price list / price book maintenance under
-    Pricing Management.
-- tag: Blogs
-  spec_file: cart-com-blogs-api-openapi.yml
+  evidence: GET /product_pricing  Get Product Pricing; PUT /product_pricing/{id}  Update a Product Price
+  reason: Operations maintain price records against catalog products on the storefront, i.e. maintenance
+    of list/price-book entries. Maps to Pricing Management / Price List Management; some chance the object
+    carries tiered or customer-specific pricing, hence 0.75.
+- tag: Blog Posts
+  spec_file: cart-com-blog-posts-api-openapi.yml
   capability_id: BC-400.70
   capability_id_l1: BC-400
   capability_name: Content Marketing Management
-  confidence: 0.72
-  evidence: GET /blogs "Get Blogs"; POST /blogs "Create a Blog"; schema "blogs"
-  reason: Management of blog containers on the ecommerce storefront supports editorial/content marketing
-    publishing rather than any transactional commerce function.
-- tag: Order Shipments
-  spec_file: cart-com-order-shipments-api-openapi.yml
-  capability_id: BC-520.40
-  capability_id_l1: BC-520
-  capability_name: Order Fulfilment Management
   confidence: 0.7
-  evidence: POST /order_shipments 'Create an Order Shipment'
-  reason: Shipment records against orders are the fulfilment execution artefact for this commerce/fulfilment
-    vendor, matching Order Fulfilment Management.
-- tag: Orders
-  spec_file: cart-com-orders-api-openapi.yml
-  capability_id: BC-520.40
-  capability_id_l1: BC-520
-  capability_name: Order Fulfilment Management
+  evidence: POST /blog_posts  post-blog_posts  Create a Blog Post
+  reason: Creating, updating and publishing blog posts on a commerce storefront is content production
+    and distribution — content marketing management.
+- tag: Marketing
+  spec_file: cart-com-marketing-api-openapi.yml
+  capability_id: BC-400
+  capability_id_l1: BC-400
+  capability_name: Marketing Management
   confidence: 0.7
-  evidence: POST /orders 'Create an Order'; vendor description cites 'order management'
-  reason: Core sales order lifecycle CRUD on an ecommerce/order-management platform, best matched by Order
-    Fulfilment Management (order capture through fulfilment orchestration).
+  evidence: 'schemas: discount_methods, discount_actions, gift_certificates, email_templates, mailing_lists,
+    discount_rules, drips'
+  reason: Aggregate marketing surface combining discounts, gift certificates, email templates, mailing
+    lists and drip campaigns — Marketing Management at L1; the mix spans promotions and email marketing
+    so no single L2 is named.
+- tag: Product Variants
+  spec_file: cart-com-product-variants-api-openapi.yml
+  capability_id: BC-820.40
+  capability_id_l1: BC-820
+  capability_name: Product Configuration & Variant Management
+  confidence: 0.7
+  evidence: 'POST /product_variants  Create a Product Variant; schemas: product_variants'
+  reason: CRUD over product variants (options/SKU permutations) of catalog items, which matches 'Configurations,
+    variants, options, bundles'. Ecommerce variant catalog rather than engineering configuration, so 0.7.
 - tag: Tax Rates
   spec_file: cart-com-tax-rates-api-openapi.yml
   capability_id: BC-220.20
   capability_id_l1: BC-220
   capability_name: Indirect Tax Management
   confidence: 0.7
-  evidence: POST /tax_rates 'Create a Tax Rate'; PUT /tax_rates/{id} 'Update a Tax Rate'
-  reason: Maintenance of sales-tax rates applied to storefront transactions maps to indirect tax (sales
-    tax) management. Not higher because the surface is rate-table maintenance only, with no calculation,
-    filing or exemption logic shown.
+  evidence: POST /tax_rates "Create a Tax Rate"; schema 'tax_rates'
+  reason: Maintenance of sales/VAT tax rates applied to store orders, which is indirect tax administration.
+    Confidence held at 0.7 because the spec does not show jurisdiction or exemption detail.
+- tag: Variant Groups
+  spec_file: cart-com-variant-groups-api-openapi.yml
+  capability_id: BC-820.40
+  capability_id_l1: BC-820
+  capability_name: Product Configuration & Variant Management
+  confidence: 0.7
+  evidence: POST /variant_groups "Create a Variant Group"; schema 'variant_groups'
+  reason: Grouping of product variants/options is product configuration and variant management within
+    product lifecycle. Straightforward reading, though the spec gives no attribute detail.
 - tag: Variant Inventory
   spec_file: cart-com-variant-inventory-api-openapi.yml
-  capability_id: BC-530.10
+  capability_id: BC-530
   capability_id_l1: BC-530
-  capability_name: Stock Level Management
+  capability_name: Inventory Management
   confidence: 0.7
-  evidence: POST /variant_inventory  "Create a Variant Inventory Item"; GET /variant_inventory "Get Variant
-    Inventory"
-  reason: Operations maintain per-variant stock records for the storefront, i.e. stock level management.
-    L2 chosen as stock level management, though allocation could also be implied — hence moderate confidence.
+  evidence: POST /variant_inventory "Create a Variant Inventory Item"; PUT "Update Variant Inventory"
+  reason: Maintenance of stock records at product-variant level is inventory management; the operations
+    do not indicate whether it is stock-level targets, allocation, or counts, so no L2 asserted.
