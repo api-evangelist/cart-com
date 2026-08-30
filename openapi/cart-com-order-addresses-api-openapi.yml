@@ -1,0 +1,236 @@
+openapi: 3.2.0
+info:
+  title: Online Store Order Addresses API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Order Addresses
+paths:
+  /order_addresses:
+    get:
+      summary: Get Order Addresses
+      tags:
+      - Order Addresses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  order_addresses:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/order_addresses'
+      operationId: get-order_addresses
+      description: Gets an array of order addresses.
+    post:
+      summary: Create an Order Address
+      operationId: post-order_addresses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order_addresses'
+      tags:
+      - Order Addresses
+      description: Creates an order address.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  customer_id: 107
+                  company: ''
+                  address_line_1: 123 Test St
+                  address_line_2: ''
+                  city: Beaumont
+                  state: Texas
+                  country: United States
+                  postal_code: '77706'
+                  phone: '3333333333'
+                  alternate_phone: ''
+                  fax: ''
+                  comments: ''
+                  first_name: Test
+                  last_name: Person
+                  address_type: Default
+              properties:
+                customer_id:
+                  type: integer
+                company:
+                  type: string
+                address_line_1:
+                  type: string
+                address_line_2:
+                  type: string
+                city:
+                  type: string
+                state:
+                  type: string
+                country:
+                  type: string
+                postal_code:
+                  type: string
+                phone:
+                  type: string
+                alternate_phone:
+                  type: string
+                fax:
+                  type: string
+                comments:
+                  type: string
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                address_type:
+                  type: string
+                state_code:
+                  type: string
+                country_code:
+                  type: string
+              required:
+              - customer_id
+            examples:
+              Example:
+                value:
+                  customer_id: 107
+                  company: ''
+                  address_line_1: 123 Test St
+                  address_line_2: ''
+                  city: Beaumont
+                  state: Texas
+                  country: United States
+                  postal_code: '77706'
+                  phone: '3333333333'
+                  alternate_phone: ''
+                  fax: ''
+                  comments: ''
+                  first_name: Test
+                  last_name: Person
+                  address_type: Default
+                  state_code: TX
+                  country_code: US
+  /order_addresses/{id}:
+    parameters:
+    - schema:
+        type: string
+      name: id
+      in: path
+      required: true
+      description: The ID of the `order_address`
+    put:
+      summary: Update an Order Address
+      operationId: put-order_addresses-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order_addresses'
+      description: 'Updates an order address. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/order_addresses'
+      tags:
+      - Order Addresses
+    delete:
+      summary: Delete an Order Address
+      operationId: delete-order_addresses-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Order Addresses
+      description: Deletes an Order Address.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    order_addresses:
+      type: object
+      properties:
+        id:
+          type: integer
+        customer_id:
+          type: integer
+        company:
+          type: string
+        address_line_1:
+          type: string
+        address_line_2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postal_code:
+          type: integer
+        country:
+          type: string
+        phone:
+          type: string
+        alternate_phone:
+          type: string
+        fax:
+          type: string
+        comments:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        address_type:
+          type: string
+        state_code:
+          type: string
+        country_code:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

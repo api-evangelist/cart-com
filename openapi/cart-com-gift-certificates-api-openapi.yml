@@ -1,0 +1,244 @@
+openapi: 3.2.0
+info:
+  title: Online Store Gift Certificates API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Gift Certificates
+paths:
+  /gift_certificates:
+    get:
+      summary: Get Gift Certificates
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  gift_certificates:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/gift_certificates'
+      operationId: get-gift_certificates
+      tags:
+      - Gift Certificates
+      description: Gets an array of gift certificates.
+    post:
+      summary: Creates a Gift Certificate
+      operationId: post-gift_certificates
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gift_certificates'
+      tags:
+      - Gift Certificates
+      description: Creates a gift certificate.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  id: 4
+                  code: GC-NCC-67-M1VGS7
+                  original_order_id: null
+                  from_customer_id: null
+                  recipient_email: ''
+                  recipient_name: ''
+                  recipient_shipping_address: ''
+                  gift_message: ''
+                  status: Active
+                  is_pre_tax_discount: false
+                  gift_certificate_type: free gc
+                  comments: ''
+                  expires_at: '1900-01-01T00:00:00-06:00'
+                  store_id: 1
+                  current_amount: 10
+                  original_amount: 10
+                  customer_id: 16
+                  expires: false
+                  order_item_id: null
+              properties:
+                code:
+                  type: string
+                original_order_id:
+                  type: integer
+                from_customer_id:
+                  type: integer
+                recipient_email:
+                  type: string
+                recipient_name:
+                  type: string
+                recipient_shipping_address:
+                  type: string
+                gift_message:
+                  type: string
+                status:
+                  type: string
+                is_pre_tax_discount:
+                  type: boolean
+                gift_certificate_type:
+                  type: string
+                comments:
+                  type: string
+                expires_at:
+                  type: string
+                store_id:
+                  type: integer
+                current_amount:
+                  type: number
+                original_amount:
+                  type: number
+                customer_id:
+                  type: integer
+                expires:
+                  type: boolean
+                order_item_id:
+                  type: integer
+            examples:
+              Example:
+                value:
+                  id: 4
+                  code: GC-NCC-67-M1VGS7
+                  original_order_id: null
+                  from_customer_id: null
+                  recipient_email: ''
+                  recipient_name: ''
+                  recipient_shipping_address: ''
+                  gift_message: ''
+                  status: Active
+                  is_pre_tax_discount: false
+                  gift_certificate_type: free gc
+                  comments: ''
+                  expires_at: '1900-01-01T00:00:00-06:00'
+                  store_id: 1
+                  current_amount: 10.0
+                  original_amount: 10.0
+                  customer_id: 16
+                  expires: false
+                  order_item_id: null
+  /gift_certificates/{id}:
+    parameters:
+    - schema:
+        type: string
+      name: id
+      in: path
+      required: true
+      description: The ID of the `gift_certificate`
+    put:
+      summary: Update a Gift Certificate
+      operationId: put-gift_certificates-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gift_certificates'
+      tags:
+      - Gift Certificates
+      description: Updates a gift certificate.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gift_certificates'
+    delete:
+      summary: Deletes a Gift Certificate
+      operationId: delete-gift_certificates-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Gift Certificates
+      description: 'Deletes a gift certificate. '
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    gift_certificates:
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        original_order_id:
+          type: integer
+        from_customer_id:
+          type: integer
+        recipient_email:
+          type: string
+        recipient_name:
+          type: string
+        recipient_shipping_address:
+          type: string
+        gift_message:
+          type: string
+        status:
+          type: string
+        is_pre_tax_discount:
+          type: boolean
+        gift_certificate_type:
+          type: string
+        comments:
+          type: string
+        created_at:
+          type: string
+        expires_at:
+          type: string
+        store_id:
+          type: integer
+        current_amount:
+          type: integer
+        original_amount:
+          type: integer
+        updated_at:
+          type: string
+        customer_id:
+          type: integer
+        expires:
+          type: boolean
+        order_item_id:
+          type: integer
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

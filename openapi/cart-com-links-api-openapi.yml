@@ -1,0 +1,241 @@
+openapi: 3.2.0
+info:
+  title: Online Store Links API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Links
+paths:
+  /links:
+    get:
+      summary: Get Links
+      tags:
+      - Links
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  links:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/links'
+      operationId: get-links
+      description: Gets an array of menu links.
+    post:
+      summary: Create a Link
+      operationId: post-links
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/links'
+      description: Creates a link.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  url: /store/shop-all.aspx
+                  text: Shop
+                  sort_order: 2
+                  store_id: 14
+                  is_hidden: false
+                  named_link: null
+                  page_id: 0
+                  category_id: 0
+                  is_dynamic_menu_root: false
+                  dynamic_menu_levels: 0
+                  link_type: Category
+                  parent_link_id: 118
+                  is_hidden_in_navigation_only: false
+                  opens_in_new_window: false
+                  is_home_page: false
+                  product_id: 0
+                  blog_id: 0
+                  blog_category_id: 0
+              properties:
+                url:
+                  type: string
+                text:
+                  type: string
+                sort_order:
+                  type: integer
+                store_id:
+                  type: integer
+                is_hidden:
+                  type: boolean
+                named_link: {}
+                page_id:
+                  type: integer
+                category_id:
+                  type: integer
+                is_dynamic_menu_root:
+                  type: boolean
+                dynamic_menu_levels:
+                  type: number
+                link_type:
+                  type: string
+                parent_link_id:
+                  type: integer
+                is_hidden_in_navigation_only:
+                  type: boolean
+                opens_in_new_window:
+                  type: boolean
+                is_home_page:
+                  type: boolean
+                product_id:
+                  type: integer
+                blog_id:
+                  type: integer
+                blog_category_id:
+                  type: integer
+            examples:
+              Example:
+                value:
+                  url: /store/shop-all.aspx
+                  text: Shop
+                  sort_order: 2
+                  store_id: 14
+                  is_hidden: false
+                  named_link: null
+                  page_id: 0
+                  category_id: 0
+                  is_dynamic_menu_root: false
+                  dynamic_menu_levels: 0
+                  link_type: Category
+                  parent_link_id: 118
+                  is_hidden_in_navigation_only: false
+                  opens_in_new_window: false
+                  is_home_page: false
+                  product_id: 0
+                  blog_id: 0
+                  blog_category_id: 0
+      tags:
+      - Links
+  /links/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `link`
+    put:
+      summary: Update a Link
+      operationId: put-links-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/links'
+      tags:
+      - Links
+      description: Updates a link.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/links'
+    delete:
+      summary: Delete a Link
+      operationId: delete-links-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Links
+      description: Deletes a link.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    links:
+      type: object
+      properties:
+        id:
+          type: integer
+        url:
+          type: string
+        text:
+          type: string
+        sort_order:
+          type: integer
+        store_id:
+          type: integer
+        is_hidden:
+          type: boolean
+        named_link:
+          type: string
+        page_id:
+          type: integer
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        category_id:
+          type: integer
+        is_dynamic_menu_root:
+          type: boolean
+        dynamic_menu_levels:
+          type: integer
+        link_type:
+          type: string
+        parent_link_id:
+          type: integer
+        is_hidden_in_navigation_only:
+          type: boolean
+        opens_in_new_window:
+          type: boolean
+        is_home_page:
+          type: boolean
+        product_id:
+          type: integer
+        blog_id:
+          type: integer
+        blog_category_id:
+          type: integer
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

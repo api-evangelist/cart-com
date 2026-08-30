@@ -1,0 +1,170 @@
+openapi: 3.2.0
+info:
+  title: Online Store Price Calculator Rules API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Price Calculator Rules
+paths:
+  /price_calculator_rules:
+    get:
+      summary: Get Price Calculator Rules
+      tags:
+      - Price Calculator Rules
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  price_calculator_rules:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/price_calculator_rules'
+      operationId: get-price_calculator_rules
+      description: Gets an array of price calculator rules.
+    post:
+      summary: Create a Price Calculator Rule
+      operationId: post-price_calculator_rules
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/price_calculator_rules'
+      tags:
+      - Price Calculator Rules
+      description: Creates a price calculator rule.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  price_calculator_id: 3
+                  customer_type_id: 1
+                  store_id: 2
+                  starting_quantity: 5
+                  price_base_type: BasePricePassedIn
+                  specific_base_price: 0
+              properties:
+                price_calculator_id:
+                  type: integer
+                customer_type_id:
+                  type: integer
+                store_id:
+                  type: integer
+                starting_quantity:
+                  type: number
+                price_base_type:
+                  type: string
+                specific_base_price:
+                  type: number
+            examples:
+              Example:
+                value:
+                  price_calculator_id: 3
+                  customer_type_id: 1
+                  store_id: 2
+                  starting_quantity: 5
+                  price_base_type: BasePricePassedIn
+                  specific_base_price: 0
+  /price_calculator_rules/{id}:
+    parameters:
+    - schema:
+        type: string
+      name: id
+      in: path
+      required: true
+      description: The ID of the `price_calculator_rule`
+    put:
+      summary: Update a Price Calculator Rule
+      operationId: put-price_calculator_rules-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/price_calculator_rules'
+      tags:
+      - Price Calculator Rules
+      description: Updates a price calculator rule.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/price_calculator_rules'
+    delete:
+      summary: Delete a Price Calculator Rule
+      operationId: delete-price_calculator_rules-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Price Calculator Rules
+      description: Deletes a price calculator rule.
+components:
+  schemas:
+    price_calculator_rules:
+      type: object
+      properties:
+        id:
+          type: integer
+        price_calculator_id:
+          type: integer
+        customer_type_id:
+          type: integer
+        store_id:
+          type: integer
+        starting_quantity:
+          type: integer
+        price_base_type:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        specific_base_price:
+          type: integer
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

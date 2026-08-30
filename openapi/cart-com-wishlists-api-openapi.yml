@@ -1,0 +1,338 @@
+openapi: 3.2.0
+info:
+  title: Online Store Wishlists API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Wishlists
+paths:
+  /wishlists:
+    get:
+      summary: Get Wishlists
+      tags:
+      - Wishlists
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  wishlists:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/wishlists'
+      operationId: get-wishlists
+      description: Gets an array of wishlists.
+    post:
+      summary: Create a Wishlist
+      operationId: post-wishlists
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/wishlists'
+      description: Creates a wishlist.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  name: My Wishlist
+                  cart_type: WishList
+                  customer_id: 42
+                  is_public: false
+                  store_id: 1
+                  discount_total: 100
+                  subtotal: 1099.99
+                  shipping_total: 0
+                  handling_total: 0
+                  tax_total: 0
+                  grand_total: 999.99
+                  tax_rate: 8
+                  additional_fees: 0
+                  discounted_shipping_total: 0
+                  region_markup_amount: 0
+                  non_shipping_discount: 100
+                  gift_certificate_discount: 5
+                  coupon_code: ''
+                  associated_order_id: null
+                  shipping_estimate_city: null
+                  shipping_estimate_state_code: null
+                  shipping_estimate_postal_code: null
+                  shipping_estimate_country_code: null
+                  is_shipping_billed_to_account: false
+                  customer_payment_method_id: null
+                  payment_method_id: null
+                  is_payment_cart_only: false
+              properties:
+                name:
+                  type: string
+                cart_type:
+                  type: string
+                customer_id:
+                  type: integer
+                is_public:
+                  type: boolean
+                store_id:
+                  type: integer
+                discount_total:
+                  type: number
+                subtotal:
+                  type: number
+                shipping_total:
+                  type: number
+                handling_total:
+                  type: number
+                tax_total:
+                  type: number
+                grand_total:
+                  type: number
+                tax_rate:
+                  type: number
+                additional_fees:
+                  type: number
+                discounted_shipping_total:
+                  type: number
+                region_markup_amount:
+                  type: number
+                non_shipping_discount:
+                  type: number
+                gift_certificate_discount:
+                  type: number
+                coupon_code:
+                  type: string
+                associated_order_id:
+                  type: integer
+                shipping_estimate_city:
+                  type: string
+                shipping_estimate_state_code: {}
+                shipping_estimate_postal_code:
+                  type: string
+                shipping_estimate_country_code:
+                  type: string
+                is_shipping_billed_to_account:
+                  type: boolean
+                customer_payment_method_id:
+                  type: integer
+                payment_method_id:
+                  type: integer
+                is_payment_cart_only:
+                  type: boolean
+            examples:
+              Example:
+                value:
+                  name: My Wishlist
+                  cart_type: WishList
+                  customer_id: 42
+                  is_public: false
+                  store_id: 1
+                  discount_total: 100
+                  subtotal: 1099.99
+                  shipping_total: 0
+                  handling_total: 0
+                  tax_total: 0
+                  grand_total: 999.99
+                  tax_rate: 8
+                  additional_fees: 0
+                  discounted_shipping_total: 0
+                  region_markup_amount: 0
+                  non_shipping_discount: 100
+                  gift_certificate_discount: 5
+                  coupon_code: ''
+                  associated_order_id: 3
+                  shipping_estimate_city: Beaumont
+                  shipping_estimate_state_code: Tx
+                  shipping_estimate_postal_code: '77702'
+                  shipping_estimate_country_code: US
+                  is_shipping_billed_to_account: false
+                  customer_payment_method_id: 333
+                  payment_method_id: 3
+                  is_payment_cart_only: false
+      tags:
+      - Wishlists
+  /wishlists/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `wishlist`
+    put:
+      summary: Update a Wishlist
+      operationId: put-wishlists-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/wishlists'
+      description: Updates a wishlist.
+      tags:
+      - Wishlists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/wishlists'
+    delete:
+      summary: Delete a Wishlist
+      operationId: delete-wishlists-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      description: Deletes a wishlist.
+      tags:
+      - Wishlists
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    wishlists:
+      description: ''
+      type: object
+      examples:
+        Example:
+          value:
+            id: 41
+            name: ''
+            cart_type: WishList
+            customer_id: null
+            is_public: false
+            updated_at: '2020-12-11T08:57:29.79-06:00'
+            created_at: '2019-05-28T17:56:07.49-05:00'
+            store_id: 1
+            session_id: 1899
+            discount_total: 100
+            subtotal: 1099.99
+            shipping_total: 0
+            handling_total: 0
+            tax_total: 0
+            grand_total: 999.99
+            tax_rate: null
+            additional_fees: 0
+            discounted_shipping_total: 0
+            region_markup_amount: null
+            non_shipping_discount: 100
+            gift_certificate_discount: 5
+            coupon_code: ''
+            associated_order_id: null
+            shipping_estimate_city: null
+            shipping_estimate_state_code: null
+            shipping_estimate_postal_code: null
+            shipping_estimate_country_code: null
+            is_shipping_billed_to_account: false
+            customer_payment_method_id: null
+            payment_method_id: null
+            is_payment_cart_only: false
+            lookup_key: null
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        cart_type:
+          type: string
+          minLength: 1
+        customer_id:
+          type: integer
+        is_public:
+          type: boolean
+        updated_at:
+          type: string
+          minLength: 1
+        created_at:
+          type: string
+          minLength: 1
+        store_id:
+          type: integer
+        session_id:
+          type: integer
+        discount_total:
+          type: number
+        subtotal:
+          type: number
+        shipping_total:
+          type: number
+        handling_total:
+          type: number
+        tax_total:
+          type: number
+        grand_total:
+          type: number
+        tax_rate:
+          type: number
+        additional_fees:
+          type: number
+        discounted_shipping_total:
+          type: number
+        region_markup_amount:
+          type: number
+        non_shipping_discount:
+          type: number
+        gift_certificate_discount:
+          type: number
+        coupon_code:
+          type: string
+        associated_order_id:
+          type: integer
+        shipping_estimate_city:
+          type: string
+        shipping_estimate_state_code:
+          type: string
+        shipping_estimate_postal_code:
+          type: string
+        shipping_estimate_country_code:
+          type: string
+        is_shipping_billed_to_account:
+          type: boolean
+        customer_payment_method_id:
+          type: integer
+        payment_method_id:
+          type: integer
+        is_payment_cart_only:
+          type: boolean
+        lookup_key:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

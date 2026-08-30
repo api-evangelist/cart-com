@@ -1,0 +1,199 @@
+openapi: 3.2.0
+info:
+  title: Online Store Order Statuses API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Order Statuses
+paths:
+  /order_statuses:
+    get:
+      summary: Get Order Statuses
+      tags:
+      - Order Statuses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  order_statuses:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/order_statuses'
+      operationId: get-order_statuses
+      description: 'Gets an array of order statuses. '
+    post:
+      summary: Create an Order Status
+      operationId: post-order_statuses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order_statuses'
+      tags:
+      - Order Statuses
+      description: Creates an order status.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  name: Pending Processing
+                  is_open: true
+                  is_declined: false
+                  is_cancelled: false
+                  is_shipped: false
+                  color: '#A4E065'
+                  email_template_id: null
+                  is_fully_refunded: false
+                  is_partially_refunded: false
+                  is_quote_status: false
+              properties:
+                name:
+                  type: string
+                is_open:
+                  type: boolean
+                is_declined:
+                  type: boolean
+                is_cancelled:
+                  type: boolean
+                is_shipped:
+                  type: boolean
+                color:
+                  type: string
+                email_template_id:
+                  type: integer
+                is_fully_refunded:
+                  type: boolean
+                is_partially_refunded:
+                  type: boolean
+                is_quote_status:
+                  type: boolean
+                is_partially_shipped:
+                  type: boolean
+            examples:
+              Example:
+                value:
+                  name: Pending Processing
+                  is_open: true
+                  is_declined: false
+                  is_cancelled: false
+                  is_shipped: false
+                  color: '#A4E065'
+                  email_template_id: 4
+                  is_fully_refunded: false
+                  is_partially_refunded: false
+                  is_quote_status: false
+                  is_partially_shipped: false
+  /order_statuses/{id}:
+    parameters:
+    - schema:
+        type: string
+      name: id
+      in: path
+      required: true
+      description: The ID of the `order_status`
+    put:
+      summary: Update an Order Status
+      operationId: put-order_statuses-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order_statuses'
+      tags:
+      - Order Statuses
+      description: Updates an order status.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/order_statuses'
+    delete:
+      summary: Delete an Order Status
+      operationId: delete-order_statuses-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Order Statuses
+      description: Deletes an order status.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    order_statuses:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        is_open:
+          type: boolean
+        is_declined:
+          type: boolean
+        is_cancelled:
+          type: boolean
+        is_shipped:
+          type: boolean
+        color:
+          type: string
+        email_template_id:
+          type: integer
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        is_fully_refunded:
+          type: boolean
+        is_partially_refunded:
+          type: boolean
+        is_quote_status:
+          type: boolean
+        is_partially_shipped:
+          type: boolean
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

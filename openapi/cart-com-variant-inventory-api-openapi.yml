@@ -1,0 +1,520 @@
+openapi: 3.2.0
+info:
+  title: Online Store Variant Inventory API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Variant Inventory
+paths:
+  /variant_inventory:
+    get:
+      summary: Get Variant Inventory
+      tags:
+      - Variant Inventory
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  variant_inventory:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/variant_inventory'
+      operationId: get-variant_inventory
+      description: Gets an array of all Variant Inventory.
+    post:
+      summary: Create a Variant Inventory Item
+      operationId: post-variant_inventory
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    id: 77
+                    product_id: 8
+                    inventory: 0
+                    item_number: 3367799-4
+                    manufacturer_item_number: ''
+                    weight: 0
+                    product_status_id: 3
+                    quickbooks_item_id: ''
+                    updated_at: '2021-10-06T14:28:52.9715109-05:00'
+                    created_at: '2021-10-06T14:28:52.9715109-05:00'
+                    low_stock_warning_at: 3
+                    low_stock_warning_enabled: false
+                    gtin: ''
+                    variant_inventory_image: ''
+                    height: null
+                    length: null
+                    width: null
+                    retail: 0
+                    shipper_hq_shipping_groups: ''
+                    shipper_hq_dimensional_rule_groups: ''
+                    shipper_hq_packing_boxes: ''
+                    description: 'Color: VariantTest-Red'
+                    variants:
+                    - id: 9
+                      product_id: 8
+                      variant_group_id: 1
+                      description: X-Large
+                      price_adjustment: 0
+                      price_adjustment_type: ''
+                      sort_order: 0
+                      item_number_extension: ''
+                      is_hidden: false
+                      weight: 1.0
+                      weight_type: +
+                      updated_at: null
+                      created_at: null
+                      is_default_selection: false
+                      swatch_file: null
+                      swatch_thumbnail: null
+                      swatch_thumbnail_color: null
+                      variant_inventory_id: 77
+                    - id: 5
+                      product_id: 8
+                      variant_group_id: 4
+                      description: White
+                      price_adjustment: 0
+                      price_adjustment_type: ''
+                      sort_order: 0
+                      item_number_extension: ''
+                      is_hidden: false
+                      weight: 1.0
+                      weight_type: +
+                      updated_at: null
+                      created_at: null
+                      is_default_selection: false
+                      swatch_file: null
+                      swatch_thumbnail: null
+                      swatch_thumbnail_color: null
+                      variant_inventory_id: 77
+                properties:
+                  id:
+                    type: integer
+                  product_id:
+                    type: integer
+                  inventory:
+                    type: integer
+                  item_number:
+                    type: string
+                    minLength: 1
+                  manufacturer_item_number:
+                    type: string
+                  weight:
+                    type: number
+                  product_status_id:
+                    type: number
+                  quickbooks_item_id:
+                    type: string
+                  updated_at:
+                    type: string
+                  created_at:
+                    type: string
+                  low_stock_warning_at:
+                    type: number
+                  low_stock_warning_enabled:
+                    type: boolean
+                  gtin:
+                    type: string
+                  variant_inventory_image:
+                    type: string
+                  height:
+                    type: number
+                  length:
+                    type: number
+                  width:
+                    type: number
+                  retail:
+                    type: number
+                  shipper_hq_shipping_groups:
+                    type: string
+                  shipper_hq_dimensional_rule_groups:
+                    type: string
+                  shipper_hq_packing_boxes:
+                    type: string
+                  description:
+                    type: string
+                  variants:
+                    type: array
+                    uniqueItems: true
+                    minItems: -4
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        product_id:
+                          type: integer
+                        variant_group_id:
+                          type: integer
+                        description:
+                          type: string
+                        price_adjustment:
+                          type: number
+                        price_adjustment_type:
+                          type: string
+                        sort_order:
+                          type: number
+                        item_number_extension:
+                          type: string
+                        item_number_sort_order:
+                          type: integer
+                        is_hidden:
+                          type: boolean
+                        weight:
+                          type: number
+                        weight_type:
+                          type: string
+                        updated_at:
+                          type: string
+                        created_at:
+                          type: string
+                        is_default_selection:
+                          type: boolean
+                        swatch_file:
+                          type: string
+                        swatch_thumbnail:
+                          type: string
+                        swatch_thumbnail_color:
+                          type: string
+                        variant_inventory_id:
+                          type: number
+                      required:
+                      - id
+                      - product_id
+                      - variant_group_id
+                required:
+                - id
+      tags:
+      - Variant Inventory
+      description: 'Creates a variant inventory item.
+
+
+        Variant Inventory items are created from all possible variant combinations. It is required to specify applicable variants that make up the variant inventory item you wish to create. For information, please see our knowledge base: [Adding Variant Level Inventory](https://support.americommerce.com/hc/en-us/articles/201907140-Adding-Variant-Level-Inventory)'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              x-examples:
+                example-1:
+                  product_id: 8
+                  inventory: 0
+                  item_number: 3367799-4
+                  manufacturer_item_number: ''
+                  weight: 0
+                  product_status_id: 3
+                  quickbooks_item_id: ''
+                  low_stock_warning_at: 3
+                  low_stock_warning_enabled: false
+                  gtin: ''
+                  variant_inventory_image: ''
+                  height: null
+                  length: null
+                  width: null
+                  retail: 0
+                  shipper_hq_shipping_groups: ''
+                  shipper_hq_dimensional_rule_groups: ''
+                  shipper_hq_packing_boxes: ''
+                  variants:
+                  - id: 9
+                    product_id: 8
+                    variant_group_id: 1
+                    description: X-Large
+                    price_adjustment: 0
+                    price_adjustment_type: ''
+                    sort_order: 0
+                    item_number_extension: ''
+                    item_number_sort_order: 0
+                    is_hidden: false
+                    weight: 0
+                    weight_type: ''
+                    is_default_selection: false
+                    swatch_file: ''
+                    swatch_thumbnail: ''
+                    swatch_thumbnail_color: ''
+                    variant_inventory_id: 7
+                  - id: 5
+                    product_id: 8
+                    variant_group_id: 4
+                    description: White
+                    price_adjustment: 0
+                    price_adjustment_type: ''
+                    sort_order: 0
+                    item_number_extension: ''
+                    item_number_sort_order: 0
+                    is_hidden: false
+                    weight: 0
+                    weight_type: ''
+                    is_default_selection: false
+                    swatch_file: ''
+                    swatch_thumbnail: ''
+                    swatch_thumbnail_color: ''
+                    variant_inventory_id: 7
+              properties:
+                product_id:
+                  type: integer
+                inventory:
+                  type: number
+                item_number:
+                  type: string
+                manufacturer_item_number:
+                  type: string
+                weight:
+                  type: number
+                product_status_id:
+                  type: integer
+                quickbooks_item_id:
+                  type: string
+                low_stock_warning_at:
+                  type: number
+                low_stock_warning_enabled:
+                  type: boolean
+                gtin:
+                  type: string
+                variant_inventory_image:
+                  type: string
+                height:
+                  type: number
+                length:
+                  type: number
+                width:
+                  type: number
+                retail:
+                  type: number
+                shipper_hq_shipping_groups:
+                  type: string
+                shipper_hq_dimensional_rule_groups:
+                  type: string
+                shipper_hq_packing_boxes:
+                  type: string
+                description:
+                  type: string
+                variants:
+                  type: array
+                  uniqueItems: true
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      product_id:
+                        type: number
+                      variant_group_id:
+                        type: number
+                      description:
+                        type: string
+                      price_adjustment:
+                        type: number
+                      price_adjustment_type:
+                        type: string
+                      sort_order:
+                        type: number
+                      item_number_extension:
+                        type: string
+                      item_number_sort_order:
+                        type: integer
+                      is_hidden:
+                        type: boolean
+                      weight:
+                        type: number
+                      weight_type:
+                        type: number
+                      is_default_selection:
+                        type: boolean
+                      swatch_file:
+                        type: string
+                      swatch_thumbnail:
+                        type: string
+                      swatch_thumbnail_color:
+                        type: string
+                      variant_inventory_id:
+                        type: number
+                    required:
+                    - id
+                    - product_id
+                    - variant_group_id
+              required:
+              - product_id
+              - variants
+            examples:
+              Example:
+                value:
+                  product_id: 8
+                  inventory: 0
+                  item_number: 3367799-4
+                  manufacturer_item_number: ''
+                  weight: 0
+                  product_status_id: 3
+                  quickbooks_item_id: ''
+                  low_stock_warning_at: 3
+                  low_stock_warning_enabled: false
+                  gtin: ''
+                  variant_inventory_image: ''
+                  height: null
+                  length: null
+                  width: null
+                  retail: 0
+                  shipper_hq_shipping_groups: ''
+                  shipper_hq_dimensional_rule_groups: ''
+                  shipper_hq_packing_boxes: ''
+                  description: ''
+                  variants:
+                  - id: 9
+                    product_id: 8
+                    variant_group_id: 1
+                    description: X-Large
+                    price_adjustment: 0
+                    price_adjustment_type: ''
+                    sort_order: 0
+                    item_number_extension: ''
+                    is_hidden: false
+                    is_default_selection: false
+                    swatch_file: ''
+                    swatch_thumbnail: ''
+                    swatch_thumbnail_color: ''
+                    variant_inventory_id: 7
+                  - id: 5
+                    product_id: 8
+                    variant_group_id: 4
+                    description: White
+                    price_adjustment: 0
+                    price_adjustment_type: ''
+                    sort_order: 0
+                    item_number_extension: ''
+                    is_hidden: false
+                    is_default_selection: false
+                    swatch_file: ''
+                    swatch_thumbnail: ''
+                    swatch_thumbnail_color: ''
+                    variant_inventory_id: 7
+        description: ''
+  /variant_inventory/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `variant_inventory` item.
+    put:
+      summary: Update Variant Inventory
+      operationId: put-variant_inventory-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/variant_inventory'
+      description: Updates a variant inventory item.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/variant_inventory'
+      tags:
+      - Variant Inventory
+    delete:
+      summary: Delete Variant Inventory
+      operationId: delete-variant_inventory-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      description: Deletes a variant inventory item by ID.
+      tags:
+      - Variant Inventory
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    variant_inventory:
+      type: object
+      properties:
+        id:
+          type: integer
+        product_id:
+          type: integer
+        inventory:
+          type: integer
+        item_number:
+          type: string
+        manufacturer_item_number:
+          type: string
+        weight:
+          type: number
+        product_status_id:
+          type: integer
+        quickbooks_item_id:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        low_stock_warning_at:
+          type: integer
+        low_stock_warning_enabled:
+          type: boolean
+        gtin:
+          type: string
+        variant_inventory_image:
+          type: string
+        height:
+          type: number
+        length:
+          type: number
+        width:
+          type: number
+        retail:
+          type: number
+        shipper_hq_shipping_groups:
+          type: string
+        shipper_hq_dimensional_rule_groups:
+          type: string
+        shipper_hq_packing_boxes:
+          type: string
+        description:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

@@ -1,0 +1,494 @@
+openapi: 3.2.0
+info:
+  title: Online Store Customers API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Customers
+paths:
+  /customers:
+    get:
+      summary: Get Customers
+      tags:
+      - Customers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  customers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/customers'
+      operationId: get-customers
+      description: Gets an array of customers.
+    post:
+      summary: Create a Customer
+      operationId: post-customers
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Customers
+      description: Creates a customer.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  customer_number: ''
+                  last_name: Aurelius
+                  first_name: Marcus
+                  email: maurelius@test.com
+                  phone_number: 555-123-4596
+                  adcode: ''
+                  adcode_id: 0
+                  affiliate_id: null
+                  customer_type_id: 4
+                  is_no_tax_customer: true
+                  comments: ''
+                  store_id: 19
+                  source: ''
+                  search_string: ''
+                  no_account: false
+                  sales_person: ''
+                  alternate_phone_number: 455-258-8585
+                  is_affiliate_customer: false
+                  username: ''
+                  is_contact_information_only: false
+                  tax_exemption_number: ''
+                  company: Romanatech
+                  source_group: ''
+                  sales_person_user_id: null
+                  store_payment_methods_enabled: []
+                  tax_rate: null
+                  reward_tier_id: null
+                  sub: ''
+                  customer_payment_methods_availability: []
+              properties:
+                customer_number:
+                  type: string
+                last_name:
+                  type: string
+                first_name:
+                  type: string
+                email:
+                  type: string
+                phone_number:
+                  type: string
+                adcode:
+                  type: string
+                adcode_id:
+                  type: number
+                affiliate_id:
+                  type: integer
+                customer_type_id:
+                  type: integer
+                is_no_tax_customer:
+                  type: boolean
+                comments:
+                  type: string
+                store_id:
+                  type: number
+                source:
+                  type: string
+                search_string:
+                  type: string
+                no_account:
+                  type: boolean
+                sales_person:
+                  type: string
+                alternate_phone_number:
+                  type: string
+                is_affiliate_customer:
+                  type: boolean
+                username:
+                  type: string
+                is_contact_information_only:
+                  type: boolean
+                tax_exemption_number:
+                  type: string
+                company:
+                  type: string
+                source_group:
+                  type: string
+                sales_person_user_id:
+                  type: integer
+                store_payment_methods_enabled:
+                  type: array
+                  items:
+                    type: object
+                tax_rate:
+                  type: number
+                lock_default_address:
+                  type: boolean
+                reward_tier_id:
+                  type: integer
+                payment_net_term:
+                  type: integer
+                credit_limit:
+                  type: number
+                is_inactive:
+                  type: boolean
+                use_shared_credit_limit:
+                  type: boolean
+                override_shared_credit_limit:
+                  type: boolean
+                customer_payment_methods_availability:
+                  type: array
+                  items:
+                    type: object
+                default_payment_type_name:
+                  type: string
+              required:
+              - email
+              - store_id
+            examples:
+              Example:
+                value:
+                  customer_number: ''
+                  last_name: Aurelius
+                  first_name: Marcus
+                  email: maurelius@test.com
+                  phone_number: 555-123-4596
+                  adcode: ''
+                  adcode_id: 0
+                  affiliate_id: 1
+                  customer_type_id: 4
+                  is_no_tax_customer: true
+                  comments: ''
+                  store_id: 19
+                  source: ''
+                  search_string: ''
+                  no_account: false
+                  sales_person: ''
+                  alternate_phone_number: 455-258-8585
+                  is_affiliate_customer: false
+                  username: ''
+                  is_contact_information_only: false
+                  tax_exemption_number: ''
+                  company: Romanatech
+                  source_group: ''
+                  sales_person_user_id: 2
+                  store_payment_methods_enabled: []
+                  tax_rate: 2
+                  lock_default_address: false
+                  reward_tier_id: 1
+                  payment_net_term: 0
+                  credit_limit: 10.0
+                  is_inactive: false
+                  use_shared_credit_limit: false
+                  override_shared_credit_limit: false
+                  customer_payment_methods_availability: []
+                  default_payment_type_name: Credit Card
+  /customers/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `customer`
+    put:
+      summary: Update a Customer
+      operationId: put-customers-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customers'
+      tags:
+      - Customers
+      description: Updates a customer.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customer_number:
+                  type: string
+                last_name:
+                  type: string
+                first_name:
+                  type: string
+                email:
+                  type: string
+                phone_number:
+                  type: string
+                registered_at:
+                  type: string
+                last_visit_at:
+                  type: 'null'
+                adcode:
+                  type: string
+                adcode_id:
+                  type: integer
+                affiliate_id:
+                  type: 'null'
+                customer_type_id:
+                  type: integer
+                is_no_tax_customer:
+                  type: boolean
+                comments:
+                  type: string
+                store_id:
+                  type: integer
+                source:
+                  type: string
+                search_string:
+                  type: string
+                no_account:
+                  type: boolean
+                sales_person:
+                  type: string
+                alternate_phone_number:
+                  type: string
+                is_affiliate_customer:
+                  type: boolean
+                username:
+                  type: string
+                is_contact_information_only:
+                  type: boolean
+                tax_exemption_number:
+                  type: string
+                company:
+                  type: string
+                source_group:
+                  type: string
+                sales_person_user_id:
+                  type: integer
+                tax_rate:
+                  type: number
+                lock_default_address:
+                  type: boolean
+                reward_tier_id:
+                  type: integer
+                payment_net_term:
+                  type: integer
+                credit_limit:
+                  type: number
+                is_inactive:
+                  type: boolean
+                use_shared_credit_limit:
+                  type: boolean
+                override_shared_credit_limit:
+                  type: boolean
+                customer_payment_methods_availability:
+                  type: array
+                  items:
+                    type: object
+                default_payment_type_name:
+                  type: string
+              x-examples:
+                Example 1:
+                  customer_number: ''
+                  last_name: Johnson
+                  first_name: John
+                  email: johnjohnson@mail.com
+                  phone_number: '654654454'
+                  registered_at: '2019-04-01T15:16:00-05:00'
+                  last_visit_at: null
+                  adcode: ''
+                  adcode_id: 0
+                  affiliate_id: null
+                  customer_type_id: 1
+                  is_no_tax_customer: false
+                  comments: ''
+                  store_id: 1
+                  source: ''
+                  search_string: ''
+                  no_account: false
+                  sales_person: ''
+                  alternate_phone_number: ''
+                  is_affiliate_customer: false
+                  username: ''
+                  is_contact_information_only: false
+                  tax_exemption_number: ''
+                  company: ''
+                  source_group: ''
+                  sales_person_user_id: null
+                  tax_rate: null
+                  reward_tier_id: null
+            examples:
+              Example:
+                value:
+                  id: 13
+                  customer_number: ''
+                  last_name: Aurelius
+                  first_name: Marcus
+                  email: maurelius@test.com
+                  phone_number: 555-123-4596
+                  adcode: ''
+                  adcode_id: 0
+                  affiliate_id: 1
+                  customer_type_id: 4
+                  is_no_tax_customer: true
+                  comments: ''
+                  store_id: 19
+                  source: ''
+                  search_string: ''
+                  no_account: false
+                  sales_person: ''
+                  alternate_phone_number: 455-258-8585
+                  is_affiliate_customer: false
+                  username: ''
+                  is_contact_information_only: false
+                  tax_exemption_number: ''
+                  company: Romanatech
+                  source_group: ''
+                  sales_person_user_id: 2
+                  store_payment_methods_enabled: []
+                  tax_rate: 2
+                  lock_default_address: false
+                  reward_tier_id: 1
+                  payment_net_term: 0
+                  credit_limit: 10.0
+                  is_inactive: false
+                  use_shared_credit_limit: false
+                  override_shared_credit_limit: false
+                  customer_payment_methods_availability: []
+                  default_payment_type_name: Credit Card
+        description: ''
+    delete:
+      summary: Delete a Customer
+      operationId: delete-customers-id
+      tags:
+      - Customers
+      description: Deletes a customer.
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    customers:
+      type: object
+      properties:
+        id:
+          type: integer
+        customer_number:
+          type: string
+        last_name:
+          type: string
+        first_name:
+          type: string
+        email:
+          type: string
+        phone_number:
+          type: string
+        registered_at:
+          type: string
+        last_visit_at:
+          type: string
+        adcode:
+          type: string
+        adcode_id:
+          type: integer
+        affiliate_id:
+          type: integer
+        customer_type_id:
+          type: integer
+        is_no_tax_customer:
+          type: boolean
+        comments:
+          type: string
+        store_id:
+          type: integer
+        source:
+          type: string
+        search_string:
+          type: string
+        no_account:
+          type: boolean
+        sales_person:
+          type: string
+        alternate_phone_number:
+          type: string
+        is_affiliate_customer:
+          type: boolean
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        username:
+          type: string
+        is_contact_information_only:
+          type: boolean
+        tax_exemption_number:
+          type: string
+        company:
+          type: string
+        source_group:
+          type: string
+        sales_person_user_id:
+          type: integer
+        store_payment_methods_enabled:
+          type: array
+          items:
+            type: string
+        tax_rate:
+          type: number
+        lock_default_address:
+          type: boolean
+        reward_tier_id:
+          type: integer
+        payment_net_term:
+          type: integer
+        credit_limit:
+          type: number
+        is_inactive:
+          type: boolean
+        use_shared_credit_limit:
+          type: boolean
+        override_shared_credit_limit:
+          type: boolean
+        customer_payment_methods_availability:
+          type: array
+          items:
+            type: object
+        default_payment_type_name:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

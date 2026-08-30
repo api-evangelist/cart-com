@@ -1,0 +1,466 @@
+openapi: 3.2.0
+info:
+  title: Online Store Orders API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Orders
+paths:
+  /orders:
+    get:
+      summary: Get Orders
+      tags:
+      - Orders
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  orders:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/orders'
+      operationId: get-orders
+      description: Gets an array of orders.
+    post:
+      summary: Create an Order
+      operationId: post-orders
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/orders'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  id: 100232
+                  customer_id: 88
+                  customer_type_id: 0
+                  adcode: ''
+                  ordered_at: '2021-05-14T11:09:00-05:00'
+                  order_status_id: 10
+                  special_instructions: ''
+                  subtotal: 4386
+                  tax_total: 0
+                  shipping_total: 1
+                  discount_total: 943
+                  grand_total: 3444
+                  cost_total: 450
+                  selected_shipping_method: Texas
+                  ip_address: 71.78.191.26
+                  exported_to_accounting_system: 0
+                  referrer: ''
+                  order_shipping_address_id: 1597
+                  order_billing_address_id: 1597
+                  admin_comments: 'Combined with order # 100231.'
+                  source: '[none]'
+                  search_phrase: ''
+                  is_ppc: false
+                  ppc_keyword: ''
+                  store_id: 19
+                  session_id: 135414
+                  handling_total: 0
+                  is_payment_order_only: false
+                  selected_shipping_provider_service: '23'
+                  additional_fees: 0
+                  adcode_id: 0
+                  updated_at: '2021-09-22T11:48:18.903-05:00'
+                  created_at: '2021-05-14T11:09:20.16-05:00'
+                  is_gift: false
+                  gift_message: ''
+                  public_comments: ''
+                  instructions: ''
+                  source_group: ''
+                  from_subscription_id: null
+                  previous_order_status_id: 6
+                  order_status_last_changed_at: '2021-05-14T11:09:26.893-05:00'
+                  discounted_shipping_total: 1
+                  order_number: ''
+                  coupon_code: ''
+                  order_type: Order
+                  expires_at: null
+                  expires: false
+                  from_quote_id: null
+                  campaign_code: ''
+                  reward_points_credited: false
+                  channel: Online
+                  device: None
+                  manufacturer_invoice_number: ''
+                  manufacturer_invoice_amount: 0
+                  manufacturer_invoice_paid: false
+                  entered_by: acsupport
+                  due_date: null
+              properties:
+                customer_id:
+                  type: integer
+                customer_type_id:
+                  type: integer
+                adcode:
+                  type: string
+                order_status_id:
+                  type: integer
+                special_instructions:
+                  type: string
+                subtotal:
+                  type: number
+                tax_total:
+                  type: number
+                shipping_total:
+                  type: number
+                discount_total:
+                  type: number
+                grand_total:
+                  type: number
+                cost_total:
+                  type: number
+                selected_shipping_method:
+                  type: string
+                referrer:
+                  type: string
+                order_shipping_address_id:
+                  type: integer
+                order_billing_address_id:
+                  type: integer
+                admin_comments:
+                  type: string
+                source:
+                  type: string
+                search_phrase:
+                  type: string
+                is_ppc:
+                  type: boolean
+                ppc_keyword:
+                  type: string
+                store_id:
+                  type: integer
+                handling_total:
+                  type: number
+                is_payment_order_only:
+                  type: boolean
+                selected_shipping_provider_service:
+                  type: string
+                additional_fees:
+                  type: number
+                adcode_id:
+                  type: integer
+                is_gift:
+                  type: boolean
+                gift_message:
+                  type: string
+                public_comments:
+                  type: string
+                instructions:
+                  type: string
+                source_group:
+                  type: string
+                from_subscription_id:
+                  type: integer
+                discounted_shipping_total:
+                  type: number
+                order_number:
+                  type: string
+                coupon_code:
+                  type: string
+                order_type:
+                  type: string
+                expires_at:
+                  type: string
+                expires:
+                  type: boolean
+                from_quote_id:
+                  type: integer
+                campaign_code:
+                  type: string
+                reward_points_credited:
+                  type: boolean
+                channel:
+                  type: string
+                device:
+                  type: string
+                manufacturer_invoice_number:
+                  type: string
+                manufacturer_invoice_amount:
+                  type: number
+                manufacturer_invoice_paid:
+                  type: boolean
+                due_date:
+                  type: string
+                delivery_tax:
+                  type: number
+                location_id:
+                  type: integer
+              required:
+              - customer_id
+              - order_status_id
+              - order_shipping_address_id
+              - order_billing_address_id
+            examples:
+              Example:
+                value:
+                  customer_id: 88
+                  customer_type_id: 0
+                  adcode: ''
+                  ordered_at: '2021-05-14T11:09:00-05:00'
+                  order_status_id: 10
+                  special_instructions: ''
+                  subtotal: 4386
+                  tax_total: 0
+                  shipping_total: 1
+                  discount_total: 943
+                  grand_total: 3444
+                  cost_total: 450
+                  selected_shipping_method: Texas
+                  referrer: ''
+                  order_shipping_address_id: 1597
+                  order_billing_address_id: 1597
+                  admin_comments: 'Combined with order # 100231.'
+                  source: '[none]'
+                  search_phrase: ''
+                  is_ppc: false
+                  ppc_keyword: ''
+                  store_id: 19
+                  handling_total: 0
+                  is_payment_order_only: false
+                  selected_shipping_provider_service: '23'
+                  additional_fees: 0
+                  adcode_id: 0
+                  is_gift: false
+                  gift_message: ''
+                  public_comments: ''
+                  instructions: ''
+                  source_group: ''
+                  from_subscription_id: null
+                  discounted_shipping_total: 1
+                  order_number: ''
+                  coupon_code: ''
+                  order_type: Order
+                  expires_at: null
+                  expires: false
+                  from_quote_id: null
+                  campaign_code: ''
+                  reward_points_credited: false
+                  channel: Online
+                  device: None
+                  manufacturer_invoice_number: ''
+                  manufacturer_invoice_amount: 0
+                  manufacturer_invoice_paid: false
+                  entered_by: acsupport
+                  due_date: null
+                  delivery_tax: 0.0
+                  location_id: null
+      tags:
+      - Orders
+      description: Creates an order.
+  /orders/{id}:
+    parameters:
+    - schema:
+        type: string
+      name: id
+      in: path
+      required: true
+      description: The ID of the `order`
+    put:
+      summary: Update an Order
+      operationId: put-orders-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/orders'
+      tags:
+      - Orders
+      description: Updates an order.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/orders'
+    delete:
+      summary: Delete an Order
+      operationId: delete-orders-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Orders
+      description: 'Deletes an order. '
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    orders:
+      type: object
+      properties:
+        id:
+          type: integer
+        customer_id:
+          type: integer
+        customer_type_id:
+          type: integer
+        adcode:
+          type: string
+        ordered_at:
+          type: string
+        order_status_id:
+          type: integer
+        special_instructions:
+          type: string
+        subtotal:
+          type: integer
+        tax_total:
+          type: number
+        shipping_total:
+          type: integer
+        discount_total:
+          type: integer
+        grand_total:
+          type: number
+        cost_total:
+          type: integer
+        selected_shipping_method:
+          type: string
+        ip_address:
+          type: string
+        exported_to_accounting_system:
+          type: integer
+        referrer:
+          type: string
+        order_shipping_address_id:
+          type: integer
+        order_billing_address_id:
+          type: integer
+        admin_comments:
+          type: string
+        source:
+          type: string
+        search_phrase:
+          type: string
+        is_ppc:
+          type: boolean
+        ppc_keyword:
+          type: string
+        store_id:
+          type: integer
+        session_id:
+          type: integer
+        handling_total:
+          type: integer
+        is_payment_order_only:
+          type: boolean
+        selected_shipping_provider_service:
+          type: string
+        additional_fees:
+          type: integer
+        adcode_id:
+          type: integer
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        is_gift:
+          type: boolean
+        gift_message:
+          type: string
+        public_comments:
+          type: string
+        instructions:
+          type: string
+        source_group:
+          type: string
+        from_subscription_id:
+          type: integer
+        previous_order_status_id:
+          type: integer
+        order_status_last_changed_at:
+          type: string
+        discounted_shipping_total:
+          type: integer
+        order_number:
+          type: string
+        coupon_code:
+          type: string
+        order_type:
+          type: string
+        expires_at:
+          type: string
+        expires:
+          type: boolean
+        from_quote_id:
+          type: integer
+        campaign_code:
+          type: string
+        reward_points_credited:
+          type: boolean
+        sales_agent_user_id:
+          type: integer
+          x-stoplight:
+            id: kaw0p5vde61h6
+        channel:
+          type: string
+          description: 'Valid values: Online, InStore, Chat, Phone, Email'
+        device:
+          type: string
+        manufacturer_invoice_number:
+          type: string
+        manufacturer_invoice_amount:
+          type: number
+        manufacturer_invoice_paid:
+          type: boolean
+        due_date:
+          type: string
+        delivery_tax:
+          type: number
+        location_id:
+          type: integer
+        entered_by:
+          type: string
+          description: Username/Email of the Admin or Customer who created this order
+        entered_by_type:
+          type: string
+          description: 'Valid values: Admin, Customer'
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

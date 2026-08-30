@@ -1,0 +1,291 @@
+openapi: 3.2.0
+info:
+  title: Online Store Order Payments API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Order Payments
+paths:
+  /order_payments:
+    get:
+      summary: Get Order Payments
+      tags:
+      - Order Payments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  order_payments:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/order_payments'
+      operationId: get-order_payments
+      description: Gets an array of Order Payments.
+    post:
+      summary: Create an Order Payment
+      operationId: post-order_payments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order_payments'
+      tags:
+      - Order Payments
+      description: Creates an order payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  customer_id: 107
+                  order_id: 100242
+                  customer_payment_method_id: 0
+                  payment_method_id: 122
+                  payment_type: Custom
+                  is_approved: true
+                  is_declined: false
+                  card_type: null
+                  card_expiration_month: 0
+                  card_expiration_year: 0
+                  cardholder_name: ''
+                  approved_at: ''
+                  authorization_code: ''
+                  reject_reason: ''
+                  avs_code: ''
+                  payment_method_name: custom
+                  transaction_type: None
+                  amount: 5001
+                  payment_note: ''
+                  gift_certificate_id: null
+                  is_captured: false
+                  transaction_id: ''
+                  last_four: ''
+                  is_void: false
+                  gateway_response_code: ''
+                  cvv_response_code: ''
+                  token: ''
+                  payment_ref_num: ''
+                  store_payment_method_id: null
+              properties:
+                customer_id:
+                  type: integer
+                order_id:
+                  type: integer
+                customer_payment_method_id:
+                  type: integer
+                payment_method_id:
+                  type: integer
+                payment_type:
+                  type: string
+                  minLength: 1
+                is_approved:
+                  type: boolean
+                is_declined:
+                  type: boolean
+                card_type:
+                  type: string
+                card_expiration_month:
+                  type: integer
+                card_expiration_year:
+                  type: integer
+                cardholder_name:
+                  type: string
+                reject_reason:
+                  type: string
+                payment_method_name:
+                  type: string
+                transaction_type:
+                  type: string
+                amount:
+                  type: number
+                payment_note:
+                  type: string
+                gift_certificate_id:
+                  type: integer
+                is_captured:
+                  type: boolean
+                last_four:
+                  type: string
+                is_void:
+                  type: boolean
+                payment_ref_num:
+                  type: string
+                store_payment_method_id:
+                  type: integer
+              required:
+              - customer_id
+              - order_id
+            examples:
+              Example:
+                value:
+                  customer_id: 107
+                  order_id: 100242
+                  customer_payment_method_id: 0
+                  payment_method_id: 122
+                  payment_type: Custom
+                  is_approved: true
+                  is_declined: false
+                  card_type: ''
+                  card_expiration_month: 0
+                  card_expiration_year: 0
+                  cardholder_name: ''
+                  reject_reason: ''
+                  payment_method_name: custom
+                  transaction_type: None
+                  amount: 5001
+                  payment_note: ''
+                  gift_certificate_id: 12
+                  is_captured: false
+                  last_four: ''
+                  is_void: false
+                  payment_ref_num: ''
+                  store_payment_method_id: 2
+  /order_payments/{id}:
+    parameters:
+    - schema:
+        type: string
+      name: id
+      in: path
+      required: true
+      description: The ID of the `order_payment`
+    put:
+      summary: Update an Order Payment
+      operationId: put-order_payments-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order_payments'
+      tags:
+      - Order Payments
+      description: Updates an order payment.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/order_payments'
+    delete:
+      summary: Delete an Order Payment
+      operationId: delete-order_payments-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Order Payments
+      description: 'Deletes an order payment. '
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    order_payments:
+      type: object
+      properties:
+        id:
+          type: integer
+        customer_id:
+          type: integer
+        order_id:
+          type: integer
+        customer_payment_method_id:
+          type: integer
+        payment_method_id:
+          type: integer
+        payment_type:
+          type: string
+        is_approved:
+          type: boolean
+        is_declined:
+          type: boolean
+        card_type:
+          type: string
+        card_expiration_month:
+          type: integer
+        card_expiration_year:
+          type: integer
+        cardholder_name:
+          type: string
+        paid_at:
+          type: string
+        approved_at:
+          type: string
+        authorization_code:
+          type: string
+        reject_reason:
+          type: string
+        avs_code:
+          type: string
+        payment_method_name:
+          type: string
+        transaction_type:
+          type: string
+        amount:
+          type: number
+        payment_note:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        gift_certificate_id:
+          type: integer
+        is_captured:
+          type: boolean
+        transaction_id:
+          type: string
+        last_four:
+          type: string
+        is_void:
+          type: boolean
+        gateway_response_code:
+          type: string
+        cvv_response_code:
+          type: string
+        payment_ref_num:
+          type: string
+        store_payment_method_id:
+          type: integer
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

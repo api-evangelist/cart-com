@@ -1,0 +1,195 @@
+openapi: 3.2.0
+info:
+  title: Online Store Profiles API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Profiles
+paths:
+  /profiles:
+    get:
+      summary: Get Profiles
+      tags:
+      - Profiles
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  profiles:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/profiles'
+      operationId: get-profiles
+      description: Gets an array of profiles.
+    post:
+      summary: Create a Profile
+      operationId: post-profiles
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/profiles'
+      description: Creates a Profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  email: email@email.com
+                  username: admin
+                  type: User
+                  real_name: ''
+                  display_name: MyDisplayName
+                  about: ''
+                  image_url: ''
+                  company: ''
+              properties:
+                email:
+                  type: string
+                username:
+                  type: string
+                type:
+                  type: string
+                real_name:
+                  type: string
+                display_name:
+                  type: string
+                about:
+                  type: string
+                image_url:
+                  type: string
+                company:
+                  type: string
+              required:
+              - username
+              examples:
+                Example:
+                  value:
+                    email: email@email.com
+                    username: admin
+                    type: User
+                    real_name: ''
+                    display_name: MyDisplayName
+                    about: ''
+                    image_url: ''
+                    company: ''
+      tags:
+      - Profiles
+  /profiles/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `profile`
+    put:
+      summary: Update a Profile
+      operationId: put-profiles-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/profiles'
+      tags:
+      - Profiles
+      description: Updates a profile.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/profiles'
+            examples:
+              Example:
+                value:
+                  email: email@email.com
+                  username: admin
+                  type: User
+                  real_name: ''
+                  display_name: MyDisplayName
+                  about: ''
+                  image_url: ''
+                  company: ''
+    delete:
+      summary: Delete a Profile
+      operationId: delete-profiles-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Profiles
+      description: Deletes a profile.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    profiles:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        username:
+          type: string
+        type:
+          type: string
+        real_name:
+          type: string
+        display_name:
+          type: string
+        about:
+          type: string
+        image_url:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        company:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

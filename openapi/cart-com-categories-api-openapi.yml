@@ -1,0 +1,269 @@
+openapi: 3.2.0
+info:
+  title: Online Store Categories API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Categories
+paths:
+  /categories:
+    get:
+      summary: Get Categories
+      tags:
+      - Categories
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  categories:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/categories'
+      operationId: get-categories
+      description: Gets an array of categories.
+    post:
+      summary: Create a Category
+      operationId: post-categories
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/categories'
+      tags:
+      - Categories
+      description: Creates a category.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  name: Shoes
+                  short_description: ''
+                  sort_order: 0
+                  is_hidden: false
+                  parent_category_id: 14
+                  max_quantity: 0
+                  category_thumbnail: ''
+                  page_title: ''
+                  lookup_path: ''
+                  keywords: ''
+                  meta_description: ''
+                  category_image: ''
+                  external_content_url: ''
+                  is_category_content_displayed: true
+                  are_subcategory_products_displayed: false
+                  url_rewrite: ''
+                  default_product_picture: ''
+                  alternate_thumbnail: ''
+                  head_tags: ''
+                  cat_image_alt_text: ''
+                  thumb_image_alt_text: ''
+                  is_hide_from_site_maps: false
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                short_description:
+                  type: string
+                sort_order:
+                  type: integer
+                is_hidden:
+                  type: boolean
+                parent_category_id:
+                  type: integer
+                max_quantity:
+                  type: integer
+                category_thumbnail:
+                  type: string
+                page_title:
+                  type: string
+                lookup_path:
+                  type: string
+                keywords:
+                  type: string
+                meta_description:
+                  type: string
+                category_image:
+                  type: string
+                external_content_url:
+                  type: string
+                is_category_content_displayed:
+                  type: boolean
+                are_subcategory_products_displayed:
+                  type: boolean
+                url_rewrite:
+                  type: string
+                default_product_picture:
+                  type: string
+                alternate_thumbnail:
+                  type: string
+                head_tags:
+                  type: string
+                cat_image_alt_text:
+                  type: string
+                thumb_image_alt_text:
+                  type: string
+                is_hide_from_site_maps:
+                  type: boolean
+              required:
+              - name
+              examples:
+                Example:
+                  value:
+                    name: Shoes
+                    short_description: ''
+                    sort_order: 0
+                    is_hidden: false
+                    parent_category_id: 14
+                    max_quantity: 0
+                    category_thumbnail: ''
+                    page_title: ''
+                    lookup_path: ''
+                    keywords: ''
+                    meta_description: ''
+                    category_image: ''
+                    external_content_url: ''
+                    is_category_content_displayed: true
+                    are_subcategory_products_displayed: false
+                    url_rewrite: ''
+                    default_product_picture: ''
+                    alternate_thumbnail: ''
+                    head_tags: ''
+                    cat_image_alt_text: ''
+                    thumb_image_alt_text: ''
+                    is_hide_from_site_maps: false
+  /categories/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `category`
+    put:
+      summary: Update a Category
+      operationId: put-categories-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/categories'
+      description: Updates a category.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/categories'
+      tags:
+      - Categories
+    delete:
+      summary: Delete a Category
+      operationId: delete-categories-id
+      tags:
+      - Categories
+      description: Deletes a category.
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    categories:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        short_description:
+          type: string
+        sort_order:
+          type: integer
+        is_hidden:
+          type: boolean
+        parent_category_id:
+          type: integer
+        max_quantity:
+          type: integer
+        category_thumbnail:
+          type: string
+        page_title:
+          type: string
+        lookup_path:
+          type: string
+        keywords:
+          type: string
+        meta_description:
+          type: string
+        category_image:
+          type: string
+        external_content_url:
+          type: string
+        is_category_content_displayed:
+          type: boolean
+        are_subcategory_products_displayed:
+          type: boolean
+        url_rewrite:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        default_product_picture:
+          type: string
+        alternate_thumbnail:
+          type: string
+        head_tags:
+          type: string
+        cat_image_alt_text:
+          type: string
+        thumb_image_alt_text:
+          type: string
+        is_hide_from_site_maps:
+          type: boolean
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

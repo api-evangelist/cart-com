@@ -1,0 +1,214 @@
+openapi: 3.2.0
+info:
+  title: Online Store Product Pictures API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Product Pictures
+paths:
+  /product_pictures:
+    get:
+      summary: Get Product Pictures
+      tags:
+      - Product Pictures
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  product_pictures:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/product_pictures'
+      operationId: get-product_pictures
+      description: Gets an array of product pictures.
+    post:
+      summary: Add a Product Picture
+      operationId: post-product_pictures
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/product_pictures'
+      tags:
+      - Product Pictures
+      description: Adds a picture to a product.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  product_id: 48
+                  image_file: /shared/images/product.png
+                  alt: product photo
+                  description: ''
+                  is_primary: true
+                  is_hidden: false
+                  thumbnail_file: ''
+                  sort_order: 0
+                  flash_path: ''
+                  is_video_screen_shot: false
+                  video_content: ''
+                  download_external_image: false
+              properties:
+                product_id:
+                  type: integer
+                image_file:
+                  type: string
+                alt:
+                  type: string
+                description:
+                  type: string
+                is_primary:
+                  type: boolean
+                is_hidden:
+                  type: boolean
+                thumbnail_file:
+                  type: string
+                sort_order:
+                  type: integer
+                flash_path:
+                  type: string
+                is_video_screen_shot:
+                  type: boolean
+                video_content:
+                  type: string
+                download_external_image:
+                  type: boolean
+              required:
+              - product_id
+              - image_file
+            examples:
+              Example:
+                value:
+                  product_id: 48
+                  image_file: /shared/images/product.png
+                  alt: product photo
+                  description: ''
+                  is_primary: true
+                  is_hidden: false
+                  thumbnail_file: ''
+                  sort_order: 0
+                  flash_path: ''
+                  is_video_screen_shot: false
+                  video_content: ''
+                  download_external_image: false
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+        description: ''
+  /product_pictures/{id}:
+    parameters:
+    - schema:
+        type: string
+      name: id
+      in: path
+      required: true
+      description: The ID of the `product_picture`
+    put:
+      summary: Update a Product Picture
+      operationId: put-product_pictures-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/product_pictures'
+      tags:
+      - Product Pictures
+      description: Updates a product picture.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/product_pictures'
+    delete:
+      summary: Delete a Product Picture
+      operationId: delete-product_pictures-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      description: Deletes a product picture.
+      tags:
+      - Product Pictures
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    product_pictures:
+      type: object
+      properties:
+        id:
+          type: integer
+        product_id:
+          type: integer
+        image_file:
+          type: string
+        alt:
+          type: string
+        description:
+          type: string
+        is_primary:
+          type: boolean
+        is_hidden:
+          type: boolean
+        thumbnail_file:
+          type: string
+        sort_order:
+          type: integer
+        flash_path:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        is_video_screen_shot:
+          type: boolean
+        video_content:
+          type: string
+        download_external_image:
+          type: boolean
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

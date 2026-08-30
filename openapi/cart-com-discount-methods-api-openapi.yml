@@ -1,0 +1,215 @@
+openapi: 3.2.0
+info:
+  title: Online Store Discount Methods API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Discount Methods
+paths:
+  /discount_methods:
+    get:
+      summary: Discount Methods
+      tags:
+      - Discount Methods
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  discount_methods:
+                    type:
+                    - array
+                    items:
+                      $ref: '#/components/schemas/discount_methods'
+      operationId: get-discount_methods
+      description: Gets an array of discount methods.
+    post:
+      summary: Create a Discount Method
+      operationId: post-discount_methods
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discount_methods'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  name: 15 off
+                  is_enabled: true
+                  is_strict: false
+                  use_once: false
+                  expires: false
+                  expires_at: ''
+                  starts_at: 7/7/2021 3:23:11 PM
+                  remaining_uses: null
+                  notes: ''
+                  is_free_shipping_discount: false
+              properties:
+                name:
+                  type: string
+                is_enabled:
+                  type: boolean
+                is_strict:
+                  type: boolean
+                use_once:
+                  type: boolean
+                expires:
+                  type: boolean
+                expires_at:
+                  type: string
+                starts_at:
+                  type: string
+                remaining_uses:
+                  type: integer
+                notes:
+                  type: string
+                is_free_shipping_discount:
+                  type: boolean
+                is_exclusive:
+                  type: boolean
+                uses:
+                  type: integer
+                exclude_child_items:
+                  type: boolean
+                exclude_subscription_renew:
+                  type: boolean
+            examples:
+              Example:
+                value:
+                  name: 15 off
+                  is_enabled: true
+                  is_strict: false
+                  use_once: false
+                  expires: false
+                  expires_at: ''
+                  starts_at: 7/7/2021 3:23:11 PM
+                  remaining_uses: 5
+                  notes: ''
+                  is_free_shipping_discount: false
+                  is_exclusive: false
+                  uses: 10
+                  exclude_child_items: false
+                  exclude_subscription_renew: true
+      tags:
+      - Discount Methods
+      description: Creates a discount method.
+  /discount_methods/{id}:
+    parameters:
+    - schema:
+        type: string
+      name: id
+      in: path
+      required: true
+      description: The ID of the `discount_method`
+    put:
+      summary: Update a Discount Method
+      operationId: put-discount_methods-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/discount_methods'
+      tags:
+      - Discount Methods
+      description: Updates a discount method.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/discount_methods'
+    delete:
+      summary: Delete a Discount Method
+      operationId: delete-discount_methods-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Discount Methods
+      description: Deletes a discount method.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    discount_methods:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        is_enabled:
+          type: boolean
+        is_strict:
+          type: boolean
+        use_once:
+          type: boolean
+        expires:
+          type: boolean
+        expires_at:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        starts_at:
+          type: string
+        remaining_uses:
+          type: integer
+        notes:
+          type: string
+        is_free_shipping_discount:
+          type: boolean
+        is_exclusive:
+          type: boolean
+        uses:
+          type: integer
+        exclude_child_items:
+          type: boolean
+        exclude_subscription_renew:
+          type: boolean
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

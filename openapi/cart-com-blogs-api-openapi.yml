@@ -1,0 +1,435 @@
+openapi: 3.2.0
+info:
+  title: Online Store Blogs API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Blogs
+paths:
+  /blogs:
+    get:
+      summary: Get Blogs
+      tags:
+      - Blogs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  blogs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/blogs'
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  ? ''
+                  : type: string
+      operationId: get-blogs
+      description: Gets an array of blogs.
+    post:
+      summary: Create a Blog
+      operationId: post-blogs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/blogs'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  store_id: 1
+                  name: Our Blog
+                  description: ''
+                  tag_line: 'This is where ##STORENAME## talks about stuff related to our industry!'
+                  url_slug: /blog2
+                  meta_description: ''
+                  meta_keywords: ''
+                  copyright: ''
+                  image_url: ''
+                  language: ''
+                  max_feed_elements: 25
+                  syndication_type: Full
+                  is_rss_feed_enabled: true
+                  is_atom_feed_enabled: true
+                  max_chars_short_feed: null
+                  max_chars_summary: null
+                  is_commenting_enabled: true
+                  is_comment_moderation_enabled: true
+                  default_post_image: ''
+                  default_teaser_image: ''
+                  new_post_notification_email_template_id: null
+                  new_comment_notification_email_template_id: null
+                  notify_commenters_on_new_comments: false
+                  new_comment_admin_notification_email_template_id: null
+                  new_post_admin_notification_email_template_id: null
+                  new_comment_reply_notification_email_template_id: null
+                  page_title: '##STORENAME## Blog'
+              properties:
+                store_id:
+                  type: integer
+                name:
+                  type: string
+                description:
+                  type: string
+                tag_line:
+                  type: string
+                meta_keywords:
+                  type: string
+                url_slug:
+                  type: string
+                  description: Isn't required depending your SEO settings in Settings > Search Engine, under Blogs. With the default settings, a URL will be created using the value entered for `name`. However, it must be unique.
+                meta_description:
+                  type: string
+                copyright:
+                  type: string
+                image_url:
+                  type: string
+                language:
+                  type: string
+                max_feed_elements:
+                  type: number
+                syndication_type:
+                  type: string
+                  minLength: 1
+                is_rss_feed_enabled:
+                  type: boolean
+                is_atom_feed_enabled:
+                  type: boolean
+                max_chars_short_feed:
+                  type: integer
+                max_chars_summary:
+                  type: integer
+                is_commenting_enabled:
+                  type: boolean
+                is_comment_moderation_enabled:
+                  type: boolean
+                default_post_image:
+                  type: string
+                default_teaser_image:
+                  type: string
+                new_post_notification_email_template_id:
+                  type: integer
+                new_comment_notification_email_template_id:
+                  type: integer
+                notify_commenters_on_new_comments:
+                  type: boolean
+                new_comment_admin_notification_email_template_id:
+                  type: integer
+                new_post_admin_notification_email_template_id:
+                  type: integer
+                new_comment_reply_notification_email_template_id:
+                  type: integer
+                page_title:
+                  type: string
+                  maxLength: 255
+              required:
+              - store_id
+              - name
+            examples:
+              Example:
+                value:
+                  store_id: 1
+                  name: Our Blog
+                  description: ''
+                  tag_line: 'This is where ##STORENAME## talks about stuff related to our industry!'
+                  url_slug: /blog
+                  meta_description: ''
+                  meta_keywords: ''
+                  copyright: ''
+                  image_url: ''
+                  language: ''
+                  max_feed_elements: 25
+                  syndication_type: Full
+                  is_rss_feed_enabled: true
+                  is_atom_feed_enabled: true
+                  max_chars_short_feed: null
+                  max_chars_summary: null
+                  is_commenting_enabled: true
+                  is_comment_moderation_enabled: true
+                  default_post_image: ''
+                  default_teaser_image: ''
+                  new_post_notification_email_template_id: 4
+                  new_comment_notification_email_template_id: 5
+                  notify_commenters_on_new_comments: false
+                  new_comment_admin_notification_email_template_id: 6
+                  new_post_admin_notification_email_template_id: 7
+                  new_comment_reply_notification_email_template_id: 8
+                  page_title: '##STORENAME## Blog'
+        description: ''
+      description: 'Creates a Blog. '
+      tags:
+      - Blogs
+  /blogs/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `blog`
+    put:
+      summary: Update a Blog
+      operationId: put-blogs-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/blogs'
+      description: Updates a blog.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  id: 1
+                  store_id: 1
+                  name: Our Blog
+                  description: ''
+                  tag_line: 'This is where ##STORENAME## talks about stuff related to our industry!'
+                  url_slug: /blog
+                  meta_description: ''
+                  meta_keywords: ''
+                  copyright: ''
+                  image_url: ''
+                  language: ''
+                  max_feed_elements: 25
+                  syndication_type: Full
+                  is_rss_feed_enabled: true
+                  is_atom_feed_enabled: true
+                  max_chars_short_feed: null
+                  max_chars_summary: null
+                  is_commenting_enabled: true
+                  is_comment_moderation_enabled: true
+                  default_post_image: ''
+                  default_teaser_image: ''
+                  new_post_notification_email_template_id: 4
+                  new_comment_notification_email_template_id: 5
+                  notify_commenters_on_new_comments: false
+                  new_comment_admin_notification_email_template_id: 6
+                  new_post_admin_notification_email_template_id: 7
+                  new_comment_reply_notification_email_template_id: 8
+                  page_title: '##STORENAME## Blog'
+              properties:
+                id:
+                  type: integer
+                store_id:
+                  type: number
+                name:
+                  type: string
+                description:
+                  type: string
+                tag_line:
+                  type: string
+                url_slug:
+                  type: string
+                meta_description:
+                  type: string
+                meta_keywords:
+                  type: string
+                copyright:
+                  type: string
+                image_url:
+                  type: string
+                language:
+                  type: string
+                max_feed_elements:
+                  type: number
+                syndication_type:
+                  type: string
+                is_rss_feed_enabled:
+                  type: boolean
+                is_atom_feed_enabled:
+                  type: boolean
+                max_chars_short_feed:
+                  type: integer
+                max_chars_summary:
+                  type: integer
+                is_commenting_enabled:
+                  type: boolean
+                is_comment_moderation_enabled:
+                  type: boolean
+                default_post_image:
+                  type: string
+                default_teaser_image:
+                  type: string
+                new_post_notification_email_template_id:
+                  type: integer
+                new_comment_notification_email_template_id:
+                  type: integer
+                notify_commenters_on_new_comments:
+                  type: boolean
+                new_comment_admin_notification_email_template_id:
+                  type: integer
+                new_post_admin_notification_email_template_id:
+                  type: integer
+                new_comment_reply_notification_email_template_id:
+                  type: integer
+                page_title:
+                  type: string
+                  maxLength: 255
+              required:
+              - id
+            examples:
+              Example:
+                value:
+                  id: 1
+                  store_id: 1
+                  name: Our Blog
+                  description: ''
+                  tag_line: 'This is where ##STORENAME## talks about stuff related to our industry!'
+                  url_slug: /blog
+                  meta_description: ''
+                  meta_keywords: ''
+                  copyright: ''
+                  image_url: ''
+                  language: ''
+                  max_feed_elements: 25
+                  syndication_type: Full
+                  is_rss_feed_enabled: true
+                  is_atom_feed_enabled: true
+                  max_chars_short_feed: 25
+                  max_chars_summary: 25
+                  is_commenting_enabled: true
+                  is_comment_moderation_enabled: true
+                  default_post_image: ''
+                  default_teaser_image: ''
+                  new_post_notification_email_template_id: 4
+                  new_comment_notification_email_template_id: 5
+                  notify_commenters_on_new_comments: false
+                  new_comment_admin_notification_email_template_id: 6
+                  new_post_admin_notification_email_template_id: 7
+                  new_comment_reply_notification_email_template_id: 8
+                  page_title: '##STORENAME## Blog'
+      tags:
+      - Blogs
+    delete:
+      summary: Delete a Blog
+      operationId: delete-blogs-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      description: 'Deletes a blog. '
+      tags:
+      - Blogs
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    blogs:
+      type: object
+      properties:
+        id:
+          type: integer
+        store_id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        tag_line:
+          type: string
+        url_slug:
+          type: string
+        meta_description:
+          type: string
+        meta_keywords:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        copyright:
+          type: string
+        image_url:
+          type: string
+        language:
+          type: string
+        max_feed_elements:
+          type: integer
+        syndication_type:
+          type: string
+        is_rss_feed_enabled:
+          type: boolean
+        is_atom_feed_enabled:
+          type: boolean
+        max_chars_short_feed:
+          type: integer
+        max_chars_summary:
+          type: integer
+        is_commenting_enabled:
+          type: boolean
+        is_comment_moderation_enabled:
+          type: boolean
+        default_post_image:
+          type: string
+        default_teaser_image:
+          type: string
+        new_post_notification_email_template_id:
+          type: integer
+        new_comment_notification_email_template_id:
+          type: integer
+        notify_commenters_on_new_comments:
+          type: boolean
+        new_comment_admin_notification_email_template_id:
+          type: integer
+        new_post_admin_notification_email_template_id:
+          type: integer
+        new_comment_reply_notification_email_template_id:
+          type: integer
+        page_title:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

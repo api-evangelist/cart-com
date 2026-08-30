@@ -1,0 +1,242 @@
+openapi: 3.2.0
+info:
+  title: Online Store Regions API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Regions
+paths:
+  /regions:
+    get:
+      summary: Get Regions
+      tags:
+      - Regions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  regions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/regions'
+      operationId: get-regions
+      description: Gets an array of regions.
+    post:
+      summary: Create a Region
+      operationId: post-regions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/regions'
+      tags:
+      - Regions
+      description: Creates a region.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  postal_codes: []
+                  name: OCONUS
+                  states:
+                  - Alaska
+                  - Hawaii
+                  countries: []
+                  markup_type: Percent
+                  markup_amount: 5
+                  sort_order: 1
+                  region_type: ZipcodeState
+                  postal_code_country: null
+                  is_shipping_region: true
+                  is_tax_region: false
+              properties:
+                postal_codes:
+                  type: array
+                  items:
+                    type: object
+                name:
+                  type: string
+                states:
+                  type: array
+                  items:
+                    type: object
+                countries:
+                  type: array
+                  items:
+                    type: object
+                markup_type:
+                  type: string
+                  description: The default is `Percent`
+                markup_amount:
+                  type: number
+                sort_order:
+                  type: integer
+                region_type:
+                  type: string
+                postal_code_country:
+                  type: string
+                is_shipping_region:
+                  type: boolean
+                is_tax_region:
+                  type: boolean
+              required:
+              - markup_amount
+              - sort_order
+            examples:
+              Example:
+                value:
+                  postal_codes: []
+                  name: OCONUS
+                  states:
+                  - Alaska
+                  - Hawaii
+                  countries: []
+                  markup_type: Percent
+                  markup_amount: 5
+                  sort_order: 1
+                  updated_at: '2021-10-07T12:58:11.533-05:00'
+                  created_at: '2021-10-07T12:58:11.533-05:00'
+                  region_type: ZipcodeState
+                  postal_code_country: ''
+                  is_shipping_region: true
+                  is_tax_region: false
+        description: ''
+  /regions/{id}:
+    parameters:
+    - schema:
+        type: string
+      name: id
+      in: path
+      required: true
+      description: The ID of the `region`
+    put:
+      summary: Update a Region
+      operationId: put-regions-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/regions'
+      tags:
+      - Regions
+      description: Updates a region.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/regions'
+    delete:
+      summary: Delete a Region
+      operationId: delete-regions-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Regions
+      description: Deletes a region.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    regions:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          id: 14
+          postal_codes: []
+          name: OCONUS
+          states:
+          - Alaska
+          - Hawaii
+          countries: []
+          markup_type: Percent
+          markup_amount: 5
+          sort_order: 1
+          updated_at: '2021-10-07T12:58:11.533-05:00'
+          created_at: '2021-10-07T12:58:11.533-05:00'
+          region_type: ZipcodeState
+          postal_code_country: null
+          is_shipping_region: true
+          is_tax_region: false
+      properties:
+        id:
+          type: integer
+        postal_codes:
+          type: array
+          items:
+            type: object
+        name:
+          type: string
+        states:
+          type: array
+          items: {}
+        countries:
+          type: array
+          items: {}
+        markup_type:
+          type: string
+        markup_amount:
+          type: number
+        sort_order:
+          type: integer
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        region_type:
+          type: string
+        postal_code_country:
+          type: string
+        is_shipping_region:
+          type: boolean
+        is_tax_region:
+          type: boolean
+      required:
+      - id
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

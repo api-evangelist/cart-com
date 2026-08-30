@@ -1,0 +1,176 @@
+openapi: 3.2.0
+info:
+  title: Online Store Custom Field Values API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Custom Field Values
+paths:
+  /custom_field_values:
+    get:
+      summary: Get Custom Field Values
+      tags:
+      - Custom Field Values
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  custom_field_values:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/custom_field_values'
+      operationId: get-custom_field_values
+      description: Gets an array of custom field values.
+    post:
+      summary: Create a Custom Field Value
+      operationId: post-custom_field_values
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/custom_field_values'
+      description: Creates a custom field value.
+      tags:
+      - Custom Field Values
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  id: 133
+                  custom_field_id: 46
+                  resource_id: 74
+                  value: IONIZED PARTICLES
+              properties:
+                custom_field_id:
+                  type: integer
+                resource_id:
+                  type: integer
+                value:
+                  type: string
+                  minLength: 1
+              required:
+              - custom_field_id
+              - resource_id
+              - value
+            examples:
+              Example:
+                value:
+                  custom_field_id: 46
+                  resource_id: 88
+                  value: value
+  /custom_field_values/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `custom_field`
+    put:
+      summary: Update a Custom Field Value
+      operationId: put-custom_field_value-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/custom_field_values'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  resource_id: 74
+                  value: IONIZED PARTICLES
+              properties:
+                resource_id:
+                  type: integer
+                value:
+                  type: string
+              required:
+              - resource_id
+              - value
+            examples:
+              Example:
+                value:
+                  resource_id: 74
+                  value: value
+      description: Updates a custom field value.
+      tags:
+      - Custom Field Values
+    delete:
+      summary: Delete a Custom Field Value
+      operationId: delete-custom_field_value-id
+      description: Deletes an custom field value.
+      tags:
+      - Custom Field Values
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    custom_field_values:
+      type: object
+      properties:
+        id:
+          type: integer
+        custom_field_id:
+          type: integer
+        resource_id:
+          type: integer
+        value:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

@@ -1,0 +1,83 @@
+openapi: 3.2.0
+info:
+  title: Online Store Shipping Providers API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Shipping Providers
+paths:
+  /shipping_providers:
+    get:
+      summary: Get Shipping Providers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/shipping_providers'
+      operationId: get-shipping_providers
+      tags:
+      - Shipping Providers
+      description: Gets an array of shipping providers.
+  /shipping_providers/{id}:
+    parameters:
+    - schema:
+        type: string
+      name: id
+      in: path
+      required: true
+      description: The ID of the `shipping_provider`
+    put:
+      summary: Update a Shipping Provider
+      operationId: put-shipping_providers-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/shipping_providers'
+      tags:
+      - Shipping Providers
+      description: Updates a shipping provider.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/shipping_providers'
+components:
+  schemas:
+    shipping_providers:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        provider_code:
+          type: string
+        is_enabled:
+          type: boolean
+        markup_amount:
+          type: string
+        markup_type:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        additional_markup_percent:
+          type: integer
+        additional_weight_per_package:
+          type: integer
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

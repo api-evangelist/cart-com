@@ -1,0 +1,194 @@
+openapi: 3.2.0
+info:
+  title: Online Store URL Redirects API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: URL Redirects
+paths:
+  /url_redirects:
+    get:
+      summary: Get URL Redirects
+      tags:
+      - URL Redirects
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  url_redirects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/url_redirects'
+      operationId: get-url_redirects
+      description: Gets an array of URL redirects.
+    post:
+      summary: Create a URL Redirect
+      operationId: post-url_redirects
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/url_redirects'
+      tags:
+      - URL Redirects
+      description: Creates a URL redirect.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  from: /sitemap.html
+                  to: /store/sitemapgenerator.aspx
+                  is_active: true
+                  redirect_type: UrlRewrite
+              properties:
+                from:
+                  type: string
+                to:
+                  type: string
+                is_active:
+                  type: boolean
+                redirect_type:
+                  type: string
+              required:
+              - from
+              - to
+            examples:
+              Example:
+                value:
+                  from: /infinity.aspx
+                  to: /beyond.aspx
+                  is_active: true
+                  redirect_type: UrlRewrite
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+          multipart/form-data:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  from: /sitemap.html
+                  to: /store/sitemapgenerator.aspx
+                  is_active: true
+                  redirect_type: UrlRewrite
+              properties:
+                from:
+                  type: string
+                to:
+                  type: string
+                is_active:
+                  type: boolean
+                redirect_type:
+                  type: string
+              required:
+              - from
+              - to
+            examples:
+              Example:
+                value:
+                  from: string
+                  to: string
+                  is_active: true
+                  redirect_type: string
+  /url_redirects/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `url_redirect`
+    put:
+      summary: Update a URL Redirect
+      operationId: put-url_redirects-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/url_redirects'
+      tags:
+      - URL Redirects
+      description: Updates a URL redirect.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/url_redirects'
+    delete:
+      summary: Delete a URL Redirect
+      operationId: delete-url_redirects-id
+      description: Deletes a URL redirect.
+      tags:
+      - URL Redirects
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    url_redirects:
+      type: object
+      properties:
+        id:
+          type: integer
+        from:
+          type: string
+        to:
+          type: string
+        is_active:
+          type: boolean
+        redirect_type:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

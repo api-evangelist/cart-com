@@ -1,0 +1,74 @@
+openapi: 3.2.0
+info:
+  title: Online Store Users API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Users
+paths:
+  /users:
+    get:
+      summary: Get Users
+      tags:
+      - Users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/users'
+      operationId: get-users
+      description: Gets an array of users.
+components:
+  schemas:
+    users:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        last_login_attempt_at:
+          type: string
+        last_login_at:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        phone_extension:
+          type: string
+        alternate_phone:
+          type: string
+        fax:
+          type: string
+        profile_id:
+          type: integer
+        is_salesperson:
+          type: boolean
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

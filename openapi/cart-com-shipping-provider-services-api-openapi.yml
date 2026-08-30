@@ -1,0 +1,83 @@
+openapi: 3.2.0
+info:
+  title: Online Store Shipping Provider Services API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Shipping Provider Services
+paths:
+  /shipping_provider_services:
+    get:
+      summary: Get Shipping Provider Services
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/shipping_provider_services'
+      operationId: get-shipping_provider_services
+      tags:
+      - Shipping Provider Services
+      description: Gets an array of shipping provider services.
+  /shipping_provider_services/{id}:
+    parameters:
+    - schema:
+        type: string
+      name: id
+      in: path
+      required: true
+      description: The ID of the `shipping_provider_services`
+    put:
+      summary: Update a Shipping Provider Service
+      operationId: put-shipping_provider_services-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/shipping_provider_services'
+      tags:
+      - Shipping Provider Services
+      description: Updates a shipping provider service.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/shipping_provider_services'
+components:
+  schemas:
+    shipping_provider_services:
+      type: object
+      properties:
+        id:
+          type: integer
+        is_enabled:
+          type: boolean
+        shipping_provider_id:
+          type: integer
+        identifier:
+          type: string
+        name:
+          type: string
+        shipping_provider_code:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        allow_apo:
+          type: boolean
+        allow_po_box:
+          type: boolean
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

@@ -1,0 +1,172 @@
+openapi: 3.2.0
+info:
+  title: Online Store Product Statuses API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Product Statuses
+paths:
+  /product_statuses:
+    get:
+      summary: Product Statuses
+      tags:
+      - Product Statuses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  product_statuses:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/product_statuses'
+      operationId: get-product_statuses
+      description: Gets an arary of product statuses
+    post:
+      summary: Create a Product Status
+      operationId: post-product_statuses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/product_statuses'
+      description: Creates a product status.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  name: In Stock
+                  time_frame: 1-2 Business Days
+                  is_unavailable: false
+                  is_hidden: false
+                  is_back_ordered: true
+                  show_quantity: false
+              properties:
+                name:
+                  type: string
+                time_frame:
+                  type: string
+                is_unavailable:
+                  type: boolean
+                is_hidden:
+                  type: boolean
+                is_back_ordered:
+                  type: boolean
+                show_quantity:
+                  type: boolean
+              required:
+              - name
+            examples:
+              Example:
+                value:
+                  name: In Stock
+                  time_frame: 1-2 Business Days
+                  is_unavailable: false
+                  is_hidden: false
+                  is_back_ordered: true
+                  show_quantity: false
+      tags:
+      - Product Statuses
+  /product_statuses/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `product_status`
+    put:
+      summary: Update a Product Status
+      operationId: put-product_statuses-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/product_statuses'
+      tags:
+      - Product Statuses
+      description: Updates a product status.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/product_statuses'
+    delete:
+      summary: Delete a Product Status
+      operationId: delete-product_statuses-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Product Statuses
+      description: Deletes a product status.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    product_statuses:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        time_frame:
+          type: string
+        is_unavailable:
+          type: boolean
+        is_hidden:
+          type: boolean
+        is_back_ordered:
+          type: boolean
+        show_quantity:
+          type: boolean
+        updated_at:
+          type: string
+        created_at:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

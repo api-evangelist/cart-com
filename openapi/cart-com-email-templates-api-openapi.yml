@@ -1,0 +1,206 @@
+openapi: 3.2.0
+info:
+  title: Online Store Email Templates API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Email Templates
+paths:
+  /email_templates:
+    get:
+      summary: Get Email Templates
+      tags:
+      - Email Templates
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  email_templates:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/email_templates'
+      operationId: get-email_templates
+      description: Gets an array of email templates.
+    post:
+      summary: Create an Email Template
+      operationId: post-email_templates
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/email_templates'
+      tags:
+      - Email Templates
+      description: Creates an email template.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  type: Order Confirmation
+                  body: "Thank you for your order!  Please print this for your records.\n\n--------------------------------\nOrder #\t\t: ##ORDERID##\nEmail\t\t\t: ##CUSTOMEREMAIL##\nOrder Date\t\t: ##ORDERDATE##\nOrder Status\t: ##ORDERSTATUS##\nPayment Status\t: ##PAYMENTSTATUS##\nPayment Method\t: ##PAYMENTMETHOD##\n\n--------------------------------\nShipping Address\n--------------------------------\n##SHIPADDRESS##\n\n--------------------------------\nOrder Details\n##ORDERITEMS##\n--------------------------------\nSub-Total\t\t: ##SUBTOTAL##\nShipping Method\t: ##SHIPPINGMETHOD##\nShipping Amount\t: ##SHIPPING##\nEstimated Tax\t: ##TAX##\n##DISCOUNTSTRING## ##DISCOUNTTOTAL##\n--------------------------------\nTotal\t\t\t: ##TOTAL##\n--------------------------------"
+                  subject: 'Confirmation Order ###ORDERID##'
+                  from_name: '##STORENAME##'
+                  from_email: '##STOREEMAIL##'
+                  is_enabled: true
+                  admin_alert_header: "\nCustomer Test: ##IF[CustomerType= ]## Worked ##ELSE## didnt ##ENDIF##\n\n##IF[CustomerType=retail]## retail \n##IF[CustomerType=approval needed]## aprlvnad \n##IF[CustomerType=wholesale]## wholesale\n##IF[CustomerType=Drop Shipper]## drop shipper\n##ELSE##\nNew Customer\n###ENDIF##\n\n\n\n\nView this order: \n##ADMINORDERLINK##\n \n\n\nAVS Code: ##AVSCODE## \nSource: ##SOURCE## \nPPC Keyword: ##PPCKEYWORD## \nSearch Phrase: ##SEARCHPHRASE## \nCampaign Code: ##CAMPAIGNCODE##\n\n$$GIFTCERTIFICATEAMOUNT$$ \n##GIFTCERTIFICATEDELIVERYAREA##\n##GIFTCERTIFICATEDELIVERYAREAHTML##\n##GIFTCERTIFICATECODESCSV##\n\n\n##ADMINORDERWARNINGS##"
+                  admin_alert_subject: 'Order ID###ORDERID## - ##TOTAL##'
+                  is_admin_alert_enabled: true
+                  email_format: TEXT
+                  attach_invoice_pdf: false
+              properties:
+                type:
+                  type: string
+                body:
+                  type: string
+                subject:
+                  type: string
+                from_name:
+                  type: string
+                from_email:
+                  type: string
+                is_enabled:
+                  type: boolean
+                admin_alert_header:
+                  type: string
+                admin_alert_subject:
+                  type: string
+                is_admin_alert_enabled:
+                  type: boolean
+                email_format:
+                  type: string
+                attach_invoice_pdf:
+                  type: boolean
+                email_category_id:
+                  type: integer
+                admin_alert_email_override:
+                  type: string
+            examples:
+              Example:
+                value:
+                  type: Order Confirmation
+                  body: "Thank you for your order!  Please print this for your records.\n\n--------------------------------\nOrder #\t\t: ##ORDERID##\nEmail\t\t\t: ##CUSTOMEREMAIL##\nOrder Date\t\t: ##ORDERDATE##\nOrder Status\t: ##ORDERSTATUS##\nPayment Status\t: ##PAYMENTSTATUS##\nPayment Method\t: ##PAYMENTMETHOD##\n\n--------------------------------\nShipping Address\n--------------------------------\n##SHIPADDRESS##\n\n--------------------------------\nOrder Details\n##ORDERITEMS##\n--------------------------------\nSub-Total\t\t: ##SUBTOTAL##\nShipping Method\t: ##SHIPPINGMETHOD##\nShipping Amount\t: ##SHIPPING##\nEstimated Tax\t: ##TAX##\n##DISCOUNTSTRING## ##DISCOUNTTOTAL##\n--------------------------------\nTotal\t\t\t: ##TOTAL##\n--------------------------------"
+                  subject: 'Confirmation Order ###ORDERID##'
+                  from_name: '##STORENAME##'
+                  from_email: '##STOREEMAIL##'
+                  is_enabled: true
+                  admin_alert_header: "\nCustomer Test: ##IF[CustomerType= ]## Worked ##ELSE## didnt ##ENDIF##\n\n##IF[CustomerType=retail]## retail \n##IF[CustomerType=approval needed]## aprlvnad \n##IF[CustomerType=wholesale]## wholesale\n##IF[CustomerType=Drop Shipper]## drop shipper\n##ELSE##\nNew Customer\n###ENDIF##\n\n\n\n\nView this order: \n##ADMINORDERLINK##\n \n\n\nAVS Code: ##AVSCODE## \nSource: ##SOURCE## \nPPC Keyword: ##PPCKEYWORD## \nSearch Phrase: ##SEARCHPHRASE## \nCampaign Code: ##CAMPAIGNCODE##\n\n$$GIFTCERTIFICATEAMOUNT$$ \n##GIFTCERTIFICATEDELIVERYAREA##\n##GIFTCERTIFICATEDELIVERYAREAHTML##\n##GIFTCERTIFICATECODESCSV##\n\n\n##ADMINORDERWARNINGS##"
+                  admin_alert_subject: 'Order ID###ORDERID## - ##TOTAL##'
+                  is_admin_alert_enabled: true
+                  email_format: TEXT
+                  attach_invoice_pdf: false
+                  email_category_id: 1
+                  admin_alert_email_override: coolGuy89@americommerce.com
+  /email_templates/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `email_template`
+    put:
+      summary: Update an Email Template
+      operationId: put-email_templates-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/email_templates'
+      tags:
+      - Email Templates
+      description: Updates an email template.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/email_templates'
+    delete:
+      summary: Delete an Email Template
+      operationId: delete-email_templates-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Email Templates
+      description: Deletes an email template.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    email_templates:
+      type: object
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+        body:
+          type: string
+        subject:
+          type: string
+        from_name:
+          type: string
+        from_email:
+          type: string
+        is_enabled:
+          type: boolean
+        admin_alert_header:
+          type: string
+        admin_alert_subject:
+          type: string
+        is_admin_alert_enabled:
+          type: boolean
+        email_format:
+          type: string
+        attach_invoice_pdf:
+          type: boolean
+        email_category_id:
+          type: integer
+        admin_alert_email_override:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

@@ -1,0 +1,145 @@
+openapi: 3.2.0
+info:
+  title: Online Store Drips API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Drips
+paths:
+  /drips:
+    get:
+      summary: Get Drips
+      tags:
+      - Drips
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  drips:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/drips'
+      operationId: get-drips
+      description: "Gets an array of drips. \n\nFor more information on drips, please see our Knowedge Base: [Drip Series Emailing](https://support.americommerce.com/hc/en-us/articles/201903290-Drip-Series-Email-Setup)"
+    post:
+      summary: Creates a Drip
+      operationId: post-drips
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/drips'
+      description: "Creates a drip. \n\nFor more information on drips, please see our Knowedge Base: [Drip Series Emailing](https://support.americommerce.com/hc/en-us/articles/201903290-Drip-Series-Email-Setup)"
+      tags:
+      - Drips
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  name: abandoned cart 2
+                  is_enabled: true
+              properties:
+                name:
+                  type: string
+                is_enabled:
+                  type: boolean
+            examples:
+              example-1:
+                value:
+                  name: abandoned cart
+                  is_enabled: true
+  /drips/{id}:
+    parameters:
+    - schema:
+        type: string
+      name: id
+      in: path
+      required: true
+      description: The id of the `drip`
+    put:
+      summary: Update a Drip
+      operationId: put-drips-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/drips'
+      tags:
+      - Drips
+      description: "Updates a drip. \n\nFor more information on drips, please see our Knowedge Base: [Drip Series Emailing](https://support.americommerce.com/hc/en-us/articles/201903290-Drip-Series-Email-Setup)"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/drips'
+    delete:
+      summary: Delete a Drip
+      operationId: delete-drips-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Drips
+      description: 'Deletes a drip.
+
+
+        For more information on drips, please see our Knowedge Base: [Drip Series Emailing](https://support.americommerce.com/hc/en-us/articles/201903290-Drip-Series-Email-Setup)'
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    drips:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        is_enabled:
+          type: boolean
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

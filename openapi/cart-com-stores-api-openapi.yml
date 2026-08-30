@@ -1,0 +1,137 @@
+openapi: 3.2.0
+info:
+  title: Online Store Stores API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Stores
+paths:
+  /stores:
+    get:
+      summary: Stores
+      tags:
+      - Stores
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  stores:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/stores'
+              examples:
+                example-1:
+                  value:
+                    total_count: 0
+                    stores:
+                    - id: 0
+                      name: string
+                      domain_name: string
+                      email: string
+                      fax: string
+                      phone: string
+                      keywords: string
+                      description: string
+                      all_catalog: boolean
+                      is_micro_store: true
+                      parent_store_id: 0
+                      profile_id: 0
+                      company_name: string
+                      address_line_1: string
+                      address_line_2: string
+                      city: string
+                      state: string
+                      postal_code: string
+                      country: string
+                      billing_first_name: string
+                      billing_last_name: string
+                      tech_email: string
+                      tech_first_name: string
+                      tech_last_name: string
+                      tech_same_as_billing: false
+                      store_logo: string
+                      store_image: string
+                      testimonial_count: 0
+                      average_testimonial_rating: 0
+      operationId: get-stores
+      description: Gets an array of stores.
+components:
+  schemas:
+    stores:
+      type: object
+      title: ''
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        domain_name:
+          type: string
+        email:
+          type: string
+        fax:
+          type: string
+        phone:
+          type: string
+        keywords:
+          type: string
+        description:
+          type: string
+        all_catalog:
+          type: boolean
+        is_micro_store:
+          type: boolean
+        parent_store_id:
+          type: integer
+        profile_id:
+          type: integer
+        company_name:
+          type: string
+        address_line_1:
+          type: string
+        address_line_2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postal_code:
+          type: string
+        country:
+          type: string
+        billing_first_name:
+          type: string
+        billing_last_name:
+          type: string
+        tech_email:
+          type: string
+        tech_first_name:
+          type: string
+        tech_last_name:
+          type: string
+        tech_same_as_billing:
+          type: boolean
+        store_logo:
+          type: string
+        store_image:
+          type: string
+        testimonial_count:
+          type: integer
+        average_testimonial_rating:
+          type: integer
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

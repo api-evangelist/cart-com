@@ -1,0 +1,199 @@
+openapi: 3.2.0
+info:
+  title: Online Store Blog Categories API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Blog Categories
+paths:
+  /blog_categories:
+    get:
+      summary: Get Blog Categories
+      tags:
+      - Blog Categories
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  blog_categories:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/blog_categories'
+      operationId: get-blog_categories
+      description: Gets an array of blog categories.
+    post:
+      summary: Create a Blog Category
+      operationId: post-blog_categories
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/blog_categories'
+      description: Creates a blog category.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  blog_id: 1
+                  parent_category_id: 0
+                  type: Category
+                  description: ''
+                  updated_at: '2019-10-18T11:41:33.31-05:00'
+                  created_at: '2019-10-18T11:41:33.31-05:00'
+                  name: test
+                  blog_category_path: test
+              properties:
+                blog_id:
+                  type: integer
+                parent_category_id:
+                  type: integer
+                type:
+                  type: string
+                  minLength: 1
+                description:
+                  type: string
+                updated_at:
+                  type: string
+                  minLength: 1
+                created_at:
+                  type: string
+                  minLength: 1
+                name:
+                  type: string
+                  minLength: 1
+                blog_category_path:
+                  type: string
+                  minLength: 1
+              required:
+              - blog_id
+              - parent_category_id
+              - blog_category_path
+            examples:
+              Example:
+                value:
+                  blog_id: 1
+                  parent_category_id: 0
+                  type: Category
+                  description: ''
+                  updated_at: '2019-10-18T11:41:33.31-05:00'
+                  created_at: '2019-10-18T11:41:33.31-05:00'
+                  name: test
+                  blog_category_path: test
+      tags:
+      - Blog Categories
+  /blog_categories/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `blog_cateogry`
+    put:
+      summary: Update a Blog Category
+      operationId: put-blog_categories-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/blog_categories'
+      description: Updates a blog category by ID.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/blog_categories'
+            examples:
+              Example:
+                value:
+                  id: 7
+                  blog_id: 1
+                  parent_category_id: 0
+                  type: Tag
+                  description: ''
+                  updated_at: '2021-10-05T20:42:06.1923052-05:00'
+                  created_at: '2021-10-05T20:42:06.1923052-05:00'
+                  name: Blogging Molly
+                  blog_category_path: /test
+      tags:
+      - Blog Categories
+    delete:
+      summary: Delete a Blog Category
+      operationId: delete-blog_categories-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      description: Deletes a blog category by ID.
+      tags:
+      - Blog Categories
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    blog_categories:
+      type: object
+      properties:
+        id:
+          type: integer
+        blog_id:
+          type: integer
+        parent_category_id:
+          type: integer
+        type:
+          type: string
+        description:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        name:
+          type: string
+        blog_category_path:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

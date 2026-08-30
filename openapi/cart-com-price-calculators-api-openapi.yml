@@ -1,0 +1,154 @@
+openapi: 3.2.0
+info:
+  title: Online Store Price Calculators API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Price Calculators
+paths:
+  /price_calculators:
+    get:
+      summary: Get Price Calculators
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  price_calculators:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/price_calculators'
+      operationId: get-price_calculators
+      tags:
+      - Price Calculators
+      description: Gets an array of price calculators.
+    post:
+      summary: Create a Price Calculator
+      operationId: post-price_calculators
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/price_calculators'
+      tags:
+      - Price Calculators
+      description: Creates a price calculator.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  calculation_name: test
+                  description: ''
+                  item_numbers_regex: ''
+              properties:
+                calculation_name:
+                  type: string
+                description:
+                  type: string
+                item_numbers_regex:
+                  type: string
+              required:
+              - calculation_name
+            examples:
+              Example:
+                value:
+                  calculation_name: 10% Off Calculator
+                  description: ''
+                  item_numbers_regex: .*
+  /price_calculators/{id}:
+    parameters:
+    - schema:
+        type: string
+      name: id
+      in: path
+      required: true
+      description: The ID of the `price_calculator`
+    put:
+      summary: Update a Price Calculator
+      operationId: put-price_calculators-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/price_calculators'
+      tags:
+      - Price Calculators
+      description: Updates a price calculator.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/price_calculators'
+    delete:
+      summary: Delete a Price Calculator
+      operationId: delete-price_calculators-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Price Calculators
+      description: Deletes a price calculator.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    price_calculators:
+      type: object
+      properties:
+        id:
+          type: integer
+        calculation_name:
+          type: string
+        description:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        item_numbers_regex:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

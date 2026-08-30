@@ -1,0 +1,338 @@
+openapi: 3.2.0
+info:
+  title: Online Store Adcodes API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Adcodes
+paths:
+  /adcodes:
+    parameters: []
+    get:
+      summary: Get All Adcodes
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  adcodes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/adcodes'
+      operationId: get-adcodes
+      tags:
+      - Adcodes
+      description: Gets an array of adcodes
+    post:
+      summary: Create an Adcode
+      operationId: post-adcodes
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/adcodes'
+        '500':
+          description: Base POST failed
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  status_code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  details:
+                    type: string
+                    minLength: 1
+                required:
+                - status_code
+                - message
+                - details
+                x-examples:
+                  example-1:
+                    status_code: 500
+                    message: Internal Server Error
+                    details: 'AdCode Class - Base POST failed - CommandText: AdCode_Insert - Cannot insert the value NULL into column ''visits'', table ''AC_AndrewTestStore.dbo.adCodes''; column does not allow nulls. INSERT fails.
+
+                      The statement has been terminated.'
+              examples:
+                Example:
+                  value:
+                    status_code: 500
+                    message: Internal Server Error
+                    details: 'AdCode Class - Base POST failed - CommandText: AdCode_Insert - Cannot insert the value NULL into column ''visits'', table ''AC_AndrewTestStore.dbo.adCodes''; column does not allow nulls. INSERT fails.
+
+                      The statement has been terminated.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  name: 5off
+                  description: 5% off
+                  visits: 0
+                  affiliate_id: 0
+                  commission: '0'
+                  commission_type: ''
+                  url: https://www.drunkenmoocow.com/Default.aspx?a=5off
+                  is_pay_per_click: false
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                visits:
+                  type: integer
+                commission:
+                  type: string
+                commission_type:
+                  type: string
+                url:
+                  type: string
+                is_pay_per_click:
+                  type: boolean
+                expires_at:
+                  type: string
+              required:
+              - visits
+            examples:
+              Example:
+                value:
+                  name: 5off
+                  description: 5% off
+                  visits: 0
+                  url: https://www.drunkenmoocow.com/Default.aspx?a=5off
+                  expires_at: '2024-03-05T00:00:00-06:00'
+      tags:
+      - Adcodes
+      description: Creates an adcode
+  /adcodes/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `adcode`
+    delete:
+      summary: Delete an Adcode
+      operationId: delete-adcodes-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      parameters: []
+      description: Delete an adcode by ID.
+      tags:
+      - Adcodes
+    put:
+      summary: Update an Adcode
+      operationId: put-adcodes-adcode_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/adcodes'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  id: 2
+                  name: abanddonedcart
+                  description: ''
+                  visits: 2
+                  affiliate_id: null
+                  commission: ''
+                  commission_type: ''
+                  total_sales: null
+                  total_orders: null
+                  initial_sales: null
+                  load_sales: null
+                  new_customers: null
+                  load_customers: null
+                  total_commissions: null
+                  conversion_rate: null
+                  cost_per_customer: null
+                  sales_per_ad_dollar: null
+                  repeat_commission_amount: ''
+                  repeat_commission_type: ''
+                  pay_for_repeat_sales: ''
+                  url: https://www.drunkenmoocow.com/Default.aspx?a=abandonedcart
+                  is_pay_per_click: false
+                  source: ''
+                  updated_at: '2021-10-05T19:03:41.0406559-05:00'
+                  created_at: '2019-09-18T10:18:27.607-05:00'
+                  expires_at: '2019-09-30T00:00:00-05:00'
+                  creation_type: Manual
+              properties:
+                id:
+                  type: integer
+                  readOnly: true
+                name:
+                  type: string
+                description:
+                  type: string
+                visits:
+                  type: number
+                affiliate_id:
+                  type: integer
+                commission:
+                  type: string
+                commission_type:
+                  type: string
+                total_sales:
+                  type: number
+                total_orders:
+                  type: integer
+                initial_sales:
+                  type: integer
+                load_sales:
+                  type: integer
+                new_customers:
+                  type: integer
+                load_customers:
+                  type: integer
+                total_commissions:
+                  type: integer
+                conversion_rate:
+                  type: number
+                cost_per_customer:
+                  type: number
+                sales_per_ad_dollar:
+                  type: number
+                repeat_commission_amount:
+                  type: string
+                repeat_commission_type:
+                  type: string
+                pay_for_repeat_sales:
+                  type: string
+                url:
+                  type: string
+                is_pay_per_click:
+                  type: boolean
+                source:
+                  type: string
+                updated_at:
+                  type: string
+                created_at:
+                  type: string
+                expires_at:
+                  type: string
+                creation_type:
+                  type: string
+              required:
+              - id
+      description: Update an adcode by ID.
+      tags:
+      - Adcodes
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    adcodes:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        visits:
+          type: integer
+        affiliate_id:
+          type: integer
+        commission:
+          type: string
+        commission_type:
+          type: string
+        total_sales:
+          type: number
+        total_orders:
+          type: integer
+        initial_sales:
+          type: number
+        load_sales:
+          type: number
+        new_customers:
+          type: integer
+        load_customers:
+          type: integer
+        total_commissions:
+          type: number
+        conversion_rate:
+          type: number
+        cost_per_customer:
+          type: number
+        sales_per_ad_dollar:
+          type: number
+        repeat_commission_amount:
+          type: string
+        repeat_commission_type:
+          type: string
+        pay_for_repeat_sales:
+          type: string
+        url:
+          type: string
+        is_pay_per_click:
+          type: boolean
+        source:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        expires_at:
+          type: string
+        creation_type:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

@@ -1,0 +1,108 @@
+openapi: 3.2.0
+info:
+  title: Online Store Carts API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Carts
+paths:
+  /carts:
+    get:
+      summary: Get Carts
+      tags:
+      - Carts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  carts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/carts'
+      operationId: get-carts
+      description: Gets an array of carts.
+components:
+  schemas:
+    carts:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        cart_type:
+          type: string
+        customer_id:
+          type: integer
+        is_public:
+          type: boolean
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        store_id:
+          type: integer
+        session_id:
+          type: integer
+        discount_total:
+          type: integer
+        subtotal:
+          type: number
+        shipping_total:
+          type: integer
+        handling_total:
+          type: integer
+        tax_total:
+          type: integer
+        grand_total:
+          type: number
+        tax_rate:
+          type: integer
+        additional_fees:
+          type: integer
+        discounted_shipping_total:
+          type: integer
+        region_markup_amount:
+          type: number
+        non_shipping_discount:
+          type: integer
+        gift_certificate_discount:
+          type: number
+        coupon_code:
+          type: string
+        associated_order_id:
+          type: integer
+        shipping_estimate_city:
+          type: string
+        shipping_estimate_state_code:
+          type: string
+        shipping_estimate_postal_code:
+          type: string
+        shipping_estimate_country_code:
+          type: string
+        is_shipping_billed_to_account:
+          type: boolean
+        customer_payment_method_id:
+          type: integer
+        payment_method_id:
+          type: integer
+        is_payment_cart_only:
+          type: boolean
+        lookup_key:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

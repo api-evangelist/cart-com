@@ -1,0 +1,76 @@
+openapi: 3.2.0
+info:
+  title: Online Store Sessions API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Sessions
+paths:
+  /sessions:
+    get:
+      summary: Get Sessions
+      tags:
+      - Sessions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  sessions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/sessions'
+      operationId: get-sessions
+      description: Gets an array of sessions.
+components:
+  schemas:
+    sessions:
+      type: object
+      properties:
+        id:
+          type: integer
+        customer_id:
+          type: integer
+        user_id:
+          type: integer
+        first_hit_at:
+          type: string
+        last_hit_at:
+          type: string
+        ip_address:
+          type: string
+        host_name:
+          type: string
+        adcode_id:
+          type: integer
+        hit_count:
+          type: integer
+        visit_count:
+          type: integer
+        page_last_visited:
+          type: string
+        referer:
+          type: string
+        is_abandoned:
+          type: integer
+        user_agent:
+          type: string
+        cart_id:
+          type: integer
+        wish_list_cart_id:
+          type: integer
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

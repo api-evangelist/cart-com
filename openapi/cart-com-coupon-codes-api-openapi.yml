@@ -1,0 +1,235 @@
+openapi: 3.2.0
+info:
+  title: Online Store Coupon Codes API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Coupon Codes
+paths:
+  /coupon_codes:
+    get:
+      summary: Get Coupon Codes
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  coupon_codes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/coupon_codes'
+      operationId: get-coupon_codes
+      tags:
+      - Coupon Codes
+      description: Gets an array of coupon codes.
+    post:
+      summary: Create a Coupon Code
+      operationId: post-coupon_codes
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coupon_codes'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  campaign_code: '123'
+                  coupon_code: CC-3SCEUZGYA3
+                  is_active: false
+                  is_expired: false
+                  expires_at: null
+                  max_uses: 0
+                  usage_count: 0
+                  notes: ''
+                  is_hidden: false
+              properties:
+                campaign_code:
+                  type: string
+                coupon_code:
+                  type: string
+                is_active:
+                  type: boolean
+                is_expired:
+                  type: boolean
+                expires_at: {}
+                max_uses:
+                  type: number
+                usage_count:
+                  type: number
+                notes:
+                  type: string
+                is_hidden:
+                  type: boolean
+              required:
+              - campaign_code
+              - coupon_code
+            examples:
+              Example:
+                value:
+                  campaign_code: '123'
+                  coupon_code: CC-3SCEUZGYA3
+                  is_active: false
+                  is_expired: false
+                  expires_at: null
+                  max_uses: 0
+                  usage_count: 0
+                  notes: ''
+                  is_hidden: false
+      tags:
+      - Coupon Codes
+      description: Creats a coupon code.
+  /coupon_codes/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `coupon_code` you wish to update.
+    put:
+      summary: Update a Coupon Code
+      operationId: put-coupon_codes-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/coupon_codes'
+        '404':
+          $ref: '#/components/responses/404'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  id: 1023
+                  campaign_code: '123'
+                  coupon_code: CC-3SCEUZGYA3
+                  is_active: false
+                  is_expired: false
+                  expires_at: null
+                  max_uses: 0
+                  usage_count: 0
+                  notes: ''
+                  is_hidden: false
+              properties:
+                id:
+                  type: integer
+                campaign_code:
+                  type: string
+                coupon_code:
+                  type: string
+                is_active:
+                  type: boolean
+                is_expired:
+                  type: boolean
+                expires_at:
+                  type: string
+                max_uses:
+                  type: number
+                usage_count:
+                  type: number
+                notes:
+                  type: string
+                is_hidden:
+                  type: boolean
+            examples:
+              Example:
+                value:
+                  id: 1023
+                  campaign_code: '123'
+                  coupon_code: CC-3SCEUZGYA3
+                  is_active: false
+                  is_expired: false
+                  expires_at: null
+                  max_uses: 0
+                  usage_count: 0
+                  notes: ''
+                  is_hidden: false
+      tags:
+      - Coupon Codes
+      description: Update a coupon code by ID.
+    delete:
+      summary: Delete a Coupon Code
+      operationId: delete-coupon_codes-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      description: 'Delete a coupon code by ID. '
+      tags:
+      - Coupon Codes
+components:
+  schemas:
+    coupon_codes:
+      type: object
+      properties:
+        id:
+          type: integer
+        campaign_code:
+          type: string
+        coupon_code:
+          type: string
+        is_active:
+          type: boolean
+        is_expired:
+          type: boolean
+        expires_at:
+          type: string
+        max_uses:
+          type: integer
+        usage_count:
+          type: integer
+        notes:
+          type: string
+        is_hidden:
+          type: boolean
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

@@ -1,0 +1,200 @@
+openapi: 3.2.0
+info:
+  title: Online Store Manufacturers API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Manufacturers
+paths:
+  /manufacturers:
+    get:
+      summary: Get Manufacturers
+      tags:
+      - Manufacturers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  manufacturers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/manufacturers'
+      operationId: get-manufacturers
+      description: Gets an array of manufacturers.
+    post:
+      summary: Create a Manufacturer
+      operationId: post-manufacturers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/manufacturers'
+      tags:
+      - Manufacturers
+      description: 'Creates a manufacturer. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  name: Cart.com
+                  description: ''
+                  is_hidden: false
+                  sort_order: null
+                  manufacturer_logo_url: /Shared/images/cart.png
+                  page_title: ''
+                  keywords: ''
+                  meta_description: ''
+                  url_rewrite: /cartcom.aspx
+                  head_tags: ''
+                  brand_code: ''
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                is_hidden:
+                  type: boolean
+                sort_order:
+                  type: integer
+                manufacturer_logo_url:
+                  type: string
+                page_title:
+                  type: string
+                keywords:
+                  type: string
+                meta_description:
+                  type: string
+                url_rewrite:
+                  type: string
+                head_tags:
+                  type: string
+                brand_code:
+                  type: string
+            examples:
+              Example:
+                value:
+                  name: Cart.com
+                  description: ''
+                  is_hidden: false
+                  sort_order: 1
+                  manufacturer_logo_url: /Shared/images/cart.png
+                  page_title: ''
+                  keywords: ''
+                  meta_description: ''
+                  url_rewrite: /cartcom.aspx
+                  head_tags: ''
+                  brand_code: ''
+  /manufacturers/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `manufacturer`
+    put:
+      summary: Update a Manufacturer
+      operationId: put-manufacturers-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/manufacturers'
+      tags:
+      - Manufacturers
+      description: Updates a manufacturer.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/manufacturers'
+    delete:
+      summary: Delete a Manufacturer
+      operationId: delete-manufacturers-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Manufacturers
+      description: Deletes a manufacturer.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    manufacturers:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        is_hidden:
+          type: boolean
+        sort_order:
+          type: integer
+        manufacturer_logo_url:
+          type: string
+        page_title:
+          type: string
+        keywords:
+          type: string
+        meta_description:
+          type: string
+        url_rewrite:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        head_tags:
+          type: string
+        brand_code:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

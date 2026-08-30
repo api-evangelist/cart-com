@@ -1,0 +1,145 @@
+openapi: 3.2.0
+info:
+  title: Online Store Product Lists API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Product Lists
+paths:
+  /product_lists:
+    get:
+      summary: Get Product Lists
+      tags:
+      - Product Lists
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  product_lists:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/product_lists'
+      operationId: get-product_lists
+      description: Gets an array of product lists.
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: ?expand=items
+    post:
+      summary: Create a Product List
+      operationId: post-product_lists
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/product_lists'
+      tags:
+      - Product Lists
+      description: Creates a product list.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+              required:
+              - name
+              x-examples:
+                example-1:
+                  name: DiscountTest
+            examples:
+              Example:
+                value:
+                  name: My Product List
+        description: ''
+  /product_lists/{id}:
+    parameters:
+    - schema:
+        type: string
+      name: id
+      in: path
+      required: true
+      description: The ID of the `product_list`
+    put:
+      summary: Update a Product List
+      operationId: put-product_lists-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/product_lists'
+      tags:
+      - Product Lists
+      description: Updates a product list.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/product_lists'
+    delete:
+      summary: Delete a Product List
+      operationId: delete-product_lists-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Product Lists
+      description: Delete a product list.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    product_lists:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

@@ -1,0 +1,285 @@
+openapi: 3.2.0
+info:
+  title: Online Store Payment Methods API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Payment Methods
+paths:
+  /payment_methods:
+    get:
+      summary: Get Payment Methods
+      tags:
+      - Payment Methods
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  payment_methods:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/payment_methods'
+      operationId: get-payment_methods
+      description: Gets an array of payment methods.
+    post:
+      summary: Create a Payment Method
+      operationId: post-payment_methods
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/payment_methods'
+      tags:
+      - Payment Methods
+      description: Creates a payment method.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  payment_type: Custom
+                  cost_modifier: 0
+                  cost_modifier_type: Percent
+                  sort_order: 0
+                  is_hidden: false
+                  description: ''
+                  confirmation_message: ''
+                  declined_message: ''
+                  is_gateway: false
+                  gateway_name: ''
+                  name: IOU
+              properties:
+                payment_type:
+                  type: string
+                cost_modifier:
+                  type: number
+                cost_modifier_type:
+                  type: string
+                sort_order:
+                  type: number
+                is_hidden:
+                  type: boolean
+                description:
+                  type: string
+                confirmation_message:
+                  type: string
+                declined_message:
+                  type: string
+                is_gateway:
+                  type: boolean
+                gateway_name:
+                  type: string
+                name:
+                  type: string
+            examples:
+              Example:
+                value:
+                  payment_type: Custom
+                  cost_modifier: 0
+                  cost_modifier_type: Percent
+                  sort_order: 0
+                  is_hidden: false
+                  description: ''
+                  confirmation_message: ''
+                  declined_message: ''
+                  is_gateway: false
+                  gateway_name: ''
+                  name: IOU
+  /payment_methods/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `payment_method`
+    put:
+      summary: Update a Payment Method
+      operationId: put-payment_methods-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/payment_methods'
+              examples: {}
+      description: Updates a payment method.
+      tags:
+      - Payment Methods
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  payment_type: Custom
+                  cost_modifier: 0
+                  cost_modifier_type: Percent
+                  sort_order: 0
+                  is_hidden: false
+                  description: ''
+                  confirmation_message: ''
+                  declined_message: ''
+                  is_gateway: false
+                  gateway_name: ''
+                  name: IOU
+              properties:
+                id:
+                  type: integer
+                payment_type:
+                  type: string
+                cost_modifier:
+                  type: number
+                cost_modifier_type:
+                  type: string
+                sort_order:
+                  type: integer
+                is_hidden:
+                  type: boolean
+                description:
+                  type: string
+                confirmation_message:
+                  type: string
+                declined_message:
+                  type: string
+                is_gateway:
+                  type: boolean
+                gateway_name:
+                  type: string
+                name:
+                  type: string
+            examples:
+              Example:
+                value:
+                  id: 1
+                  payment_type: Custom
+                  cost_modifier: 0
+                  cost_modifier_type: Percent
+                  sort_order: 0
+                  is_hidden: false
+                  description: ''
+                  confirmation_message: ''
+                  declined_message: ''
+                  is_gateway: false
+                  gateway_name: ''
+                  name: IOU
+        description: ''
+    delete:
+      summary: Delete a Payment Method
+      operationId: delete-payment_methods-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Payment Methods
+      description: Delete a payment method.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    payment_method_fields:
+      type: object
+      properties:
+        id:
+          type: integer
+        payment_method_id:
+          type: integer
+        name:
+          type: string
+        length:
+          type: integer
+        sort_order:
+          type: integer
+        type:
+          type: string
+        is_required:
+          type: boolean
+        is_hidden:
+          type: boolean
+        is_encrypted:
+          type: boolean
+        is_masked:
+          type: boolean
+        updated_at:
+          type: string
+        created_at:
+          type: string
+    payment_methods:
+      type: object
+      properties:
+        id:
+          type: integer
+        payment_type:
+          type: string
+        cost_modifier:
+          type: integer
+        cost_modifier_type:
+          type: string
+        sort_order:
+          type: integer
+        is_hidden:
+          type: boolean
+        description:
+          type: string
+        confirmation_message:
+          type: string
+        declined_message:
+          type: string
+        is_gateway:
+          type: boolean
+        gateway_name:
+          type: string
+        name:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        fields:
+          $ref: '#/components/schemas/payment_method_fields'
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

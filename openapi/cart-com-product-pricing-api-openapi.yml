@@ -1,0 +1,245 @@
+openapi: 3.2.0
+info:
+  title: Online Store Product Pricing API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Product Pricing
+paths:
+  /product_pricing:
+    get:
+      summary: Get Product Pricing
+      tags:
+      - Product Pricing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: string
+                  product_pricing:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/product_pricing'
+              examples:
+                example-1:
+                  value:
+                    total_count: string
+                    product_pricing:
+                    - id: 0
+                      product_id: 0
+                      store_id: 0
+                      customer_type_id: 0
+                      variant_inventory_id: 0
+                      sale_type_id: 0
+                      start_date: string
+                      end_date: string
+                      starting_quantity: 0
+                      price: 0
+                      cost: 0
+                      updated_at: string
+                      created_at: string
+                      price_calculation_id: 0
+                      variant_id: 0
+                      variant_price_surcharge: string
+      operationId: get-product_pricing
+      description: Gets an array of product pricing.
+    post:
+      summary: Add Product Pricing
+      operationId: post-product_pricing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/product_pricing'
+      tags:
+      - Product Pricing
+      description: Add a price to a product.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  product_id: 24
+                  store_id: 1
+                  customer_type_id: 24
+                  variant_inventory_id: 254
+                  sale_type_id: null
+                  start_date: ''
+                  end_date: ''
+                  starting_quantity: 72
+                  price: 29.1666
+                  cost: 16.6666
+                  price_calculation_id: null
+                  variant_id: null
+                  variant_price_surcharge: ''
+              properties:
+                product_id:
+                  type: integer
+                store_id:
+                  type: integer
+                customer_type_id:
+                  type: integer
+                variant_inventory_id:
+                  type: integer
+                sale_type_id:
+                  type: integer
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+                starting_quantity:
+                  type: number
+                price:
+                  type: number
+                cost:
+                  type: number
+                price_calculation_id:
+                  type: integer
+                variant_id:
+                  type: integer
+                variant_price_surcharge:
+                  type: string
+              required:
+              - product_id
+  /product_pricing/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `product_pricing`
+    put:
+      summary: Update a Product Price
+      operationId: put-product_pricing-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/product_pricing'
+      tags:
+      - Product Pricing
+      description: Updates a product price.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/product_pricing'
+    delete:
+      summary: Delete a Product Price
+      operationId: delete-product_pricing-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Product Pricing
+      description: Deletes a product price.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    product_pricing:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          id: 353
+          product_id: 53
+          store_id: null
+          customer_type_id: null
+          variant_inventory_id: null
+          sale_type_id: null
+          start_date: '2020-03-09T00:00:00-05:00'
+          end_date: '2022-08-31T00:00:00-05:00'
+          starting_quantity: 1
+          price: 25
+          cost: 0
+          updated_at: '2021-09-15T16:27:13.46-05:00'
+          created_at: '2021-08-05T10:35:29.82-05:00'
+          price_calculation_id: null
+          variant_id: null
+          variant_price_surcharge: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        product_id:
+          type: integer
+        store_id:
+          type: integer
+        customer_type_id:
+          type: integer
+        variant_inventory_id:
+          type: integer
+        sale_type_id:
+          type: integer
+        start_date:
+          type: string
+          minLength: 1
+        end_date:
+          type: string
+          minLength: 1
+        starting_quantity:
+          type:
+          - number
+          - integer
+        price:
+          type: number
+        cost:
+          type: number
+        updated_at:
+          type: string
+          minLength: 1
+        created_at:
+          type: string
+          minLength: 1
+        price_calculation_id:
+          type: integer
+        variant_id:
+          type: integer
+        variant_price_surcharge:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

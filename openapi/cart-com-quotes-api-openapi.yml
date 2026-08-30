@@ -1,0 +1,413 @@
+openapi: 3.2.0
+info:
+  title: Online Store Quotes API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Quotes
+paths:
+  /quotes:
+    get:
+      summary: Get Quotes
+      tags:
+      - Quotes
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  quotes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/quotes'
+      operationId: get-quotes
+      description: Gets an array of quotes.
+    post:
+      summary: Create a Quote
+      operationId: post-quotes
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/quotes'
+      tags:
+      - Quotes
+      description: Creates a quote.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  customer_id: 12
+                  customer_type_id: 0
+                  adcode: ''
+                  order_status_id: 7
+                  special_instructions: ''
+                  subtotal: 0
+                  tax_total: 0
+                  shipping_total: 0
+                  discount_total: 0
+                  grand_total: 0
+                  cost_total: 0
+                  selected_shipping_method: ''
+                  order_shipping_address_id: 7
+                  order_billing_address_id: 7
+                  admin_comments: ''
+                  store_id: 1
+                  handling_total: 0
+                  is_payment_order_only: false
+                  selected_shipping_provider_service: ''
+                  additional_fees: 0
+                  adcode_id: 0
+                  is_gift: false
+                  gift_message: ''
+                  public_comments: ''
+                  instructions: ''
+                  from_subscription_id: null
+                  previous_order_status_id: 7
+                  discounted_shipping_total: 0
+                  order_number: null
+                  coupon_code: ''
+                  order_type: Quote
+                  expires_at: null
+                  expires: false
+                  campaign_code: ''
+                  reward_points_credited: false
+                  manufacturer_invoice_number: null
+                  manufacturer_invoice_amount: null
+                  manufacturer_invoice_paid: false
+                  due_date: null
+              properties:
+                customer_id:
+                  type: integer
+                customer_type_id:
+                  type: integer
+                adcode:
+                  type: string
+                order_status_id:
+                  type: integer
+                special_instructions:
+                  type: string
+                subtotal:
+                  type: number
+                tax_total:
+                  type: number
+                shipping_total:
+                  type: number
+                discount_total:
+                  type: number
+                grand_total:
+                  type: number
+                cost_total:
+                  type: number
+                selected_shipping_method:
+                  type: integer
+                order_shipping_address_id:
+                  type: number
+                order_billing_address_id:
+                  type: integer
+                admin_comments:
+                  type: string
+                store_id:
+                  type: integer
+                handling_total:
+                  type: number
+                is_payment_order_only:
+                  type: boolean
+                selected_shipping_provider_service:
+                  type: string
+                additional_fees:
+                  type: number
+                adcode_id:
+                  type: integer
+                is_gift:
+                  type: boolean
+                gift_message:
+                  type: string
+                public_comments:
+                  type: string
+                instructions:
+                  type: string
+                discounted_shipping_total:
+                  type: number
+                order_number:
+                  type: string
+                coupon_code:
+                  type: string
+                order_type:
+                  type: string
+                expires_at:
+                  type: string
+                expires:
+                  type: boolean
+                campaign_code:
+                  type: string
+                reward_points_credited:
+                  type: boolean
+                manufacturer_invoice_number:
+                  type: string
+                manufacturer_invoice_amount:
+                  type: number
+                manufacturer_invoice_paid:
+                  type: boolean
+                sales_agent_user_id:
+                  type: integer
+                due_date:
+                  type: string
+                delivery_tax:
+                  type: number
+                location_id:
+                  type: integer
+              required:
+              - customer_id
+              - order_status_id
+              - tax_total
+              - grand_total
+              - order_billing_address_id
+              - store_id
+            examples:
+              Example:
+                value:
+                  customer_id: 12
+                  customer_type_id: 0
+                  adcode: ''
+                  order_status_id: 7
+                  special_instructions: ''
+                  subtotal: 0
+                  tax_total: 0
+                  shipping_total: 0
+                  discount_total: 0
+                  grand_total: 0
+                  cost_total: 0
+                  selected_shipping_method: 1
+                  order_shipping_address_id: 7
+                  order_billing_address_id: 7
+                  admin_comments: ''
+                  store_id: 1
+                  handling_total: 0
+                  is_payment_order_only: false
+                  selected_shipping_provider_service: ''
+                  additional_fees: 0
+                  adcode_id: 0
+                  is_gift: false
+                  gift_message: ''
+                  public_comments: ''
+                  instructions: ''
+                  discounted_shipping_total: 0
+                  coupon_code: ''
+                  order_type: Quote
+                  expires_at: ''
+                  expires: false
+                  campaign_code: ''
+                  reward_points_credited: false
+                  manufacturer_invoice_number: ''
+                  manufacturer_invoice_amount: 0
+                  manufacturer_invoice_paid: false
+                  sales_agent_user_id: 0
+                  due_date: ''
+                  delivery_tax: 0.0
+                  location_id: null
+  /quotes/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `quote`
+    put:
+      summary: Update a Quote
+      operationId: put-quotes-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/quotes'
+      tags:
+      - Quotes
+      description: Updates a quote.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/quotes'
+    delete:
+      summary: Delete a Quote
+      operationId: delete-quotes-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Quotes
+      description: Deletes a quote.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    quotes:
+      type: object
+      properties:
+        id:
+          type: integer
+        customer_id:
+          type: integer
+        customer_type_id:
+          type: integer
+        adcode:
+          type: string
+        ordered_at:
+          type: string
+        order_status_id:
+          type: integer
+        special_instructions:
+          type: string
+        subtotal:
+          type: number
+        tax_total:
+          type: number
+        shipping_total:
+          type: number
+        discount_total:
+          type: number
+        grand_total:
+          type: number
+        cost_total:
+          type: number
+        selected_shipping_method:
+          type: string
+        ip_address:
+          type: string
+        referrer:
+          type: string
+        order_shipping_address_id:
+          type: integer
+        order_billing_address_id:
+          type: integer
+        admin_comments:
+          type: string
+        source:
+          type: string
+        search_phrase:
+          type: string
+        is_ppc:
+          type: boolean
+        ppc_keyword:
+          type: string
+        store_id:
+          type: integer
+        session_id:
+          type: integer
+        handling_total:
+          type: integer
+        is_payment_order_only:
+          type: boolean
+        selected_shipping_provider_service:
+          type: string
+        additional_fees:
+          type: integer
+        adcode_id:
+          type: integer
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        entered_by:
+          type: string
+        is_gift:
+          type: boolean
+        gift_message:
+          type: string
+        public_comments:
+          type: string
+        instructions:
+          type: string
+        source_group:
+          type: string
+        from_subscription_id:
+          type: integer
+        previous_order_status_id:
+          type: integer
+        order_status_last_changed_at:
+          type: string
+        discounted_shipping_total:
+          type: integer
+        order_number:
+          type: string
+        coupon_code:
+          type: string
+        order_type:
+          type: string
+        expires_at:
+          type: string
+        expires:
+          type: boolean
+        from_quote_id:
+          type: integer
+        campaign_code:
+          type: string
+        reward_points_credited:
+          type: boolean
+        channel:
+          type: string
+        device:
+          type: string
+        manufacturer_invoice_number:
+          type: string
+        manufacturer_invoice_amount:
+          type: number
+        manufacturer_invoice_paid:
+          type: boolean
+        sales_agent_user_id:
+          type: integer
+        due_date:
+          type: string
+        delivery_tax:
+          type: number
+        location_id:
+          type: integer
+        converted_to_order_ids:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

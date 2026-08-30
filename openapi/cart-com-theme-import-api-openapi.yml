@@ -1,0 +1,75 @@
+openapi: 3.2.0
+info:
+  title: Online Store Theme Import API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Theme Import
+paths:
+  /themes/import:
+    post:
+      summary: Import Theme
+      operationId: post-themes-import
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/theme_import'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                theme_name:
+                  type: string
+                  minLength: 1
+                file_path:
+                  type: string
+                  minLength: 1
+              required:
+              - theme_name
+              - file_path
+              x-examples:
+                example-1:
+                  theme_name: ThemeName
+                  file_path: path-to-theme-import-file.zip
+            examples:
+              Example:
+                value:
+                  theme_name: ThemeName
+                  file_path: path-to-theme-import-file.zip
+      tags:
+      - Theme Import
+      description: 'Imports a theme. '
+components:
+  schemas:
+    theme_import:
+      description: ''
+      type: object
+      properties:
+        theme_id:
+          type: number
+        theme_name:
+          type: string
+          minLength: 1
+      required:
+      - theme_id
+      - theme_name
+      x-examples:
+        example-1:
+          theme_id: 1234
+          theme_name: ThemeName
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

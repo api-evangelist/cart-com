@@ -1,0 +1,313 @@
+openapi: 3.2.0
+info:
+  title: Online Store Credit Cards API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Credit Cards
+paths:
+  /credit_cards:
+    get:
+      summary: Credit Cards
+      tags:
+      - Credit Cards
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  credit_cards:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/credit_cards'
+      operationId: get-credit_cards
+      description: Gets an array of credit cards.
+    post:
+      summary: Add a Credit Cart
+      operationId: post-credit_cards
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/credit_cards'
+      description: Adds a credit card.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  customer_id: 18
+                  card_type: Visa
+                  expiration_month: 1
+                  expiration_year: 2022
+                  cardholder_name: First Last
+                  phone: ''
+                  address_line_1: 123 Test st.
+                  address_line_2: ''
+                  city: Lumberton
+                  state: Texas
+                  postal_code: '77657'
+                  country: United States
+                  is_default: false
+                  last_four: '1111'
+              properties:
+                customer_id:
+                  type: integer
+                card_type:
+                  type: string
+                expiration_month:
+                  type: integer
+                expiration_year:
+                  type: integer
+                cardholder_name:
+                  type: string
+                phone:
+                  type: string
+                address_line_1:
+                  type: string
+                address_line_2:
+                  type: string
+                city:
+                  type: string
+                state:
+                  type: string
+                postal_code:
+                  type: string
+                country:
+                  type: string
+                is_default:
+                  type: boolean
+                last_four:
+                  type: string
+              required:
+              - customer_id
+              - card_type
+            examples:
+              Example:
+                value:
+                  customer_id: 18
+                  card_type: Visa
+                  expiration_month: 1
+                  expiration_year: 2022
+                  cardholder_name: First Last
+                  phone: ''
+                  address_line_1: 123 Test st.
+                  address_line_2: ''
+                  city: Lumberton
+                  state: Texas
+                  postal_code: '77657'
+                  country: United States
+                  is_default: false
+                  last_four: '1111'
+          application/xml:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  customer_id: 18
+                  card_type: Visa
+                  expiration_month: 1
+                  expiration_year: 2022
+                  cardholder_name: First Last
+                  phone: ''
+                  address_line_1: 123 Test st.
+                  address_line_2: ''
+                  city: Lumberton
+                  state: Texas
+                  postal_code: '77701'
+                  country: United States
+                  is_default: false
+                  last_four: '1111'
+              properties:
+                customer_id:
+                  type: integer
+                card_type:
+                  type: string
+                expiration_month:
+                  type: number
+                expiration_year:
+                  type: number
+                cardholder_name:
+                  type: string
+                  minLength: 1
+                phone:
+                  type: string
+                address_line_1:
+                  type: string
+                  minLength: 1
+                address_line_2:
+                  type: string
+                city:
+                  type: string
+                  minLength: 1
+                state:
+                  type: string
+                  minLength: 1
+                postal_code:
+                  type: string
+                  minLength: 1
+                country:
+                  type: string
+                  minLength: 1
+                is_default:
+                  type: boolean
+                last_four:
+                  type: string
+                  minLength: 1
+              required:
+              - customer_id
+              - card_type
+              - expiration_year
+              - cardholder_name
+              - phone
+              - address_line_1
+              - address_line_2
+              - city
+              - state
+              - postal_code
+              - country
+              - is_default
+              - last_four
+            examples: {}
+        description: ''
+      tags:
+      - Credit Cards
+  /credit_cards/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `credit_card`
+    put:
+      summary: Update a Credit Card
+      operationId: put-credit_cards-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/credit_cards'
+      description: Updates a Credit Card.
+      tags:
+      - Credit Cards
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/credit_cards'
+            examples:
+              Example:
+                value:
+                  id: 42
+                  customer_id: 18
+                  card_type: Visa
+                  expiration_month: 1
+                  expiration_year: 2022
+                  cardholder_name: First Last
+                  phone: ''
+                  address_line_1: 123 Test st.
+                  address_line_2: ''
+                  city: Lumberton
+                  state: Texas
+                  postal_code: '77701'
+                  country: United States
+                  is_default: false
+                  updated_at: '2021-10-06T15:07:15.8334217-05:00'
+                  created_at: '2021-10-06T15:07:15.8334217-05:00'
+                  last_four: '1111'
+    delete:
+      summary: Delete a Credit Card
+      operationId: delete-credit_cards-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Credit Cards
+      description: Deletes a credit card.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    credit_cards:
+      type: object
+      properties:
+        id:
+          type: integer
+        customer_id:
+          type: integer
+        card_type:
+          type: string
+        expiration_month:
+          type: integer
+        expiration_year:
+          type: integer
+        cardholder_name:
+          type: string
+        phone:
+          type: string
+        address_line_1:
+          type: string
+        address_line_2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postal_code:
+          type: string
+        country:
+          type: string
+        is_default:
+          type: boolean
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        last_four:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

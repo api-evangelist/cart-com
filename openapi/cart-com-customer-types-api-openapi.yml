@@ -1,0 +1,155 @@
+openapi: 3.2.0
+info:
+  title: Online Store Customer Types API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Customer Types
+paths:
+  /customer_types:
+    get:
+      summary: Get Customer Types
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  customer_types:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/customer_types'
+      operationId: get-customer_types
+      description: Gets an array of customer types.
+      tags:
+      - Customer Types
+    post:
+      summary: Create a Customer Type
+      operationId: post-customer_types
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customer_types'
+      tags:
+      - Customer Types
+      description: Creates a customer type.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  id: 1
+                  name: Wholesale
+                  customer_level: 1
+                  description: ''
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                customer_level:
+                  type: number
+                description:
+                  type: string
+              required:
+              - name
+            examples:
+              Example:
+                value:
+                  name: wholesale
+                  customer_level: 1
+                  description: ''
+  /customer_types/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+    put:
+      summary: Update a Customer Type
+      operationId: put-customer_types-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customer_types'
+      tags:
+      - Customer Types
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customer_types'
+      description: Updates a customer type.
+    delete:
+      summary: Delete a Customer Type
+      operationId: delete-customer_types-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Customer Types
+      description: Deletes a customer type.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    customer_types:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        customer_level:
+          type: integer
+        description:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

@@ -1,0 +1,198 @@
+openapi: 3.2.0
+info:
+  title: Online Store Store Locations API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Store Locations
+paths:
+  /store_locations:
+    get:
+      summary: Get Store Locations
+      tags:
+      - Store Locations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  store_locations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/store_locations'
+      operationId: get-store_locations
+      description: Gets an array of store locations.
+    post:
+      summary: Create a Store Location
+      operationId: post-store_locations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/store_locations'
+      tags:
+      - Store Locations
+      description: Creates a store location.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                store_id:
+                  type: integer
+                name:
+                  type: string
+                city:
+                  type: string
+                state_id:
+                  type: integer
+                non_us_state:
+                  type: string
+                country_id:
+                  type: integer
+                phone:
+                  type: string
+                address_1:
+                  type: string
+                address_2:
+                  type: string
+                zip_code:
+                  type: string
+                latitude:
+                  type: number
+                longitude:
+                  type: number
+                notes:
+                  type: string
+                sort_order:
+                  type: integer
+            examples:
+              Example:
+                value:
+                  store_id: 1
+                  name: Another Store
+                  city: Houston
+                  state_id: 43
+                  non_us_state: ''
+                  country_id: 1
+                  phone: 123-456-7890
+                  address_1: 123 Test
+                  address_2: ''
+                  zip_code: '77068'
+                  latitude: null
+                  longitude: null
+                  notes: 'Hours: 9 AM to 5 PM'
+                  sort_order: 0
+  /store_locations/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `store_locations`
+    put:
+      summary: Update a Store Location
+      operationId: put-store_locations-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/store_locations'
+      tags:
+      - Store Locations
+      description: Updates a store location.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/store_locations'
+    delete:
+      summary: Delete a Store Location
+      operationId: delete-store_locations-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Store Locations
+      description: Deletes a store location.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    store_locations:
+      type: object
+      properties:
+        id:
+          type: integer
+        store_id:
+          type: integer
+        name:
+          type: string
+        city:
+          type: string
+        state_id:
+          type: integer
+        non_us_state:
+          type: string
+        country_id:
+          type: integer
+        phone:
+          type: string
+        address_1:
+          type: string
+        address_2:
+          type: string
+        zip_code:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
+        notes:
+          type: string
+        sort_order:
+          type: integer
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

@@ -1,0 +1,391 @@
+openapi: 3.2.0
+info:
+  title: Online Store Order Items API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Order Items
+paths:
+  /order_items:
+    get:
+      summary: Get Order Items
+      tags:
+      - Order Items
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  order_items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/order_items'
+      operationId: get-order_items
+      description: Gets an array of order items.
+    post:
+      summary: Create an Order Item
+      operationId: post-order_items
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order_items'
+      tags:
+      - Order Items
+      description: Creates an order item.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  order_id: 100232
+                  product_id: 80
+                  item_number: '1234'
+                  item_name: Project Screen
+                  price: 1400
+                  cost: 0
+                  quantity: 1
+                  is_discount_item: false
+                  weight: 0
+                  is_taxable: false
+                  weight_unit: Lbs
+                  warehouse_id: 0
+                  variant_inventory_id: null
+                  parent_order_item_id: null
+                  is_quantity_bound_to_parent: false
+                  height: 0
+                  length: 0
+                  width: 0
+                  size_unit: In
+                  tax_code: ''
+                  item_number_full: '800'
+                  admin_comments: ''
+                  do_not_discount: false
+                  line_item_note: ''
+                  order_shipping_address_id: null
+                  gift_message: ''
+                  delivery_date: null
+                  discount_amount: 0
+                  discount_percentage: 0
+                  is_subscription_product: false
+                  is_non_shipping_item: false
+                  description: ''
+                  vendor_store_id: null
+                  variants: null
+                  personalizations: null
+              properties:
+                order_id:
+                  type: integer
+                product_id:
+                  type: integer
+                item_number:
+                  type: string
+                item_name:
+                  type: string
+                price:
+                  type: number
+                cost:
+                  type: number
+                quantity:
+                  type: number
+                is_discount_item:
+                  type: boolean
+                weight:
+                  type: number
+                is_taxable:
+                  type: boolean
+                weight_unit:
+                  type: string
+                warehouse_id:
+                  type: integer
+                variant_inventory_id:
+                  type: integer
+                parent_order_item_id:
+                  type: integer
+                is_quantity_bound_to_parent:
+                  type: boolean
+                height:
+                  type: number
+                length:
+                  type: number
+                width:
+                  type: number
+                size_unit:
+                  type: string
+                tax_code:
+                  type: string
+                item_number_full:
+                  type: string
+                admin_comments:
+                  type: string
+                do_not_discount:
+                  type: boolean
+                line_item_note:
+                  type: string
+                order_shipping_address_id:
+                  type: integer
+                gift_message:
+                  type: string
+                delivery_date:
+                  type: string
+                discount_amount:
+                  type: number
+                discount_percentage:
+                  type: number
+                is_subscription_product:
+                  type: boolean
+                is_non_shipping_item:
+                  type: boolean
+                description:
+                  type: string
+                tax:
+                  type: number
+                configuration:
+                  type: string
+                status:
+                  type: string
+                shipping_classification_code:
+                  type: string
+                variants:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      description:
+                        type: string
+                      variant_group_id:
+                        type: integer
+                personalizations:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      answer:
+                        type: string
+            examples:
+              Example:
+                value:
+                  order_id: 100232
+                  product_id: 80
+                  item_number: '1234'
+                  item_name: Projector Screen
+                  price: 1400
+                  cost: 0
+                  quantity: 1
+                  is_discount_item: false
+                  weight: 0
+                  is_taxable: false
+                  weight_unit: Lbs
+                  warehouse_id: 0
+                  variant_inventory_id: 123
+                  parent_order_item_id: 142
+                  is_quantity_bound_to_parent: false
+                  height: 0
+                  length: 0
+                  width: 0
+                  size_unit: In
+                  tax_code: ''
+                  item_number_full: '800'
+                  admin_comments: ''
+                  do_not_discount: false
+                  line_item_note: ''
+                  order_shipping_address_id: 124
+                  gift_message: ''
+                  delivery_date: ''
+                  discount_amount: 0
+                  discount_percentage: 0
+                  is_subscription_product: false
+                  is_non_shipping_item: false
+                  description: ''
+                  tax: 18.2
+                  configuration: ''
+                  status: ''
+                  shipping_classification_code: ''
+                  variants: []
+                  personalizations: []
+  /order_items/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `order_item`
+    put:
+      summary: Updates an Order Item
+      operationId: put-order_items-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order_items'
+      description: Update an order item.
+      tags:
+      - Order Items
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/order_items'
+    delete:
+      summary: Delete an Order Item
+      operationId: delete-order_items-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      tags:
+      - Order Items
+      description: Deletes an order item.
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    order_items:
+      type: object
+      properties:
+        id:
+          type: integer
+        order_id:
+          type: integer
+        product_id:
+          type: integer
+        item_number:
+          type: string
+        item_name:
+          type: string
+        price:
+          type: integer
+        cost:
+          type: integer
+        quantity:
+          type: integer
+        is_discount_item:
+          type: boolean
+        weight:
+          type: integer
+        is_taxable:
+          type: boolean
+        weight_unit:
+          type: string
+        is_non_shipping_item:
+          type: boolean
+        variant_inventory_id:
+          type: integer
+        parent_order_item_id:
+          type: integer
+        is_quantity_bound_to_parent:
+          type: boolean
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        height:
+          type: number
+        length:
+          type: number
+        width:
+          type: number
+        size_unit:
+          type: string
+        tax_code:
+          type: string
+        item_number_full:
+          type: string
+        admin_comments:
+          type: string
+        do_not_discount:
+          type: boolean
+        line_item_note:
+          type: string
+        order_shipping_address_id:
+          type: integer
+        gift_message:
+          type: string
+        delivery_date:
+          type: string
+        discount_amount:
+          type: number
+        discount_percentage:
+          type: number
+        is_subscription_product:
+          type: boolean
+        warehouse_id:
+          type: integer
+        description:
+          type: string
+        tax:
+          type: number
+        configuration:
+          type: string
+        status:
+          type: string
+        shipping_classification_code:
+          type: string
+        variants:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              description:
+                type: string
+              variant_group_id:
+                type: integer
+        personalizations:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              answer:
+                type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header

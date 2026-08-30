@@ -1,0 +1,229 @@
+openapi: 3.2.0
+info:
+  title: Online Store Attribute Groups API
+  version: '1.0'
+  description: Online Store API
+servers:
+- url: https://www.yoursite.com/api/v1
+  description: ''
+security:
+- X-AC-Auth-Token: []
+tags:
+- name: Attribute Groups
+paths:
+  /attribute_groups:
+    get:
+      summary: Get Attribute Groups
+      tags:
+      - Attribute Groups
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  attribute_groups:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/attribute_groups'
+              examples:
+                example-1:
+                  value:
+                    total_count: 0
+                    ? ''
+                    : id: 0
+                      name: string
+                      sort_order: 0
+                      is_hidden: true
+                      allow_drill_down: true
+                      allow_multiple: true
+                      tie_variant_inventory: true
+                      updated_at: string
+                      created_at: string
+      operationId: get-attribute_groups
+      description: Gets an array of attribute groups.
+    post:
+      summary: Create an Attribute Group
+      operationId: post-attribute_groups
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/attribute_groups'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  name: Shoes
+                  sort_order: 0
+                  is_hidden: false
+                  allow_drill_down: true
+                  allow_multiple: true
+                  tie_variant_inventory: false
+              properties:
+                name:
+                  type: string
+                sort_order:
+                  type: number
+                is_hidden:
+                  type: boolean
+                allow_drill_down:
+                  type: boolean
+                allow_multiple:
+                  type: boolean
+                tie_variant_inventory:
+                  type: boolean
+            examples:
+              Example:
+                value:
+                  name: Tesla
+                  sort_order: 0
+                  is_hidden: false
+                  allow_drill_down: true
+                  allow_multiple: true
+                  tie_variant_inventory: false
+      description: Creates an attribte group.
+      tags:
+      - Attribute Groups
+  /attribute_groups/{id}:
+    parameters:
+    - schema:
+        type: integer
+      name: id
+      in: path
+      required: true
+      description: The ID of the `attribute_group`
+    put:
+      summary: Update an Attribute Group
+      operationId: put-attribute_groups-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/attribute_groups'
+      description: Update an attribute group by ID.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  id: 1
+                  name: Shoes
+                  sort_order: 0
+                  is_hidden: false
+                  allow_drill_down: true
+                  allow_multiple: true
+                  tie_variant_inventory: false
+                  updated_at: null
+                  created_at: null
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                sort_order:
+                  type: integer
+                is_hidden:
+                  type: boolean
+                allow_drill_down:
+                  type: boolean
+                allow_multiple:
+                  type: boolean
+                tie_variant_inventory:
+                  type: boolean
+                updated_at:
+                  type: string
+                created_at:
+                  type: string
+              required:
+              - id
+            examples:
+              Example:
+                value:
+                  id: 1
+                  name: Tesla
+                  sort_order: 0
+                  is_hidden: false
+                  allow_drill_down: true
+                  allow_multiple: true
+                  tie_variant_inventory: false
+                  updated_at: ''
+                  created_at: ''
+      tags:
+      - Attribute Groups
+    delete:
+      summary: Delete an Attribute Group
+      operationId: delete-attribute_groups-id
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+      description: Delete an attribute group by ID.
+      tags:
+      - Attribute Groups
+components:
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
+  schemas:
+    attribute_groups:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        sort_order:
+          type: integer
+        is_hidden:
+          type: boolean
+        allow_drill_down:
+          type: boolean
+        allow_multiple:
+          type: boolean
+        tie_variant_inventory:
+          type: boolean
+        updated_at:
+          type: string
+        created_at:
+          type: string
+  securitySchemes:
+    X-AC-Auth-Token:
+      name: X-AC-Auth-Token
+      type: apiKey
+      in: header
