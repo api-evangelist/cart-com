@@ -145,6 +145,8 @@ apis:
   humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
   baseURL: https://www.americommerce.com/api/v1
   tags:
+  - Blog
+  tags_raw:
   - Blogs
   properties:
   - type: OpenAPI
@@ -177,6 +179,8 @@ apis:
   humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
   baseURL: https://www.americommerce.com/api/v1
   tags:
+  - Cart
+  tags_raw:
   - Carts
   properties:
   - type: OpenAPI
@@ -581,6 +585,8 @@ apis:
   humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
   baseURL: https://www.americommerce.com/api/v1
   tags:
+  - Notification
+  tags_raw:
   - Notifications
   properties:
   - type: OpenAPI
@@ -677,6 +683,8 @@ apis:
   humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
   baseURL: https://www.americommerce.com/api/v1
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -888,6 +896,8 @@ apis:
   humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
   baseURL: https://www.americommerce.com/api/v1
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -1050,6 +1060,8 @@ apis:
   humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
   baseURL: https://www.americommerce.com/api/v1
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
@@ -1114,6 +1126,8 @@ apis:
   humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
   baseURL: https://www.americommerce.com/api/v1
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
