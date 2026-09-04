@@ -22,6 +22,22 @@ deliveryModel:
   - repository-unlicensed
   generated: '2026-08-28'
   method: derived
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  - scopes
+  - rate-limits
+  - security
+  - sandbox
+  generated: '2026-09-03'
+  method: derived
 image: https://cart.com/hubfs/6316383d5bc18bb4fa6ae7a9_favicon-32x32.png
 url: https://raw.githubusercontent.com/api-evangelist/cart-com/refs/heads/main/apis.yml
 x-type: company
@@ -1277,8 +1293,9 @@ common:
   url: llms/cart-com-llms.txt
 - type: Overlay
   url: overlays/cart-com-online-store-overlay.yaml
-- type: MCPServer
+- type: X-MCPServerCandidate
   url: mcp/cart-com-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
 - type: AgentSkill
   url: skills/_index.yml
 - type: Webhooks
