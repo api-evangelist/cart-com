@@ -54,6 +54,17 @@ tags:
 - Order Management
 - Fulfillment
 - Logistics
+- Marketplace
+- Storefront
+- Catalog
+- Shipping
+tags_raw:
+- Company
+- E-Commerce
+- Retail
+- Order Management
+- Fulfillment
+- Logistics
 - Marketplaces
 - Storefront
 - Catalog
@@ -553,6 +564,8 @@ apis:
   humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
   baseURL: https://www.americommerce.com/api/v1
   tags:
+  - Manufacturer
+  tags_raw:
   - Manufacturers
   properties:
   - type: OpenAPI
@@ -1192,6 +1205,8 @@ apis:
   humanURL: https://developers.cart.com/docs/rest-api/ZG9jOjM2MjI2-the-online-store-api
   baseURL: https://www.americommerce.com/api/v1
   tags:
+  - Warehouse
+  tags_raw:
   - Warehouses
   properties:
   - type: OpenAPI
