@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 12
+edge_count: 21
 edges:
 - tag: Coupon Codes
   spec_file: cart-com-coupon-codes-api-openapi.yml
@@ -55,6 +55,27 @@ edges:
   confidence: 0.8
   evidence: POST /discount_methods  post-discount_methods  Create a Discount Method
   reason: Definition of discount methods used in storefront pricing — discount and promotion management.
+- tag: Product Pictures
+  spec_file: cart-com-product-pictures-api-openapi.yml
+  capability_id: BC-2370.20
+  capability_id_l1: BC-2370
+  capability_name: Product Content Authoring Management
+  confidence: 0.8
+  evidence: POST /product_pictures  Add a Product Picture
+  reason: Managing product imagery attached to catalogue items is product content authoring/rich media
+    management for the storefront.
+  recovered_from: vertical-retail-consumer-goods-edges.json
+- tag: Orders
+  spec_file: cart-com-orders-api-openapi.yml
+  capability_id: BC-2330
+  capability_id_l1: BC-2330
+  capability_name: Omnichannel Order & Fulfilment Management
+  confidence: 0.75
+  evidence: POST /orders  'Create an Order'; GET /orders  'Get Orders'
+  reason: Core consumer order object of an ecommerce/order-management platform spanning storefront, marketplace
+    channels and fulfilment — consumer order capture and orchestration. Left at L1 because the operations
+    do not distinguish channel orchestration from distributed fulfilment.
+  recovered_from: vertical-retail-consumer-goods-edges.json
 - tag: Product Pricing
   spec_file: cart-com-product-pricing-api-openapi.yml
   capability_id: BC-440.20
@@ -65,6 +86,36 @@ edges:
   reason: Operations maintain price records against catalog products on the storefront, i.e. maintenance
     of list/price-book entries. Maps to Pricing Management / Price List Management; some chance the object
     carries tiered or customer-specific pricing, hence 0.75.
+- tag: Products
+  spec_file: cart-com-products-api-openapi.yml
+  capability_id: BC-2370.10
+  capability_id_l1: BC-2370
+  capability_name: Item Master Data Management
+  confidence: 0.75
+  evidence: 'GET /products  Get Products; POST /products  Create a Product; schemas: inventory, products'
+  reason: Core CRUD over the canonical product record of the online store, which is item master data management;
+    the single inventory read is incidental.
+  recovered_from: vertical-retail-consumer-goods-edges.json
+- tag: Blogs
+  spec_file: cart-com-blogs-api-openapi.yml
+  capability_id: BC-400.70
+  capability_id_l1: BC-400
+  capability_name: Content Marketing Management
+  confidence: 0.72
+  evidence: GET /blogs "Get Blogs"; POST /blogs "Create a Blog"; schema "blogs"
+  reason: Management of blog containers on the ecommerce storefront supports editorial/content marketing
+    publishing rather than any transactional commerce function.
+  recovered_from: sweep-20260828T235257Z-edges.json
+- tag: Blog Categories
+  spec_file: cart-com-blog-categories-api-openapi.yml
+  capability_id: BC-400.70
+  capability_id_l1: BC-400
+  capability_name: Content Marketing Management
+  confidence: 0.7
+  evidence: '''Get Blog Categories'', ''Create a Blog Category'' with schema ''blog_categories'''
+  reason: Editorial taxonomy for storefront blog content is content marketing operations, not product
+    or commerce data.
+  recovered_from: vertical-retail-consumer-goods-edges.json
 - tag: Blog Posts
   spec_file: cart-com-blog-posts-api-openapi.yml
   capability_id: BC-400.70
@@ -85,6 +136,47 @@ edges:
   reason: Aggregate marketing surface combining discounts, gift certificates, email templates, mailing
     lists and drip campaigns — Marketing Management at L1; the mix spans promotions and email marketing
     so no single L2 is named.
+- tag: Order Items
+  spec_file: cart-com-order-items-api-openapi.yml
+  capability_id: BC-2330
+  capability_id_l1: BC-2330
+  capability_name: Omnichannel Order & Fulfilment Management
+  confidence: 0.7
+  evidence: POST /order_items  'Create an Order Item'; schema 'order_items'
+  reason: Line-item level manipulation of consumer orders on Cart.com's online store / order management
+    platform — consumer order capture and orchestration. Sub-capability not determinable from four CRUD
+    operations.
+  recovered_from: vertical-retail-consumer-goods-edges.json
+- tag: Order Shipments
+  spec_file: cart-com-order-shipments-api-openapi.yml
+  capability_id: BC-520.40
+  capability_id_l1: BC-520
+  capability_name: Order Fulfilment Management
+  confidence: 0.7
+  evidence: POST /order_shipments 'Create an Order Shipment'
+  reason: Shipment records against orders are the fulfilment execution artefact for this commerce/fulfilment
+    vendor, matching Order Fulfilment Management.
+  recovered_from: sweep-20260828T235257Z-edges.json
+- tag: Price Calculator Rules
+  spec_file: cart-com-price-calculator-rules-api-openapi.yml
+  capability_id: BC-440
+  capability_id_l1: BC-440
+  capability_name: Pricing Management
+  confidence: 0.7
+  evidence: POST /price_calculator_rules  'Create a Price Calculator Rule'
+  reason: Rules that drive how prices are computed for storefront items — price setting and structure,
+    i.e. pricing management. Sub-capability not identifiable from CRUD summaries.
+  recovered_from: vertical-retail-consumer-goods-edges.json
+- tag: Price Calculators
+  spec_file: cart-com-price-calculators-api-openapi.yml
+  capability_id: BC-440
+  capability_id_l1: BC-440
+  capability_name: Pricing Management
+  confidence: 0.7
+  evidence: GET /price_calculators  'Get Price Calculators'; schema 'price_calculators'
+  reason: Definition of price calculators applied to store products, i.e. configurable price determination
+    — pricing management at L1; evidence does not name a narrower sub-capability.
+  recovered_from: vertical-retail-consumer-goods-edges.json
 - tag: Product Variants
   spec_file: cart-com-product-variants-api-openapi.yml
   capability_id: BC-820.40
