@@ -167,7 +167,7 @@ paths:
           $ref: '#/components/responses/404'
       tags:
       - Gift Certificates
-      description: 'Deletes a gift certificate. '
+      description: Deletes a gift certificate.
 components:
   responses:
     '404':

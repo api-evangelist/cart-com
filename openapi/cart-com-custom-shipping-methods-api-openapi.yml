@@ -34,7 +34,7 @@ paths:
       description: 'Gets an array of custom shipping methods.
 
 
-        For more information, please see our knowledge base: [Custom Shipping Methods](https://support.americommerce.com/hc/en-us/articles/201905690-Custom-Shipping-Methods).'
+        For more information, please see our knowledge base: Custom Shipping Methods.'
     post:
       summary: Create a Custom Shipping Method
       operationId: post-custom_shipping_methods
@@ -50,7 +50,7 @@ paths:
       description: 'Creates a custom shipping method.
 
 
-        For more information, please see our knowledge base: [Custom Shipping Methods](https://support.americommerce.com/hc/en-us/articles/201905690-Custom-Shipping-Methods).'
+        For more information, please see our knowledge base: Custom Shipping Methods.'
       requestBody:
         content:
           application/json:
@@ -125,7 +125,7 @@ paths:
       description: 'Updates a custom shipping method.
 
 
-        For more information, please see our knowledge base: [Custom Shipping Methods](https://support.americommerce.com/hc/en-us/articles/201905690-Custom-Shipping-Methods).'
+        For more information, please see our knowledge base: Custom Shipping Methods.'
       requestBody:
         content:
           application/json:
@@ -144,7 +144,7 @@ paths:
       description: 'Deletes a custom shipping method.
 
 
-        For more information, please see our knowledge base: [Custom Shipping Methods](https://support.americommerce.com/hc/en-us/articles/201905690-Custom-Shipping-Methods).'
+        For more information, please see our knowledge base: Custom Shipping Methods.'
 components:
   responses:
     '404':

@@ -31,7 +31,7 @@ paths:
                     items:
                       $ref: '#/components/schemas/notifications'
       operationId: get-notifications
-      description: 'Returns an array of product notifications. '
+      description: Returns an array of product notifications.
     post:
       summary: Create a Notification
       operationId: post-notifications
@@ -120,6 +120,24 @@ paths:
       - Notifications
       description: Deletes a notificaton.
 components:
+  schemas:
+    notifications:
+      type: object
+      properties:
+        notification_id:
+          type: integer
+        product_id:
+          type: integer
+        email_address:
+          type: string
+        customer_id:
+          type: integer
+        notification_frequency_type:
+          type: string
+        store_id:
+          type: integer
+        variant_inventory_id:
+          type: integer
   responses:
     '404':
       description: Resource Not Found
@@ -142,24 +160,6 @@ components:
                 type: string
           examples: {}
       headers: {}
-  schemas:
-    notifications:
-      type: object
-      properties:
-        notification_id:
-          type: integer
-        product_id:
-          type: integer
-        email_address:
-          type: string
-        customer_id:
-          type: integer
-        notification_frequency_type:
-          type: string
-        store_id:
-          type: integer
-        variant_inventory_id:
-          type: integer
   securitySchemes:
     X-AC-Auth-Token:
       name: X-AC-Auth-Token

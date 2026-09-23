@@ -304,7 +304,7 @@ paths:
           $ref: '#/components/responses/404'
       tags:
       - Orders
-      description: 'Deletes an order. '
+      description: Deletes an order.
 components:
   responses:
     '404':

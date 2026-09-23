@@ -31,7 +31,10 @@ paths:
                     items:
                       $ref: '#/components/schemas/drips'
       operationId: get-drips
-      description: "Gets an array of drips. \n\nFor more information on drips, please see our Knowedge Base: [Drip Series Emailing](https://support.americommerce.com/hc/en-us/articles/201903290-Drip-Series-Email-Setup)"
+      description: 'Gets an array of drips.
+
+
+        For more information on drips, please see our Knowedge Base: Drip Series Emailing'
     post:
       summary: Creates a Drip
       operationId: post-drips
@@ -42,7 +45,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/drips'
-      description: "Creates a drip. \n\nFor more information on drips, please see our Knowedge Base: [Drip Series Emailing](https://support.americommerce.com/hc/en-us/articles/201903290-Drip-Series-Email-Setup)"
+      description: 'Creates a drip.
+
+
+        For more information on drips, please see our Knowedge Base: Drip Series Emailing'
       tags:
       - Drips
       requestBody:
@@ -85,7 +91,10 @@ paths:
                 $ref: '#/components/schemas/drips'
       tags:
       - Drips
-      description: "Updates a drip. \n\nFor more information on drips, please see our Knowedge Base: [Drip Series Emailing](https://support.americommerce.com/hc/en-us/articles/201903290-Drip-Series-Email-Setup)"
+      description: 'Updates a drip.
+
+
+        For more information on drips, please see our Knowedge Base: Drip Series Emailing'
       requestBody:
         content:
           application/json:
@@ -104,7 +113,7 @@ paths:
       description: 'Deletes a drip.
 
 
-        For more information on drips, please see our Knowedge Base: [Drip Series Emailing](https://support.americommerce.com/hc/en-us/articles/201903290-Drip-Series-Email-Setup)'
+        For more information on drips, please see our Knowedge Base: Drip Series Emailing'
 components:
   responses:
     '404':

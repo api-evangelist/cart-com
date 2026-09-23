@@ -143,7 +143,7 @@ paths:
                 $ref: '#/components/schemas/microstores'
       tags:
       - Microstores
-      description: 'Updates a microstore. '
+      description: Updates a microstore.
       requestBody:
         content:
           application/json:

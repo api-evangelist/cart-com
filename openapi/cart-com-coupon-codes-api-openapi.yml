@@ -178,7 +178,7 @@ paths:
           description: OK
         '404':
           $ref: '#/components/responses/404'
-      description: 'Delete a coupon code by ID. '
+      description: Delete a coupon code by ID.
       tags:
       - Coupon Codes
 components:

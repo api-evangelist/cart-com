@@ -55,7 +55,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/cart_items'
-      description: 'Adds an Item to specified cart. '
+      description: Adds an Item to specified cart.
       requestBody:
         content:
           application/json:
@@ -239,7 +239,7 @@ paths:
                   personalizations:
                   - id: 27
                     answer: Hello There
-      description: 'Updates a cart item. '
+      description: Updates a cart item.
       tags:
       - Cart Items
     delete:

@@ -143,7 +143,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/order_addresses'
-      description: 'Updates an order address. '
+      description: Updates an order address.
       requestBody:
         content:
           application/json:

@@ -31,7 +31,7 @@ paths:
                     items:
                       $ref: '#/components/schemas/discount_rules'
       operationId: get-discount_rules
-      description: 'Gets an array of discount rules. '
+      description: Gets an array of discount rules.
     post:
       summary: Create a Discount Rule
       operationId: post-discount_rules
@@ -42,7 +42,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/discount_rules'
-      description: 'Creates a discount rule. '
+      description: Creates a discount rule.
       tags:
       - Discount Rules
       requestBody:
@@ -120,7 +120,7 @@ paths:
     delete:
       summary: Deletes a Discount Rule
       operationId: delete-discount_rules-id
-      description: 'Deletes a discount rule. '
+      description: Deletes a discount rule.
       tags:
       - Discount Rules
       responses:

@@ -42,7 +42,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/warehouses'
-      description: 'Creates a warehouse. '
+      description: Creates a warehouse.
       requestBody:
         content:
           application/json:

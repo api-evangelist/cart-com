@@ -34,7 +34,7 @@ paths:
       description: 'Gets an array of custom fields.
 
 
-        For more information on custom fields, please see our knowledge base: [Custom Fields Overview](https://support.americommerce.com/hc/en-us/articles/201903820-Custom-Fields-Overview).'
+        For more information on custom fields, please see our knowledge base: Custom Fields Overview.'
     post:
       summary: Create a Custom Field
       operationId: post-custom_fields
@@ -50,7 +50,7 @@ paths:
       description: 'Creates a custom field.
 
 
-        For more information on custom fields, please see our knowledge base: [Custom Fields Overview](https://support.americommerce.com/hc/en-us/articles/201903820-Custom-Fields-Overview).'
+        For more information on custom fields, please see our knowledge base: Custom Fields Overview.'
       requestBody:
         content:
           application/json:
@@ -162,7 +162,10 @@ paths:
                 $ref: '#/components/schemas/custom_fields'
       tags:
       - Custom Fields
-      description: "Updates a custom field. \n\nFor more information on custom fields, please see our knowledge base: [Custom Fields Overview](https://support.americommerce.com/hc/en-us/articles/201903820-Custom-Fields-Overview)."
+      description: 'Updates a custom field.
+
+
+        For more information on custom fields, please see our knowledge base: Custom Fields Overview.'
       requestBody:
         content:
           application/json:
@@ -176,7 +179,10 @@ paths:
           description: OK
         '404':
           $ref: '#/components/responses/404'
-      description: "Deletes a custom field. \n\nFor more information on custom fields, please see our knowledge base: [Custom Fields Overview](https://support.americommerce.com/hc/en-us/articles/201903820-Custom-Fields-Overview)."
+      description: 'Deletes a custom field.
+
+
+        For more information on custom fields, please see our knowledge base: Custom Fields Overview.'
       tags:
       - Custom Fields
 components:

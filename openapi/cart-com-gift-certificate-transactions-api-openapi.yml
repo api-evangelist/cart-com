@@ -103,7 +103,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/gift_certificate_transactions'
-      description: 'Updates a gift certificate transaction. '
+      description: Updates a gift certificate transaction.
       tags:
       - Gift Certificate Transactions
       requestBody:

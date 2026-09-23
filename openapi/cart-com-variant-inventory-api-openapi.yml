@@ -206,7 +206,7 @@ paths:
       description: 'Creates a variant inventory item.
 
 
-        Variant Inventory items are created from all possible variant combinations. It is required to specify applicable variants that make up the variant inventory item you wish to create. For information, please see our knowledge base: [Adding Variant Level Inventory](https://support.americommerce.com/hc/en-us/articles/201907140-Adding-Variant-Level-Inventory)'
+        Variant Inventory items are created from all possible variant combinations. It is required to specify applicable variants that make up the variant inventory item you wish to create. For information, please see our knowledge base: Adding Variant Level Inventory'
       requestBody:
         content:
           application/json:

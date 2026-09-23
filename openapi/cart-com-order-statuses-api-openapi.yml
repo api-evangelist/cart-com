@@ -31,7 +31,7 @@ paths:
                     items:
                       $ref: '#/components/schemas/order_statuses'
       operationId: get-order_statuses
-      description: 'Gets an array of order statuses. '
+      description: Gets an array of order statuses.
     post:
       summary: Create an Order Status
       operationId: post-order_statuses

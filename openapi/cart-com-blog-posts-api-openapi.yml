@@ -42,7 +42,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/blog_posts'
-      description: 'Creates a blog posts. '
+      description: Creates a blog posts.
       requestBody:
         content:
           application/json:
@@ -164,7 +164,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/blog_posts'
-      description: 'Updates a Blog Post. '
+      description: Updates a Blog Post.
       requestBody:
         content:
           application/json:

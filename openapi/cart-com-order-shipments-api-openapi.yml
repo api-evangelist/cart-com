@@ -44,9 +44,7 @@ paths:
                 $ref: '#/components/schemas/order_shipments'
       tags:
       - Order Shipments
-      description: 'Creates an order shipment.
-
-        '
+      description: Creates an order shipment.
       requestBody:
         content:
           application/json:

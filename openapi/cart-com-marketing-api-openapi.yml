@@ -276,7 +276,7 @@ paths:
                     items:
                       $ref: '#/components/schemas/discount_rules'
       operationId: get-discount_rules
-      description: 'Gets an array of discount rules. '
+      description: Gets an array of discount rules.
     post:
       summary: Create a Discount Rule
       operationId: post-discount_rules
@@ -287,7 +287,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/discount_rules'
-      description: 'Creates a discount rule. '
+      description: Creates a discount rule.
       tags:
       - Marketing
       requestBody:
@@ -365,7 +365,7 @@ paths:
     delete:
       summary: Deletes a Discount Rule
       operationId: delete-discount_rules-id
-      description: 'Deletes a discount rule. '
+      description: Deletes a discount rule.
       tags:
       - Marketing
       responses:
@@ -411,7 +411,10 @@ paths:
                     items:
                       $ref: '#/components/schemas/drips'
       operationId: get-drips
-      description: "Gets an array of drips. \n\nFor more information on drips, please see our Knowedge Base: [Drip Series Emailing](https://support.americommerce.com/hc/en-us/articles/201903290-Drip-Series-Email-Setup)"
+      description: 'Gets an array of drips.
+
+
+        For more information on drips, please see our Knowedge Base: Drip Series Emailing'
     post:
       summary: Creates a Drip
       operationId: post-drips
@@ -422,7 +425,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/drips'
-      description: "Creates a drip. \n\nFor more information on drips, please see our Knowedge Base: [Drip Series Emailing](https://support.americommerce.com/hc/en-us/articles/201903290-Drip-Series-Email-Setup)"
+      description: 'Creates a drip.
+
+
+        For more information on drips, please see our Knowedge Base: Drip Series Emailing'
       tags:
       - Marketing
       requestBody:
@@ -465,7 +471,10 @@ paths:
                 $ref: '#/components/schemas/drips'
       tags:
       - Marketing
-      description: "Updates a drip. \n\nFor more information on drips, please see our Knowedge Base: [Drip Series Emailing](https://support.americommerce.com/hc/en-us/articles/201903290-Drip-Series-Email-Setup)"
+      description: 'Updates a drip.
+
+
+        For more information on drips, please see our Knowedge Base: Drip Series Emailing'
       requestBody:
         content:
           application/json:
@@ -484,7 +493,7 @@ paths:
       description: 'Deletes a drip.
 
 
-        For more information on drips, please see our Knowedge Base: [Drip Series Emailing](https://support.americommerce.com/hc/en-us/articles/201903290-Drip-Series-Email-Setup)'
+        For more information on drips, please see our Knowedge Base: Drip Series Emailing'
   /email_templates:
     get:
       summary: Get Email Templates
@@ -710,7 +719,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/gift_certificate_transactions'
-      description: 'Updates a gift certificate transaction. '
+      description: Updates a gift certificate transaction.
       tags:
       - Marketing
       requestBody:
@@ -885,7 +894,7 @@ paths:
           $ref: '#/components/responses/404'
       tags:
       - Marketing
-      description: 'Deletes a gift certificate. '
+      description: Deletes a gift certificate.
   /mailing_lists:
     get:
       summary: Get Mailing Lists
@@ -1009,6 +1018,42 @@ paths:
       description: Deletes a mailing list.
 components:
   schemas:
+    mailing_lists:
+      type: object
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+        admin_list_name:
+          type: string
+        public_list_name:
+          type: string
+        store_id:
+          type: integer
+        is_store_default:
+          type: boolean
+        auto_opt_in:
+          type: boolean
+        is_hidden:
+          type: boolean
+        url_based_subscribe_url:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        welcome_email_template_id:
+          type: string
+    drips:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        is_enabled:
+          type: boolean
     discount_methods:
       type: object
       properties:
@@ -1046,29 +1091,29 @@ components:
           type: boolean
         exclude_subscription_renew:
           type: boolean
-    discount_actions:
+    gift_certificate_transactions:
       type: object
       properties:
         id:
           type: integer
-        discount_method_id:
+        gift_certificate_id:
           type: integer
-        is_exclusive:
-          type: boolean
-        is_strict:
-          type: boolean
-        is_active:
-          type: boolean
-        modifier_operation:
+        action:
           type: string
-        modifier_amount:
-          type: string
-        modifier_type:
-          type: string
-        modifier_target:
-          type: string
-        sort_order:
+        amount:
           type: integer
+        is_pre_tax_discount:
+          type: boolean
+        order_id:
+          type: integer
+        order_payment_id:
+          type: integer
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        status:
+          type: string
     gift_certificates:
       type: object
       properties:
@@ -1145,56 +1190,6 @@ components:
           type: integer
         admin_alert_email_override:
           type: string
-    mailing_lists:
-      type: object
-      properties:
-        id:
-          type: integer
-        type:
-          type: string
-        admin_list_name:
-          type: string
-        public_list_name:
-          type: string
-        store_id:
-          type: integer
-        is_store_default:
-          type: boolean
-        auto_opt_in:
-          type: boolean
-        is_hidden:
-          type: boolean
-        url_based_subscribe_url:
-          type: string
-        updated_at:
-          type: string
-        created_at:
-          type: string
-        welcome_email_template_id:
-          type: string
-    gift_certificate_transactions:
-      type: object
-      properties:
-        id:
-          type: integer
-        gift_certificate_id:
-          type: integer
-        action:
-          type: string
-        amount:
-          type: integer
-        is_pre_tax_discount:
-          type: boolean
-        order_id:
-          type: integer
-        order_payment_id:
-          type: integer
-        updated_at:
-          type: string
-        created_at:
-          type: string
-        status:
-          type: string
     discount_rules:
       type: object
       properties:
@@ -1228,15 +1223,29 @@ components:
           type: integer
         discount_from_high_to_low:
           type: boolean
-    drips:
+    discount_actions:
       type: object
       properties:
         id:
           type: integer
-        name:
-          type: string
-        is_enabled:
+        discount_method_id:
+          type: integer
+        is_exclusive:
           type: boolean
+        is_strict:
+          type: boolean
+        is_active:
+          type: boolean
+        modifier_operation:
+          type: string
+        modifier_amount:
+          type: string
+        modifier_type:
+          type: string
+        modifier_target:
+          type: string
+        sort_order:
+          type: integer
   responses:
     '404':
       description: Resource Not Found

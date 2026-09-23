@@ -192,7 +192,7 @@ paths:
           $ref: '#/components/responses/404'
       tags:
       - Order Payments
-      description: 'Deletes an order payment. '
+      description: Deletes an order payment.
 components:
   responses:
     '404':

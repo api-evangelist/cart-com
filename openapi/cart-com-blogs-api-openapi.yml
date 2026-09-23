@@ -179,7 +179,7 @@ paths:
                   new_comment_reply_notification_email_template_id: 8
                   page_title: '##STORENAME## Blog'
         description: ''
-      description: 'Creates a Blog. '
+      description: Creates a Blog.
       tags:
       - Blogs
   /blogs/{id}:
@@ -338,7 +338,7 @@ paths:
           description: OK
         '404':
           $ref: '#/components/responses/404'
-      description: 'Deletes a blog. '
+      description: Deletes a blog.
       tags:
       - Blogs
 components:

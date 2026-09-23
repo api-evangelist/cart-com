@@ -44,7 +44,7 @@ paths:
                 $ref: '#/components/schemas/manufacturers'
       tags:
       - Manufacturers
-      description: 'Creates a manufacturer. '
+      description: Creates a manufacturer.
       requestBody:
         content:
           application/json:

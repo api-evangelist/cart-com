@@ -34,7 +34,7 @@ paths:
       description: 'Gets an array of variant groups.
 
 
-        For more information on variant groups, please see our knowledge base: [Variant Group Overview](https://support.americommerce.com/hc/en-us/articles/213282337-Product-Variant-Overview).'
+        For more information on variant groups, please see our knowledge base: Variant Group Overview.'
     post:
       summary: Create a Variant Group
       operationId: post-variant_groups
@@ -50,7 +50,7 @@ paths:
       description: 'Creates a variant group.
 
 
-        For more information on variant groups, please see our knowledge base: [Variant Group Overview](https://support.americommerce.com/hc/en-us/articles/213282337-Product-Variant-Overview).'
+        For more information on variant groups, please see our knowledge base: Variant Group Overview.'
       requestBody:
         content:
           application/json:
@@ -116,7 +116,7 @@ paths:
       description: 'Updates a varaint group.
 
 
-        For more information on variant groups, please see our knowledge base: [Variant Group Overview](https://support.americommerce.com/hc/en-us/articles/213282337-Product-Variant-Overview).'
+        For more information on variant groups, please see our knowledge base: Variant Group Overview.'
       tags:
       - Variant Groups
       requestBody:
@@ -135,7 +135,7 @@ paths:
       description: 'Deletes a variant group.
 
 
-        For more information on variant groups, please see our knowledge base: [Variant Group Overview](https://support.americommerce.com/hc/en-us/articles/213282337-Product-Variant-Overview).'
+        For more information on variant groups, please see our knowledge base: Variant Group Overview.'
       tags:
       - Variant Groups
 components:
