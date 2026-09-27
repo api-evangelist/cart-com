@@ -196,33 +196,6 @@ paths:
       description: Delete a payment method.
 components:
   schemas:
-    payment_method_fields:
-      type: object
-      properties:
-        id:
-          type: integer
-        payment_method_id:
-          type: integer
-        name:
-          type: string
-        length:
-          type: integer
-        sort_order:
-          type: integer
-        type:
-          type: string
-        is_required:
-          type: boolean
-        is_hidden:
-          type: boolean
-        is_encrypted:
-          type: boolean
-        is_masked:
-          type: boolean
-        updated_at:
-          type: string
-        created_at:
-          type: string
     payment_methods:
       type: object
       properties:
@@ -256,6 +229,33 @@ components:
           type: string
         fields:
           $ref: '#/components/schemas/payment_method_fields'
+    payment_method_fields:
+      type: object
+      properties:
+        id:
+          type: integer
+        payment_method_id:
+          type: integer
+        name:
+          type: string
+        length:
+          type: integer
+        sort_order:
+          type: integer
+        type:
+          type: string
+        is_required:
+          type: boolean
+        is_hidden:
+          type: boolean
+        is_encrypted:
+          type: boolean
+        is_masked:
+          type: boolean
+        updated_at:
+          type: string
+        created_at:
+          type: string
   responses:
     '404':
       description: Resource Not Found

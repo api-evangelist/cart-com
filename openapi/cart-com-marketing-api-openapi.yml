@@ -1018,6 +1018,71 @@ paths:
       description: Deletes a mailing list.
 components:
   schemas:
+    discount_rules:
+      type: object
+      properties:
+        id:
+          type: integer
+        discount_method_id:
+          type: integer
+        type:
+          type: string
+        target:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        operator_type:
+          type: string
+        target_quantity:
+          type: integer
+        target_quantity_type:
+          type: string
+        discount_action_id:
+          type: integer
+        is_action_rule:
+          type: boolean
+        bogo_discount_buy_quantity:
+          type: integer
+        bogo_discount_quantity:
+          type: integer
+        bogo_max_use_per_order:
+          type: integer
+        discount_from_high_to_low:
+          type: boolean
+    drips:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        is_enabled:
+          type: boolean
+    gift_certificate_transactions:
+      type: object
+      properties:
+        id:
+          type: integer
+        gift_certificate_id:
+          type: integer
+        action:
+          type: string
+        amount:
+          type: integer
+        is_pre_tax_discount:
+          type: boolean
+        order_id:
+          type: integer
+        order_payment_id:
+          type: integer
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        status:
+          type: string
     mailing_lists:
       type: object
       properties:
@@ -1044,75 +1109,6 @@ components:
         created_at:
           type: string
         welcome_email_template_id:
-          type: string
-    drips:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        is_enabled:
-          type: boolean
-    discount_methods:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        is_enabled:
-          type: boolean
-        is_strict:
-          type: boolean
-        use_once:
-          type: boolean
-        expires:
-          type: boolean
-        expires_at:
-          type: string
-        updated_at:
-          type: string
-        created_at:
-          type: string
-        starts_at:
-          type: string
-        remaining_uses:
-          type: integer
-        notes:
-          type: string
-        is_free_shipping_discount:
-          type: boolean
-        is_exclusive:
-          type: boolean
-        uses:
-          type: integer
-        exclude_child_items:
-          type: boolean
-        exclude_subscription_renew:
-          type: boolean
-    gift_certificate_transactions:
-      type: object
-      properties:
-        id:
-          type: integer
-        gift_certificate_id:
-          type: integer
-        action:
-          type: string
-        amount:
-          type: integer
-        is_pre_tax_discount:
-          type: boolean
-        order_id:
-          type: integer
-        order_payment_id:
-          type: integer
-        updated_at:
-          type: string
-        created_at:
-          type: string
-        status:
           type: string
     gift_certificates:
       type: object
@@ -1190,38 +1186,42 @@ components:
           type: integer
         admin_alert_email_override:
           type: string
-    discount_rules:
+    discount_methods:
       type: object
       properties:
         id:
           type: integer
-        discount_method_id:
-          type: integer
-        type:
+        name:
           type: string
-        target:
+        is_enabled:
+          type: boolean
+        is_strict:
+          type: boolean
+        use_once:
+          type: boolean
+        expires:
+          type: boolean
+        expires_at:
           type: string
         updated_at:
           type: string
         created_at:
           type: string
-        operator_type:
+        starts_at:
           type: string
-        target_quantity:
+        remaining_uses:
           type: integer
-        target_quantity_type:
+        notes:
           type: string
-        discount_action_id:
-          type: integer
-        is_action_rule:
+        is_free_shipping_discount:
           type: boolean
-        bogo_discount_buy_quantity:
+        is_exclusive:
+          type: boolean
+        uses:
           type: integer
-        bogo_discount_quantity:
-          type: integer
-        bogo_max_use_per_order:
-          type: integer
-        discount_from_high_to_low:
+        exclude_child_items:
+          type: boolean
+        exclude_subscription_renew:
           type: boolean
     discount_actions:
       type: object

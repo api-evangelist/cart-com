@@ -96,6 +96,20 @@ paths:
       - External Image Whitelist
       description: Deletes an external image whitelist item.
 components:
+  schemas:
+    external_image_whitelist:
+      type: object
+      properties:
+        external_image_whitelist_sites_id:
+          type: integer
+        url:
+          type: string
+        created_at:
+          type: string
+        entered_by:
+          type: string
+        updated_at:
+          type: string
   responses:
     '404':
       description: Resource Not Found
@@ -118,20 +132,6 @@ components:
                 type: string
           examples: {}
       headers: {}
-  schemas:
-    external_image_whitelist:
-      type: object
-      properties:
-        external_image_whitelist_sites_id:
-          type: integer
-        url:
-          type: string
-        created_at:
-          type: string
-        entered_by:
-          type: string
-        updated_at:
-          type: string
   securitySchemes:
     X-AC-Auth-Token:
       name: X-AC-Auth-Token
