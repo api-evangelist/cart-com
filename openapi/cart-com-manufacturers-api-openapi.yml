@@ -139,28 +139,6 @@ paths:
       - Manufacturers
       description: Deletes a manufacturer.
 components:
-  responses:
-    '404':
-      description: Resource Not Found
-      content:
-        application/json:
-          schema:
-            description: Not Found
-            type: object
-            x-examples:
-              example-1:
-                status_code: 404
-                message: Not Found
-                details: No resource found
-            properties:
-              status_code:
-                type: number
-              message:
-                type: string
-              details:
-                type: string
-          examples: {}
-      headers: {}
   schemas:
     manufacturers:
       type: object
@@ -193,6 +171,28 @@ components:
           type: string
         brand_code:
           type: string
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
   securitySchemes:
     X-AC-Auth-Token:
       name: X-AC-Auth-Token

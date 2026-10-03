@@ -106,6 +106,22 @@ paths:
       - Product Inactive In Store
       description: Delete a product inactive in store.
 components:
+  schemas:
+    product_inactive_in_store:
+      type: object
+      properties:
+        id:
+          type: integer
+        item_id:
+          type: integer
+        store_id:
+          type: integer
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        customer_type_id:
+          type: integer
   responses:
     '404':
       description: Resource Not Found
@@ -128,22 +144,6 @@ components:
                 type: string
           examples: {}
       headers: {}
-  schemas:
-    product_inactive_in_store:
-      type: object
-      properties:
-        id:
-          type: integer
-        item_id:
-          type: integer
-        store_id:
-          type: integer
-        updated_at:
-          type: string
-        created_at:
-          type: string
-        customer_type_id:
-          type: integer
   securitySchemes:
     X-AC-Auth-Token:
       name: X-AC-Auth-Token

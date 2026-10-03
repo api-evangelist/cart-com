@@ -148,28 +148,6 @@ paths:
       - Discount Methods
       description: Deletes a discount method.
 components:
-  responses:
-    '404':
-      description: Resource Not Found
-      content:
-        application/json:
-          schema:
-            description: Not Found
-            type: object
-            x-examples:
-              example-1:
-                status_code: 404
-                message: Not Found
-                details: No resource found
-            properties:
-              status_code:
-                type: number
-              message:
-                type: string
-              details:
-                type: string
-          examples: {}
-      headers: {}
   schemas:
     discount_methods:
       type: object
@@ -208,6 +186,28 @@ components:
           type: boolean
         exclude_subscription_renew:
           type: boolean
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
   securitySchemes:
     X-AC-Auth-Token:
       name: X-AC-Auth-Token

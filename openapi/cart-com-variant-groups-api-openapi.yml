@@ -139,28 +139,6 @@ paths:
       tags:
       - Variant Groups
 components:
-  responses:
-    '404':
-      description: Resource Not Found
-      content:
-        application/json:
-          schema:
-            description: Not Found
-            type: object
-            x-examples:
-              example-1:
-                status_code: 404
-                message: Not Found
-                details: No resource found
-            properties:
-              status_code:
-                type: number
-              message:
-                type: string
-              details:
-                type: string
-          examples: {}
-      headers: {}
   schemas:
     variant_groups:
       type: object
@@ -187,6 +165,28 @@ components:
           type: string
         is_non_inventory:
           type: boolean
+  responses:
+    '404':
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            description: Not Found
+            type: object
+            x-examples:
+              example-1:
+                status_code: 404
+                message: Not Found
+                details: No resource found
+            properties:
+              status_code:
+                type: number
+              message:
+                type: string
+              details:
+                type: string
+          examples: {}
+      headers: {}
   securitySchemes:
     X-AC-Auth-Token:
       name: X-AC-Auth-Token

@@ -147,6 +147,24 @@ paths:
         '404':
           $ref: '#/components/responses/404'
 components:
+  schemas:
+    url_redirects:
+      type: object
+      properties:
+        id:
+          type: integer
+        from:
+          type: string
+        to:
+          type: string
+        is_active:
+          type: boolean
+        redirect_type:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
   responses:
     '404':
       description: Resource Not Found
@@ -169,24 +187,6 @@ components:
                 type: string
           examples: {}
       headers: {}
-  schemas:
-    url_redirects:
-      type: object
-      properties:
-        id:
-          type: integer
-        from:
-          type: string
-        to:
-          type: string
-        is_active:
-          type: boolean
-        redirect_type:
-          type: string
-        updated_at:
-          type: string
-        created_at:
-          type: string
   securitySchemes:
     X-AC-Auth-Token:
       name: X-AC-Auth-Token

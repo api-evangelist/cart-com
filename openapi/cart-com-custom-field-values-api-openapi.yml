@@ -131,22 +131,6 @@ paths:
         '404':
           $ref: '#/components/responses/404'
 components:
-  schemas:
-    custom_field_values:
-      type: object
-      properties:
-        id:
-          type: integer
-        custom_field_id:
-          type: integer
-        resource_id:
-          type: integer
-        value:
-          type: string
-        updated_at:
-          type: string
-        created_at:
-          type: string
   responses:
     '404':
       description: Resource Not Found
@@ -169,6 +153,22 @@ components:
                 type: string
           examples: {}
       headers: {}
+  schemas:
+    custom_field_values:
+      type: object
+      properties:
+        id:
+          type: integer
+        custom_field_id:
+          type: integer
+        resource_id:
+          type: integer
+        value:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
   securitySchemes:
     X-AC-Auth-Token:
       name: X-AC-Auth-Token

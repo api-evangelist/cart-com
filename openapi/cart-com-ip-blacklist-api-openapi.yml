@@ -99,6 +99,22 @@ paths:
       - IP Blacklist
       description: Deletes an IP blacklist item.
 components:
+  schemas:
+    blacklisted_ips:
+      type: object
+      properties:
+        id:
+          type: integer
+        ip_address:
+          type: string
+        hit_count:
+          type: integer
+        last_hit_at:
+          type: string
+        user_agent:
+          type: string
+        description:
+          type: string
   responses:
     '404':
       description: Resource Not Found
@@ -121,22 +137,6 @@ components:
                 type: string
           examples: {}
       headers: {}
-  schemas:
-    blacklisted_ips:
-      type: object
-      properties:
-        id:
-          type: integer
-        ip_address:
-          type: string
-        hit_count:
-          type: integer
-        last_hit_at:
-          type: string
-        user_agent:
-          type: string
-        description:
-          type: string
   securitySchemes:
     X-AC-Auth-Token:
       name: X-AC-Auth-Token

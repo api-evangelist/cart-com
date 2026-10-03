@@ -115,6 +115,16 @@ paths:
 
         For more information on drips, please see our Knowedge Base: Drip Series Emailing'
 components:
+  schemas:
+    drips:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        is_enabled:
+          type: boolean
   responses:
     '404':
       description: Resource Not Found
@@ -137,16 +147,6 @@ components:
                 type: string
           examples: {}
       headers: {}
-  schemas:
-    drips:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        is_enabled:
-          type: boolean
   securitySchemes:
     X-AC-Auth-Token:
       name: X-AC-Auth-Token
