@@ -108,6 +108,14 @@ paths:
       - Product Lists
       description: Delete a product list.
 components:
+  schemas:
+    product_lists:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
   responses:
     '404':
       description: Resource Not Found
@@ -130,14 +138,6 @@ components:
                 type: string
           examples: {}
       headers: {}
-  schemas:
-    product_lists:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
   securitySchemes:
     X-AC-Auth-Token:
       name: X-AC-Auth-Token

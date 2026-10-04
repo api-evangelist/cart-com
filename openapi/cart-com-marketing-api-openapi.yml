@@ -1018,60 +1018,6 @@ paths:
       description: Deletes a mailing list.
 components:
   schemas:
-    gift_certificate_transactions:
-      type: object
-      properties:
-        id:
-          type: integer
-        gift_certificate_id:
-          type: integer
-        action:
-          type: string
-        amount:
-          type: integer
-        is_pre_tax_discount:
-          type: boolean
-        order_id:
-          type: integer
-        order_payment_id:
-          type: integer
-        updated_at:
-          type: string
-        created_at:
-          type: string
-        status:
-          type: string
-    email_templates:
-      type: object
-      properties:
-        id:
-          type: integer
-        type:
-          type: string
-        body:
-          type: string
-        subject:
-          type: string
-        from_name:
-          type: string
-        from_email:
-          type: string
-        is_enabled:
-          type: boolean
-        admin_alert_header:
-          type: string
-        admin_alert_subject:
-          type: string
-        is_admin_alert_enabled:
-          type: boolean
-        email_format:
-          type: string
-        attach_invoice_pdf:
-          type: boolean
-        email_category_id:
-          type: integer
-        admin_alert_email_override:
-          type: string
     discount_rules:
       type: object
       properties:
@@ -1150,15 +1096,60 @@ components:
           type: boolean
         order_item_id:
           type: integer
-    drips:
+    gift_certificate_transactions:
       type: object
       properties:
         id:
           type: integer
-        name:
+        gift_certificate_id:
+          type: integer
+        action:
+          type: string
+        amount:
+          type: integer
+        is_pre_tax_discount:
+          type: boolean
+        order_id:
+          type: integer
+        order_payment_id:
+          type: integer
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        status:
+          type: string
+    email_templates:
+      type: object
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+        body:
+          type: string
+        subject:
+          type: string
+        from_name:
+          type: string
+        from_email:
           type: string
         is_enabled:
           type: boolean
+        admin_alert_header:
+          type: string
+        admin_alert_subject:
+          type: string
+        is_admin_alert_enabled:
+          type: boolean
+        email_format:
+          type: string
+        attach_invoice_pdf:
+          type: boolean
+        email_category_id:
+          type: integer
+        admin_alert_email_override:
+          type: string
     discount_methods:
       type: object
       properties:
@@ -1223,6 +1214,15 @@ components:
           type: string
         welcome_email_template_id:
           type: string
+    drips:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        is_enabled:
+          type: boolean
     discount_actions:
       type: object
       properties:

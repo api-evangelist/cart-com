@@ -580,61 +580,6 @@ paths:
           $ref: '#/components/responses/404'
 components:
   schemas:
-    inventory:
-      type: object
-      properties:
-        product_id:
-          type: integer
-        variant_inventory_id:
-          type: integer
-        item_number:
-          type: string
-        item_name:
-          type: string
-        gtin:
-          type: string
-        quantity:
-          type: integer
-    product_nested_variant:
-      type: object
-      properties:
-        id:
-          type: integer
-        product_id:
-          type: integer
-        variant_group_id:
-          type: integer
-        description:
-          type: string
-        price_adjustment:
-          type: integer
-        price_adjustment_type:
-          type: string
-        sort_order:
-          type: integer
-        item_number_extension:
-          type: string
-        item_number_sort_order:
-          type: integer
-        is_hidden:
-          type: boolean
-        weight:
-          type: number
-        weight_type:
-          type: string
-        updated_at:
-          type: string
-        created_at:
-          type: string
-        is_default_selection:
-          type: boolean
-        swatch_file:
-          type: string
-        swatch_thumbnail:
-          type: string
-        swatch_thumbnail_color:
-          type: string
-      description: Accessible via the `?expand=` parameter or `/api/v1/products/{id}/{nested_resource}`.
     products:
       type: object
       properties:
@@ -928,6 +873,61 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/product_nested_variant'
+    product_nested_variant:
+      type: object
+      properties:
+        id:
+          type: integer
+        product_id:
+          type: integer
+        variant_group_id:
+          type: integer
+        description:
+          type: string
+        price_adjustment:
+          type: integer
+        price_adjustment_type:
+          type: string
+        sort_order:
+          type: integer
+        item_number_extension:
+          type: string
+        item_number_sort_order:
+          type: integer
+        is_hidden:
+          type: boolean
+        weight:
+          type: number
+        weight_type:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        is_default_selection:
+          type: boolean
+        swatch_file:
+          type: string
+        swatch_thumbnail:
+          type: string
+        swatch_thumbnail_color:
+          type: string
+      description: Accessible via the `?expand=` parameter or `/api/v1/products/{id}/{nested_resource}`.
+    inventory:
+      type: object
+      properties:
+        product_id:
+          type: integer
+        variant_inventory_id:
+          type: integer
+        item_number:
+          type: string
+        item_name:
+          type: string
+        gtin:
+          type: string
+        quantity:
+          type: integer
   responses:
     '404':
       description: Resource Not Found

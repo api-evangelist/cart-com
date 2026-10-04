@@ -111,6 +111,18 @@ paths:
       - Customer Association
       description: Deletes a customer association.
 components:
+  schemas:
+    customer_association:
+      type: object
+      properties:
+        customer_association_id:
+          type: integer
+        association_type_id:
+          type: integer
+        parent_customer_id:
+          type: integer
+        child_customer_id:
+          type: integer
   responses:
     '404':
       description: Resource Not Found
@@ -133,18 +145,6 @@ components:
                 type: string
           examples: {}
       headers: {}
-  schemas:
-    customer_association:
-      type: object
-      properties:
-        customer_association_id:
-          type: integer
-        association_type_id:
-          type: integer
-        parent_customer_id:
-          type: integer
-        child_customer_id:
-          type: integer
   securitySchemes:
     X-AC-Auth-Token:
       name: X-AC-Auth-Token
