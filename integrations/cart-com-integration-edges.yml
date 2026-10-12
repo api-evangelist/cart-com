@@ -1,0 +1,20 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/cart-com/integrations
+- https://zapier.com/apps/cart/integrations
+- https://n8n.io/integrations/cart-com/
+- https://n8n.io/integrations/cart/
+- https://composio.dev/toolkits/cart-com
+- https://monid.ai/tools/cart-com
+checked:
+- https://composio.dev/toolkits/cart-com
+- https://monid.ai/tools/cart-com
+- https://n8n.io/integrations/cart-com/
+- https://n8n.io/integrations/cart/
+- https://zapier.com/apps/cart-com/integrations
+- https://zapier.com/apps/cart/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
