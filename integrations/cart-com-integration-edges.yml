@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/cart-com/integrations
 - https://zapier.com/apps/cart/integrations
@@ -12,9 +12,40 @@ checked:
 - https://monid.ai/tools/cart-com
 - https://n8n.io/integrations/cart-com/
 - https://n8n.io/integrations/cart/
+- https://www.gs1.org/services/gdsn/certified-data-pools-list
+- https://www.gs1us.org/services/find-gs1-us-solution-partner/profiles
+- https://www.spscommerce.com/partner-community/directory/
 - https://zapier.com/apps/cart-com/integrations
 - https://zapier.com/apps/cart/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: SPS Commerce
+  partner: sps-commerce
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  app: Cart.com
+  evidence: https://www.spscommerce.com/partner-community/directory/
+  category: Software Provider, Third Party Logistics (3PL), System Integrator (SI)
+  contract_reference:
+    register: SPS Commerce partner community directory
+    spec_file: null
+    role: sps-integration-partner
+    registered_name: Cart.com
+    website: https://www.cart.com
+    matched_domain: cart.com
+    matched_by: domain
+    business_types:
+    - Software Provider
+    - Third Party Logistics (3PL)
+    - System Integrator (SI)
+    signal_note: 'participation only: a directory listing, never a count'
+    detected_by: sweep-consumer-goods.py
+    detected: '2026-10-15'
+  detected_by: sweep-consumer-goods.py
+  first_seen: '2026-10-15'
 templates: []
