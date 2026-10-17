@@ -121,28 +121,6 @@ paths:
       - Product Statuses
       description: Deletes a product status.
 components:
-  schemas:
-    product_statuses:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        time_frame:
-          type: string
-        is_unavailable:
-          type: boolean
-        is_hidden:
-          type: boolean
-        is_back_ordered:
-          type: boolean
-        show_quantity:
-          type: boolean
-        updated_at:
-          type: string
-        created_at:
-          type: string
   responses:
     '404':
       description: Resource Not Found
@@ -165,6 +143,28 @@ components:
                 type: string
           examples: {}
       headers: {}
+  schemas:
+    product_statuses:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        time_frame:
+          type: string
+        is_unavailable:
+          type: boolean
+        is_hidden:
+          type: boolean
+        is_back_ordered:
+          type: boolean
+        show_quantity:
+          type: boolean
+        updated_at:
+          type: string
+        created_at:
+          type: string
   securitySchemes:
     X-AC-Auth-Token:
       name: X-AC-Auth-Token

@@ -110,22 +110,6 @@ paths:
       - Customer Types
       description: Deletes a customer type.
 components:
-  schemas:
-    customer_types:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        customer_level:
-          type: integer
-        description:
-          type: string
-        updated_at:
-          type: string
-        created_at:
-          type: string
   responses:
     '404':
       description: Resource Not Found
@@ -148,6 +132,22 @@ components:
                 type: string
           examples: {}
       headers: {}
+  schemas:
+    customer_types:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        customer_level:
+          type: integer
+        description:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
   securitySchemes:
     X-AC-Auth-Token:
       name: X-AC-Auth-Token

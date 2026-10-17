@@ -109,22 +109,6 @@ paths:
       - Price Calculators
       description: Deletes a price calculator.
 components:
-  schemas:
-    price_calculators:
-      type: object
-      properties:
-        id:
-          type: integer
-        calculation_name:
-          type: string
-        description:
-          type: string
-        updated_at:
-          type: string
-        created_at:
-          type: string
-        item_numbers_regex:
-          type: string
   responses:
     '404':
       description: Resource Not Found
@@ -147,6 +131,22 @@ components:
                 type: string
           examples: {}
       headers: {}
+  schemas:
+    price_calculators:
+      type: object
+      properties:
+        id:
+          type: integer
+        calculation_name:
+          type: string
+        description:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        item_numbers_regex:
+          type: string
   securitySchemes:
     X-AC-Auth-Token:
       name: X-AC-Auth-Token

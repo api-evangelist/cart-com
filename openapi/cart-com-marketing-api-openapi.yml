@@ -1018,38 +1018,41 @@ paths:
       description: Deletes a mailing list.
 components:
   schemas:
-    discount_rules:
+    mailing_lists:
       type: object
       properties:
         id:
           type: integer
-        discount_method_id:
-          type: integer
         type:
           type: string
-        target:
+        admin_list_name:
+          type: string
+        public_list_name:
+          type: string
+        store_id:
+          type: integer
+        is_store_default:
+          type: boolean
+        auto_opt_in:
+          type: boolean
+        is_hidden:
+          type: boolean
+        url_based_subscribe_url:
           type: string
         updated_at:
           type: string
         created_at:
           type: string
-        operator_type:
+        welcome_email_template_id:
           type: string
-        target_quantity:
+    drips:
+      type: object
+      properties:
+        id:
           type: integer
-        target_quantity_type:
+        name:
           type: string
-        discount_action_id:
-          type: integer
-        is_action_rule:
-          type: boolean
-        bogo_discount_buy_quantity:
-          type: integer
-        bogo_discount_quantity:
-          type: integer
-        bogo_max_use_per_order:
-          type: integer
-        discount_from_high_to_low:
+        is_enabled:
           type: boolean
     gift_certificates:
       type: object
@@ -1096,6 +1099,66 @@ components:
           type: boolean
         order_item_id:
           type: integer
+    discount_actions:
+      type: object
+      properties:
+        id:
+          type: integer
+        discount_method_id:
+          type: integer
+        is_exclusive:
+          type: boolean
+        is_strict:
+          type: boolean
+        is_active:
+          type: boolean
+        modifier_operation:
+          type: string
+        modifier_amount:
+          type: string
+        modifier_type:
+          type: string
+        modifier_target:
+          type: string
+        sort_order:
+          type: integer
+    discount_methods:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        is_enabled:
+          type: boolean
+        is_strict:
+          type: boolean
+        use_once:
+          type: boolean
+        expires:
+          type: boolean
+        expires_at:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        starts_at:
+          type: string
+        remaining_uses:
+          type: integer
+        notes:
+          type: string
+        is_free_shipping_discount:
+          type: boolean
+        is_exclusive:
+          type: boolean
+        uses:
+          type: integer
+        exclude_child_items:
+          type: boolean
+        exclude_subscription_renew:
+          type: boolean
     gift_certificate_transactions:
       type: object
       properties:
@@ -1150,102 +1213,39 @@ components:
           type: integer
         admin_alert_email_override:
           type: string
-    discount_methods:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        is_enabled:
-          type: boolean
-        is_strict:
-          type: boolean
-        use_once:
-          type: boolean
-        expires:
-          type: boolean
-        expires_at:
-          type: string
-        updated_at:
-          type: string
-        created_at:
-          type: string
-        starts_at:
-          type: string
-        remaining_uses:
-          type: integer
-        notes:
-          type: string
-        is_free_shipping_discount:
-          type: boolean
-        is_exclusive:
-          type: boolean
-        uses:
-          type: integer
-        exclude_child_items:
-          type: boolean
-        exclude_subscription_renew:
-          type: boolean
-    mailing_lists:
-      type: object
-      properties:
-        id:
-          type: integer
-        type:
-          type: string
-        admin_list_name:
-          type: string
-        public_list_name:
-          type: string
-        store_id:
-          type: integer
-        is_store_default:
-          type: boolean
-        auto_opt_in:
-          type: boolean
-        is_hidden:
-          type: boolean
-        url_based_subscribe_url:
-          type: string
-        updated_at:
-          type: string
-        created_at:
-          type: string
-        welcome_email_template_id:
-          type: string
-    drips:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        is_enabled:
-          type: boolean
-    discount_actions:
+    discount_rules:
       type: object
       properties:
         id:
           type: integer
         discount_method_id:
           type: integer
-        is_exclusive:
-          type: boolean
-        is_strict:
-          type: boolean
-        is_active:
-          type: boolean
-        modifier_operation:
+        type:
           type: string
-        modifier_amount:
+        target:
           type: string
-        modifier_type:
+        updated_at:
           type: string
-        modifier_target:
+        created_at:
           type: string
-        sort_order:
+        operator_type:
+          type: string
+        target_quantity:
           type: integer
+        target_quantity_type:
+          type: string
+        discount_action_id:
+          type: integer
+        is_action_rule:
+          type: boolean
+        bogo_discount_buy_quantity:
+          type: integer
+        bogo_discount_quantity:
+          type: integer
+        bogo_max_use_per_order:
+          type: integer
+        discount_from_high_to_low:
+          type: boolean
   responses:
     '404':
       description: Resource Not Found

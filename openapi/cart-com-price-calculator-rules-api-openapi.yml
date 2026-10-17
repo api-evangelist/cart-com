@@ -119,28 +119,6 @@ paths:
       - Price Calculator Rules
       description: Deletes a price calculator rule.
 components:
-  schemas:
-    price_calculator_rules:
-      type: object
-      properties:
-        id:
-          type: integer
-        price_calculator_id:
-          type: integer
-        customer_type_id:
-          type: integer
-        store_id:
-          type: integer
-        starting_quantity:
-          type: integer
-        price_base_type:
-          type: string
-        updated_at:
-          type: string
-        created_at:
-          type: string
-        specific_base_price:
-          type: integer
   responses:
     '404':
       description: Resource Not Found
@@ -163,6 +141,28 @@ components:
                 type: string
           examples: {}
       headers: {}
+  schemas:
+    price_calculator_rules:
+      type: object
+      properties:
+        id:
+          type: integer
+        price_calculator_id:
+          type: integer
+        customer_type_id:
+          type: integer
+        store_id:
+          type: integer
+        starting_quantity:
+          type: integer
+        price_base_type:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        specific_base_price:
+          type: integer
   securitySchemes:
     X-AC-Auth-Token:
       name: X-AC-Auth-Token
